@@ -7,3 +7,4 @@ name = "pypi"
 openai = "*"
 dspy = "*"
 
+[dev-packages]
