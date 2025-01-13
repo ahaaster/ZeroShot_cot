@@ -4,6 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+openai = "*"
+dspy = "*"
 
 [dev-packages]
 pytest = "*"
@@ -13,4 +15,4 @@ flit = "*"
 black = "*"
 
 [requires]
-python_version = "3.10"
+python_version = "3.12"
