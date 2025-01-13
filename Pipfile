@@ -7,9 +7,3 @@ name = "pypi"
 openai = "*"
 dspy = "*"
 
-[dev-packages]
-pytest = "*"
-tox = "*"
-pytest-cov = "*"
-flit = "*"
-black = "*"
