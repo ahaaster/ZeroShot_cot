@@ -1,2 +1,2 @@
-# skeleton-project-python
-This is a skeleton template for modern python projects
+# Automated Prompt Engineering: Zero-shot Chain of Thought versus the human-level
+Seminar Business Information Systems '24-'25
