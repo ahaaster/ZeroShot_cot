@@ -1,10 +1,10 @@
 import json
 import dspy
-from pprint import pprint
-from secret import sekrit_key
 import time
+from pprint import pprint
+from secret import secret
 
-API_KEY = sekrit_key if sekrit_key else ""
+API_KEY = secret if secret else ""
 
 LLM_MODEL = ["openai/gpt-4", "openai/gpt-4o", "openai/gpt-4o-mini", "openai/gpt-3.5-turbo"]
 lm = dspy.LM(LLM_MODEL[-1], max_tokens=2000, api_key=API_KEY)
