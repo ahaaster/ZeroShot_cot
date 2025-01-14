@@ -8,14 +8,14 @@ pip install pipenv
 ```
 
 #### Use
-In de terminal start je de virtual environment als volgt:
-```
-pipenv shell
-```
-
-Installing packages within for the virtual environment
+Installing packages for the virtual environment
 ```
 pipenv install [package]
+```
+
+You spawn the virutal environment with the following terminal command
+```
+pipenv shell
 ```
 Running a python file (while in virtual environment)
 ```
