@@ -2,6 +2,7 @@ import dspy
 import time
 # from typing import Optional
 from dataclasses import dataclass
+from pathlib import Path
 
 from utils import Num, load_dataset
 from secret import secret
@@ -19,6 +20,17 @@ LLM_MODEL = ["openai/gpt-4", "openai/gpt-4o", "openai/gpt-4o-mini", "openai/gpt-
 #     intermediate: str = "reasoning"
 #     answer: str = "answer"
 #     answer_hint: str = ""
+
+class ChoiceReasoning(dspy.Signature):
+    """State the reasoning of arriving at a choice out of the given options"""
+    query = dspy.InputField(prefix="q")
+    choices = dspy.InputField(prefix="c", format="List[str]") 
+    output = dspy.OutputField(desc="Let's think step by step.", prefix="a")
+
+class ConclusionChoice(dspy.Signature):
+    """We want you to choose one of the available choices"""
+    query = dspy.InputField()
+    output = dspy.OutputField(desc="Therefore, the answer is")
 
 
 
@@ -45,21 +57,24 @@ class ConclusionSig(dspy.Signature):
 
 def main():
     chosen_model = LLM_MODEL[0]
-    data = load_dataset(file_path=None)
+    file_path = Path("dataset/zero-shot_cot/CommonsenseQA/data.csv")
+    data = load_dataset(file_path=file_path)
+    # print(data)
     
     lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
     dspy.configure(lm=lm)
     
     # first_step = dspy.Predict(f"{sig.question} -> {sig.intermediate}")
-    first_step = dspy.Predict(Reasoning1)
-    second_step = dspy.Predict(ConclusionSig)
+    first_step = dspy.Predict(ChoiceReasoning)
+    second_step = dspy.Predict(ConclusionChoice)
     # second_step = dspy.Predict(f"{sig.intermediate} -> {sig.answer}{sig.answer_hint}")
     
-    for datum in data[210:211]:
-        question = datum['sQuestion']
-        label = datum["lSolutions"][0]
+    for _, row in data.iterrows():
+        question = row["question"]
+        choices = row["choices"]
+        label = row["labels"]
 
-        reasoning = first_step(query=question)
+        reasoning = first_step(query=question, choices=choices)
         final_question = f"{question} \n\n{reasoning.output}"
         print(final_question)
 
