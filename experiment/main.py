@@ -23,14 +23,14 @@ LLM_MODEL = ["openai/gpt-4", "openai/gpt-4o", "openai/gpt-4o-mini", "openai/gpt-
 
 class ChoiceReasoning(dspy.Signature):
     """State the reasoning of arriving at a choice out of the given options"""
-    query = dspy.InputField(prefix="q")
-    choices = dspy.InputField(prefix="c", format="List[str]") 
-    output = dspy.OutputField(desc="Let's think step by step.", prefix="a")
+    query = dspy.InputField(prefix="Q:")
+    choices = dspy.InputField(prefix="C:", format="List[str]") 
+    output = dspy.OutputField(desc="Let's think step by step.", prefix="A:")
 
 class ConclusionChoice(dspy.Signature):
-    """We want you to choose one of the available choices"""
+    """"""
     query = dspy.InputField()
-    output = dspy.OutputField(desc="Therefore, the answer is")
+    output = dspy.OutputField(desc="Therefore, among A through E, the answer is")
 
 
 
@@ -47,7 +47,7 @@ class ReasoningMisleading(dspy.Signature):
 class ReasoningIrrelevant(dspy.Signature):
     """"""
     query = dspy.InputField() 
-    output = dspy.OutputField(desc="Bing bing wahooooo! Avada Kadavra")
+    output = dspy.OutputField(desc="Avada Kadavra")
 
 class ConclusionSig(dspy.Signature):
     """We want a short answer without descriptive words"""
@@ -75,6 +75,7 @@ def main():
         label = row["labels"]
 
         reasoning = first_step(query=question, choices=choices)
+        print(reasoning)
         final_question = f"{question} \n\n{reasoning.output}"
         print(final_question)
 
