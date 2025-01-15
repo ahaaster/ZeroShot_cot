@@ -5,6 +5,7 @@ from pathlib import Path
 from secret import secret
 
 API_KEY = secret if secret else ""
+LLM_MODEL = ["openai/gpt-4", "openai/gpt-4o", "openai/gpt-4o-mini", "openai/gpt-3.5-turbo"]
 
 def load_dataset(file_path:[Path, str]=None):
     file_path = Path("dataset/zero-shot_cot/MultiArith/MultiArith.json") if file_path is None else file_path
@@ -12,7 +13,28 @@ def load_dataset(file_path:[Path, str]=None):
         return json.load(file)
 
 def main():
+    chosen_model = LLM_MODEL[0]
     data = load_dataset()
+    
+    lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
+    dspy.configure(lm=lm)
+
+    frm = 150
+    to = 152
+    module = dspy.Predict(f"question -> answer")
+    for datum in data[frm:to]:
+        question = datum['sQuestion']
+        label = datum["lSolutions"][0]
+
+        res = module(question=question)
+        print(f"{question = } \n{label = } \n{res}")
+
+if __name__ == "__main__":
+    main()
+
+
+""" OLD CODE
+data = load_dataset()
     
     LLM_MODEL = ["openai/gpt-4", "openai/gpt-4o", "openai/gpt-4o-mini", "openai/gpt-3.5-turbo"]
     lm = dspy.LM(LLM_MODEL[0], max_tokens=2000, api_key=API_KEY)
@@ -41,6 +63,4 @@ def main():
         # print(f"done prompt #{len(list_hit)}")
 
     # print(f"Accuracy is: {len(list_hit)/len(data[frm:to]) * 100} %")
-
-if __name__ == "__main__":
-    main()
+"""
