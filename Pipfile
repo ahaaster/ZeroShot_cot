@@ -6,5 +6,6 @@ name = "pypi"
 [packages]
 openai = "*"
 dspy = "*"
+pandas = "*"
 
 [dev-packages]
