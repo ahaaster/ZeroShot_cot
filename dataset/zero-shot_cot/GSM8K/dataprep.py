@@ -13,10 +13,10 @@ def prepare_dataset():
     df = pd.read_json(path_or_buf=RAW_SET, lines=True)
     
     for idx, query in df.iterrows():
-        print(query)
         label = query["answer"]
         label = label.split("\n#### ")[-1]
         df.at[idx, "answer"] = label
+        df.rename(columns={"asnwer": "label"})
     
     return df    
 
