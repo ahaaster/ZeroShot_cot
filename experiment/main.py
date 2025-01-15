@@ -12,6 +12,16 @@ def load_dataset(file_path:[Path, str]=None):
     with open(file_path) as file:
         return json.load(file)
 
+class ZeroShotReasoning(dspy.Signature):
+    """
+    """
+    question: str = dspy.InputField()
+    reasoning: str = dspy.OutputField()
+
+class ZeroShotAnswer(dspy.Signature):
+    reasoning: str = dspy.InputField()
+    answer: int = dspy.OutputField()
+
 def main():
     chosen_model = LLM_MODEL[0]
     data = load_dataset()
@@ -21,13 +31,14 @@ def main():
 
     frm = 150
     to = 152
-    module = dspy.Predict(f"question -> answer")
+    # module = dspy.Predict(f"question -> answer")
+    module = dspy.Predict(ZeroShotReasoning)
     for datum in data[frm:to]:
         question = datum['sQuestion']
         label = datum["lSolutions"][0]
 
         res = module(question=question)
-        print(f"{question = } \n{label = } \n{res}")
+        print(f"{question = } => {label = } \n{res.reasoning}\n\n")
 
 if __name__ == "__main__":
     main()
