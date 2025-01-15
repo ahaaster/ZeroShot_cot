@@ -19,8 +19,13 @@ class ZeroShotReasoning(dspy.Signature):
     reasoning: str = dspy.OutputField()
 
 class ZeroShotAnswer(dspy.Signature):
-    reasoning: str = dspy.InputField()
+    question: str = dspy.InputField()
     answer: int = dspy.OutputField()
+
+class ZeroShotAnswer2(dspy.Signature):
+    reasoning: str = dspy.InputField()
+    conclusion: int = dspy.OutputField()
+
 
 def main():
     chosen_model = LLM_MODEL[0]
@@ -30,15 +35,19 @@ def main():
     dspy.configure(lm=lm)
 
     frm = 150
-    to = 152
+    to = 151
     # module = dspy.Predict(f"question -> answer")
-    module = dspy.Predict(ZeroShotReasoning)
+    step_reason = dspy.Predict(ZeroShotReasoning)
+    step_answer = dspy.Predict(ZeroShotAnswer)
     for datum in data[frm:to]:
         question = datum['sQuestion']
         label = datum["lSolutions"][0]
 
-        res = module(question=question)
-        print(f"{question = } => {label = } \n{res.reasoning}\n\n")
+        intermediate = step_reason(question=question)
+        final_question = f"{question} \n\n{intermediate.reasoning}"
+        
+        prediction = step_answer(question=final_question)
+        print(f"{final_question = } => {label = } \n{prediction.answer}\n")
 
 if __name__ == "__main__":
     main()
