@@ -1,6 +1,6 @@
 import dspy
 import time
-from typing import Optional
+# from typing import Optional
 from dataclasses import dataclass
 
 from utils import Num, load_dataset
@@ -14,33 +14,38 @@ LLM_MODEL = ["openai/gpt-4", "openai/gpt-4o", "openai/gpt-4o-mini", "openai/gpt-
 @dataclass
 class SignatureZeroShotCoT:
     """Class for signature specification"""
-    context: Optional[str] = None
+    context: str = None
     question: str = "question"
     intermediate: str = "reasoning"
-    answer: [str, Num] = "answer"
+    answer: str = "answer"
+    answer_hint: str = ""
+
+#! TODO: SIGNATURE CLASS MET EXPLICIETE REASONING STATEMENT 
 
 def main():
     chosen_model = LLM_MODEL[0]
     data = load_dataset(file_path=None)
-    sig = SignatureZeroShotCoT(answer="answer: int")
+    sig = SignatureZeroShotCoT(answer_hint=": int")
+    # sig = SignatureZeroShotCoT(question="prompt", answer="conclusion")
     
     lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
     dspy.configure(lm=lm)
     
     first_step = dspy.Predict(f"{sig.question} -> {sig.intermediate}")
-    second_step = dspy.Predict(f"{sig.intermediate} -> {sig.answer}")
+    second_step = dspy.Predict(f"{sig.intermediate} -> {sig.answer}{sig.answer_hint}")
     
-    for datum in data[92:93]:
+    for datum in data[110:113]:
         question = datum['sQuestion']
         first_prompt = {sig.question: question}
         label = datum["lSolutions"][0]
 
         intermediate = first_step(**first_prompt)
         final_question = f"{question} \n\n{intermediate.reasoning}"
+        print(final_question)
 
         second_prompt = {sig.intermediate: final_question}
         prediction = second_step(**second_prompt)
-        print(f"{final_question = } => {label = } \n{prediction.answer}\n")
+        print(f"=> {label = } \n{prediction[sig.answer]}\n")
 
 if __name__ == "__main__":
     main()
