@@ -1,52 +1,45 @@
-import json
 import dspy
 import time
-from pathlib import Path
+from typing import Optional
+from dataclasses import dataclass
+
+from utils import Num, load_dataset
 from secret import secret
+
 
 API_KEY = secret if secret else ""
 LLM_MODEL = ["openai/gpt-4", "openai/gpt-4o", "openai/gpt-4o-mini", "openai/gpt-3.5-turbo"]
 
-def load_dataset(file_path:[Path, str]=None):
-    file_path = Path("dataset/zero-shot_cot/MultiArith/MultiArith.json") if file_path is None else file_path
-    with open(file_path) as file:
-        return json.load(file)
 
-class ZeroShotReasoning(dspy.Signature):
-    """
-    """
-    question: str = dspy.InputField()
-    reasoning: str = dspy.OutputField()
-
-class ZeroShotAnswer(dspy.Signature):
-    question: str = dspy.InputField()
-    answer: int = dspy.OutputField()
-
-class ZeroShotAnswer2(dspy.Signature):
-    reasoning: str = dspy.InputField()
-    conclusion: int = dspy.OutputField()
-
+@dataclass
+class SignatureZeroShotCoT:
+    """Class for signature specification"""
+    context: Optional[str] = None
+    question: str = "question"
+    intermediate: str = "reasoning"
+    answer: [str, Num] = "answer"
 
 def main():
     chosen_model = LLM_MODEL[0]
-    data = load_dataset()
+    data = load_dataset(file_path=None)
+    sig = SignatureZeroShotCoT(answer="answer: int")
     
     lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
     dspy.configure(lm=lm)
-
-    frm = 150
-    to = 151
-    # module = dspy.Predict(f"question -> answer")
-    step_reason = dspy.Predict(ZeroShotReasoning)
-    step_answer = dspy.Predict(ZeroShotAnswer)
-    for datum in data[frm:to]:
+    
+    first_step = dspy.Predict(f"{sig.question} -> {sig.intermediate}")
+    second_step = dspy.Predict(f"{sig.intermediate} -> {sig.answer}")
+    
+    for datum in data[92:93]:
         question = datum['sQuestion']
+        first_prompt = {sig.question: question}
         label = datum["lSolutions"][0]
 
-        intermediate = step_reason(question=question)
+        intermediate = first_step(**first_prompt)
         final_question = f"{question} \n\n{intermediate.reasoning}"
-        
-        prediction = step_answer(question=final_question)
+
+        second_prompt = {sig.intermediate: final_question}
+        prediction = second_step(**second_prompt)
         print(f"{final_question = } => {label = } \n{prediction.answer}\n")
 
 if __name__ == "__main__":
