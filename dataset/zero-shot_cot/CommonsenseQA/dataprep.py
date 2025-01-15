@@ -14,7 +14,7 @@ def prepare_dataset():
     nested_questions = raw_df["question"]
 
     df = pd.DataFrame(columns=["choices"])
-    df["labels"] = raw_df["answerKey"]
+    df["label"] = raw_df["answerKey"]
     for idx, query in enumerate(nested_questions):
         df.at[idx, "question"] = query["stem"]
         
