@@ -137,10 +137,9 @@ def create_results_file(method_name: str = None):
 
 
 if __name__ == "__main__":
-    method = METHODS[-1]
-    # create_results_file(method) 
+    method = METHODS[-1] 
 
     prepped_datasets = Path("dataset/zero-shot_cot").glob("**/data.csv")
     prepped_datasets = sorted(prepped_datasets)
-    file_path = prepped_datasets[4]
+    file_path = prepped_datasets[2]
     main(chosen_model=LLM_MODEL[1], method=method, file_path=file_path)
