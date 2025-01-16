@@ -1,6 +1,7 @@
 import dspy
 import time
 from pathlib import Path
+from dspy.evaluate import SemanticF1
 
 from utils import Num, load_dataset
 from secret import secret
@@ -54,42 +55,65 @@ def main(chosen_model, method, file_path: Path):
         for label, question, choices in data.values[:4]:
             dataset.append(
                 dspy.Example(
-                    question=question,
                     answer=label,
+                    question=question,
                     choices=choices
                 ).with_inputs("question", "choices")
             )
         inpoets = "question, choices"
+        outputs = "answer"
     except: 
         for label, question in data.values:
             dataset.append(
                 dspy.Example(
+                    response=label,
                     question=question,
-                    answer=label,
                 ).with_inputs("question")
             )
         inpoets = "question"
+        outputs = "response"
 
     lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
     dspy.configure(lm=lm)
     
     if method == "zero-shot":
-        prompter = dspy.Predict(f"{inpoets} -> answer")
+        prompter = dspy.Predict(f"{inpoets} -> {outputs}")
     elif method == "default":
-        prompter = CoT("question, choices -> answer")
+        prompter = CoT(f"{inpoets} -> {outputs}")
     else: 
         prompter = Reasoning(
             inpoets=inpoets, 
-            outputs="answer", 
-            reasoning_hint="Avadra Kadavra!"
+            outputs=outputs, 
+            # reasoning_hint="Avadra Kadavra!"
         )
 
-    for query in dataset[2:3]:
-        response = prompter(**query.inputs())
-        print(response)
-        print(query.labels())
-        print()
+    def semantic_scoring(example, prediction, threshold=0.65):
+        score = SemanticF1(decompositional=True)(example, prediction)
+        return 1 if score > threshold else 0
 
+    # metric = SemanticF1(decompositional=True)
+    metric = semantic_scoring
+    
+    evaluate = dspy.Evaluate(
+        devset=dataset[:100],
+        metric=metric,
+        num_threads=8,
+        display_progress=True,
+        display_table=4,
+        provide_traceback=True
+    )
+
+    x = evaluate(prompter)
+    print(x)
+
+    # predictions = []
+    # for idx, query in enumerate(dataset[:3]):
+    #     response = prompter(**query.inputs())
+    #     score = metric(query.labels(), response[f"{outputs}"])
+    #     predictions.append(response[f"{outputs}"])
+    #     print(response)
+    #     print(query.labels())
+    #     print()
 
 
     # x = lm.inspect_history(n=1)
@@ -114,6 +138,9 @@ if __name__ == "__main__":
     METHODS = ["zero-shot", "default", "eigen"][-1]
     # file_path = Path("dataset/zero-shot_cot/CommonsenseQA/data.csv")
     file_path = Path("dataset/zero-shot_cot/StrategyQA/data.csv")
+
+    # paths = Path("dataset/zero-shot_cot").glob("**/*.csv")
+    # print(sorted(paths))
     
     main(
         chosen_model=LLM_MODEL, 
