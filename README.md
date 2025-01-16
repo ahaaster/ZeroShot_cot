@@ -19,5 +19,5 @@ pipenv shell
 ```
 Running a python file (while in virtual environment)
 ```
-python ./experiment/main.py
+python experiment/main.py
 ```
