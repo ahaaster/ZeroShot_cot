@@ -1,5 +1,6 @@
 import dspy
 import time
+import pandas as pd
 from pathlib import Path
 from dspy.evaluate import SemanticF1
 
@@ -7,8 +8,12 @@ from utils import Num, load_dataset
 from secret import secret
 
 
+LLM_MODEL = ["openai/gpt-3.5-turbo", "openai/gpt-4", "openai/gpt-4o-mini", "openai/gpt-4o"]
+METHODS = ["zero-shot", "default", "eigen"]
+SCORING_THRESHOLDS = [0.6, 0.7, 0.8]    
+RESULTS_PATH = Path("experiment/results.csv")
+
 API_KEY = secret if secret else ""
-SCORING_THRESHOLD = 0.8
 
 
 class CoT(dspy.Module):
@@ -38,7 +43,6 @@ class Reasoning(dspy.Module):
         reasoning_sig = dspy.Signature(f"{inpoets} ->").prepend(self.reason_prefix, reasoning_field, type_=str)
         self.query_gen = dspy.Predict(reasoning_sig)
         
-        # Now construct the second signature
         conclusion_sig = dspy.Signature(f"{inpoets}, {self.reason_prefix} -> {outputs}")
         self.predict = dspy.Predict(conclusion_sig)
 
@@ -46,10 +50,10 @@ class Reasoning(dspy.Module):
         # First retrieve the reasoning, then add this to the original query for a final answer prompt
         query = self.query_gen(**kwargs)
         kwargs[self.reason_prefix] = query[self.reason_prefix]
-        return self.predict(**kwargs)
+        return self.predict(**kwargs)   
 
-
-def main(chosen_model, method, file_path: Path):
+def main(chosen_model, method, file_path: Path, threshold):
+    dataset_name = file_path.parent.stem
     data = load_dataset(file_path=file_path)
     
     dataset = []
@@ -89,7 +93,7 @@ def main(chosen_model, method, file_path: Path):
             # reasoning_hint="Avadra Kadavra!"
         )
 
-    def semantic_scoring(example, prediction, threshold=SCORING_THRESHOLD):
+    def semantic_scoring(example, prediction):
         score = SemanticF1(decompositional=True)(example, prediction)
         return 1 if score > threshold else 0
 
@@ -97,7 +101,7 @@ def main(chosen_model, method, file_path: Path):
     metric = semantic_scoring
     
     evaluate = dspy.Evaluate(
-        devset=dataset[:300],
+        devset=dataset[:100],
         metric=metric,
         num_threads=8,
         display_progress=True,
@@ -105,22 +109,36 @@ def main(chosen_model, method, file_path: Path):
         provide_traceback=True
     )
 
-    x = evaluate(prompter)
-    print(f"Our estimated accuracy is: {x} %")
+    score = evaluate(prompter)
+    # print(f"Our estimated accuracy is: {score} %")
+    update_results(score, chosen_model, dataset_name, threshold)
 
+
+def update_results(score, chosen_model, dataset_name, threshold_val):
+    df = pd.read_csv(RESULTS_PATH, index_col=[0, 1])
+    df.loc[(dataset_name, chosen_model), f"{threshold_val}"] = score
+    df.to_csv(RESULTS_PATH)
     
-        
+
+def create_results_file():
+    paths = Path("dataset/zero-shot_cot").glob("**/*.csv")
+    dataset_names = [x.parent.stem for x in sorted(paths)]
+    
+    iterables = [dataset_names, LLM_MODEL]
+    index = pd.MultiIndex.from_product(iterables, names=["dataset", "model"])
+    cols = [f">{x}" for x in SCORING_THRESHOLDS]
+    df = pd.DataFrame(0, index=index, columns=SCORING_THRESHOLDS)
+    
+    df.to_csv(RESULTS_PATH)
+
+
 if __name__ == "__main__":
-    LLM_MODEL = ["openai/gpt-4", "openai/gpt-4o", "openai/gpt-4o-mini", "openai/gpt-3.5-turbo"][-1]
-    METHODS = ["zero-shot", "default", "eigen"][-1]
+    # create_results_file()
     # file_path = Path("dataset/zero-shot_cot/CommonsenseQA/data.csv")
-    file_path = Path("dataset/zero-shot_cot/StrategyQA/data.csv")
-
-    # paths = Path("dataset/zero-shot_cot").glob("**/*.csv")
-    # print(sorted(paths))
+    # file_path = Path("dataset/zero-shot_cot/StrategyQA/data.csv")
     
-    main(
-        chosen_model=LLM_MODEL, 
-        method=METHODS, 
-        file_path=file_path
-    )
+    prepped_datasets = Path("dataset/zero-shot_cot").glob("**/data.csv")
+    prepped_datasets = sorted(prepped_datasets)
+    file_path = prepped_datasets[4]
+    main(chosen_model=LLM_MODEL[0], method=METHODS[-1], file_path=file_path, threshold=SCORING_THRESHOLDS[0])
+    # print(update_results(0,0,0,0))
