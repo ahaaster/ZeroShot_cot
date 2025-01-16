@@ -100,34 +100,47 @@ def main():
     chosen_model = LLM_MODEL[0]
     file_path = Path("dataset/zero-shot_cot/CommonsenseQA/data.csv")
     data = load_dataset(file_path=file_path)
-    data = 
-    # print(data)
-    
-    lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
-    dspy.configure(lm=lm)
-    
-    first_step = dspy.Predict(ChoiceReasoning)
-    second_step = dspy.Predict(ConclusionChoice)
+    cols = list(data.columns)
+    print(cols)
+    print(data.shape)
+    print(data.columns)
 
-    prediction = Reasoning(
-        inpoets="question, choices",
-        outputs="answer",
-        reasoning_hint="Avada kadavra!"
-    )
+    dataset = []
+    for question, choices, label in data.values[:4]:
+        # dataset.append(
+        #     dspy.Example(
+        #         question=question,
+        #         answer=label,
+        #         choices=choices
+        #     ).with_inputs("question", "choices")
+        # )
+        print(question, choices, labels)
     
-    for _, row in data.iterrows():
-        question = row["question"]
-        choices = row["choices"]
-        label = row["labels"]
+    # lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
+    # dspy.configure(lm=lm)
+    
+    # first_step = dspy.Predict(ChoiceReasoning)
+    # second_step = dspy.Predict(ConclusionChoice)
 
-        reasoning = first_step(query=question, choices=choices)
-        print(reasoning)
-        final_question = f"{question} \n\n{reasoning.output}"
-        print(final_question)
+    # prediction = Reasoning(
+    #     inpoets="question, choices",
+    #     outputs="answer",
+    #     reasoning_hint="Avada kadavra!"
+    # )
+    
+    # for _, row in data.iterrows():
+    #     question = row["question"]
+    #     choices = row["choices"]
+    #     label = row["labels"]
 
-        response = second_step(query=final_question)
-        print(response.output)
-        print(f"{label = }")
+    #     reasoning = first_step(query=question, choices=choices)
+    #     print(reasoning)
+    #     final_question = f"{question} \n\n{reasoning.output}"
+    #     print(final_question)
+
+    #     response = second_step(query=final_question)
+    #     print(response.output)
+    #     print(f"{label = }")
         
 if __name__ == "__main__":
     main()
