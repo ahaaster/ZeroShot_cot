@@ -43,6 +43,7 @@ class Reasoning(dspy.Module):
         reasoning_sig = dspy.Signature(f"{inpoets} ->").prepend(self.reason_prefix, reasoning_field, type_=str)
         self.query_gen = dspy.Predict(reasoning_sig)
         
+        # answer_field = dspy.OutputField(prefix="Therefore the answer is", desc="The answer is a number")
         conclusion_sig = dspy.Signature(f"{inpoets}, {self.reason_prefix} -> {outputs}")
         self.predict = dspy.Predict(conclusion_sig)
 
@@ -141,5 +142,5 @@ if __name__ == "__main__":
 
     prepped_datasets = Path("dataset/zero-shot_cot").glob("**/data.csv")
     prepped_datasets = sorted(prepped_datasets)
-    file_path = prepped_datasets[2]
-    main(chosen_model=LLM_MODEL[1], method=method, file_path=file_path)
+    file_path = prepped_datasets[-2]
+    main(chosen_model=LLM_MODEL[0], method=method, file_path=file_path)
