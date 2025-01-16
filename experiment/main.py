@@ -1,7 +1,7 @@
 import dspy
 import time
 # from typing import Optional
-from dataclasses import dataclass
+# from dataclasses import dataclass
 from pathlib import Path
 
 from utils import Num, load_dataset
@@ -100,6 +100,7 @@ def main():
     chosen_model = LLM_MODEL[0]
     file_path = Path("dataset/zero-shot_cot/CommonsenseQA/data.csv")
     data = load_dataset(file_path=file_path)
+    data = 
     # print(data)
     
     lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
