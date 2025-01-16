@@ -3,7 +3,7 @@ CommonsenseQA,openai/gpt-3.5-turbo,0.0,0.0,0.0,0.0,0.0
 CommonsenseQA,openai/gpt-4,0.0,0.0,0.0,0.0,0.0
 CommonsenseQA,openai/gpt-4o-mini,0.0,0.0,0.0,0.0,0.0
 CommonsenseQA,openai/gpt-4o,0.0,0.0,0.0,0.0,0.0
-GSM8K,openai/gpt-3.5-turbo,0.0,0.0,0.0,0.0,0.0
+GSM8K,openai/gpt-3.5-turbo,75.66,74.37,71.8,70.36,67.7
 GSM8K,openai/gpt-4,0.0,0.0,0.0,0.0,0.0
 GSM8K,openai/gpt-4o-mini,0.0,0.0,0.0,0.0,0.0
 GSM8K,openai/gpt-4o,0.0,0.0,0.0,0.0,0.0
