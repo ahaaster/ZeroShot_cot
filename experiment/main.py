@@ -100,33 +100,37 @@ def main():
     chosen_model = LLM_MODEL[0]
     file_path = Path("dataset/zero-shot_cot/CommonsenseQA/data.csv")
     data = load_dataset(file_path=file_path)
-    cols = list(data.columns)
-    print(cols)
-    print(data.shape)
-    print(data.columns)
-
-    dataset = []
-    for question, choices, label in data.values[:4]:
-        # dataset.append(
-        #     dspy.Example(
-        #         question=question,
-        #         answer=label,
-        #         choices=choices
-        #     ).with_inputs("question", "choices")
-        # )
-        print(question, choices, labels)
     
-    # lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
-    # dspy.configure(lm=lm)
+    dataset = []
+    for label, question, choices in data.values[:4]:
+        dataset.append(
+            dspy.Example(
+                question=question,
+                answer=label,
+                choices=choices
+            ).with_inputs("question", "choices")
+        )
+
+    lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
+    dspy.configure(lm=lm)
     
     # first_step = dspy.Predict(ChoiceReasoning)
-    # second_step = dspy.Predict(ConclusionChoice)
+    # second_step = dspy.Predict(ConclusionChoice))
+    prompter = CoT("question, choices -> answer")
+    
 
-    # prediction = Reasoning(
-    #     inpoets="question, choices",
-    #     outputs="answer",
-    #     reasoning_hint="Avada kadavra!"
-    # )
+    for query in dataset[2:3]:
+        # print(query)
+        # print()
+        print(query.inputs())
+
+        response = prompter(**query.inputs())
+        print(response)
+        print(query.labels())
+        print()
+
+    x = lm.inspect_history(n=1)
+    print(x)
     
     # for _, row in data.iterrows():
     #     question = row["question"]
