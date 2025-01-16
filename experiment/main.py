@@ -103,7 +103,7 @@ def main(chosen_model, method, file_path: Path):
         metric = semantic_scoring
         
         evaluate = dspy.Evaluate(
-            devset=dataset[:300],
+            devset=dataset,
             metric=metric,
             num_threads=8,
             display_progress=True,
@@ -129,8 +129,8 @@ def create_results_file(method_name: str = None):
     
     iterables = [dataset_names, LLM_MODEL]
     index = pd.MultiIndex.from_product(iterables, names=["dataset", "model"])
-    cols = [f">{x}" for x in SCORING_THRESHOLDS]
-    df = pd.DataFrame(0, index=index, columns=SCORING_THRESHOLDS)
+    cols = [str(x) for x in SCORING_THRESHOLDS]
+    df = pd.DataFrame(0, index=index, columns=cols)
     
     file_path = Path(f"experiment/{method_name}.csv") if method_name else RESULTS_PATH
     df.to_csv(file_path)
@@ -138,9 +138,9 @@ def create_results_file(method_name: str = None):
 
 if __name__ == "__main__":
     method = METHODS[-1]
-    create_results_file(method) 
+    # create_results_file(method) 
 
     prepped_datasets = Path("dataset/zero-shot_cot").glob("**/data.csv")
     prepped_datasets = sorted(prepped_datasets)
     file_path = prepped_datasets[4]
-    main(chosen_model=LLM_MODEL[0], method=method, file_path=file_path)
+    main(chosen_model=LLM_MODEL[1], method=method, file_path=file_path)
