@@ -45,6 +45,21 @@ class CoT(dspy.Module):
         # Just forward the inputs to the sub-module
         return self.predict(**kwargs)
 
+class Reasoning(dspy.Module):
+    # Supply a decomposed signature in the form of '*inpoets -> *outputs'
+    # First retrieve a rationale to create a final query, 
+    #   then use this rationale with the original inpoet to generate the answer in a second prompt
+    def __init__(self, inpoets: str, outputs: str, reasoning_hint: str = "Let's think step by step."):
+        self.reason_prefix = "reasoning" 
+
+        reasoning_field = dspy.OutputField(prefix=f"{self.reason_prefix}: {reasoning_hint}")
+        reasoning_sig = dspy.Signature(inpoets).append_output_field(reasoning_field)
+        self.query_gen = dspy.Predict(reasoning_sig)
+        
+        # Now construct the second signature
+        conclusion_sig = dspy.Signature(f"{inpoets}, {self.reason_prefix} -> {outputs}")
+        self.predict = dspy.Predict(conclusion_sig)
+
     def forward(self, **kwargs):
         # First retrieve the reasoning, then add this to the original query for a final answer prompt
         query = self.query_gen(**kwargs)
