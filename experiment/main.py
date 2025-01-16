@@ -34,12 +34,21 @@ class ConclusionChoice(dspy.Signature):
 
 class CoT(dspy.Module):
     """This is how DSPy's ChainOfThought module works"""
-    def __init__(self, signature):
-        # This modifies the signature from '*inputs -> *outputs' to '*inputs -> reasoning, *outputs'
-        rationale_field = dspy.OutputField(prefix="Reasoning: Let's think step by step.")
-        signature = dspy.Signature(signature).prepend_outputfield(rationale_field)
+    def __init__(self, signature, rationale_type=None, **config):
+        super().__init__()
+        signature = dspy.signatures.signature.ensure_signature(signature)
+        
+        prefix = "Reasoning: Let's think step by step in order to"
+        desc = "${reasoning}"
+        rationale_type = rationale_type or dspy.OutputField(prefix=prefix, desc=desc)
+        extended_signature = signature.prepend("reasoning", rationale_type, type_=str)
 
-        self.predict = dspy.Predict(signature)
+        self.predict = dspy.Predict(extended_signature, **config)
+        # # This modifies the signature from '*inputs -> *outputs' to '*inputs -> reasoning, *outputs'
+        # rationale_field = dspy.OutputField(prefix="Reasoning: Let's think step by step in order to")
+        # signature = dspy.Signature(signature).prepend_outputfield(rationale_field)
+
+        # self.predict = dspy.Predict(signature)
     
     def forward(self, **kwargs):
         # Just forward the inputs to the sub-module
@@ -49,7 +58,7 @@ class Reasoning(dspy.Module):
     # Supply a decomposed signature in the form of '*inpoets -> *outputs'
     # First retrieve a rationale to create a final query, 
     #   then use this rationale with the original inpoet to generate the answer in a second prompt
-    def __init__(self, inpoets: str, outputs: str, reasoning_hint: str = "Let's think step by step."):
+    def __init__(self, inpoets: str, outputs: str, reasoning_hint: str = "Let's think step by step"):
         self.reason_prefix = "reasoning" 
 
         reasoning_field = dspy.OutputField(prefix=f"{self.reason_prefix}: {reasoning_hint}")
@@ -96,10 +105,14 @@ def main():
     lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
     dspy.configure(lm=lm)
     
-    # first_step = dspy.Predict(f"{sig.question} -> {sig.intermediate}")
     first_step = dspy.Predict(ChoiceReasoning)
     second_step = dspy.Predict(ConclusionChoice)
-    # second_step = dspy.Predict(f"{sig.intermediate} -> {sig.answer}{sig.answer_hint}")
+
+    prediction = Reasoning(
+        inpoets="question, choices",
+        outputs="answer",
+        reasoning_hint="Avada kadavra!"
+    )
     
     for _, row in data.iterrows():
         question = row["question"]
