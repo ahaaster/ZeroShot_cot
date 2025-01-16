@@ -9,7 +9,7 @@ from secret import secret
 
 
 LLM_MODEL = ["openai/gpt-3.5-turbo", "openai/gpt-4", "openai/gpt-4o-mini", "openai/gpt-4o"]
-METHODS = ["zero-shot", "default", "zero-shot-cot"]
+METHODS = ["zero-shot", "cot-default", "zero-shot-cot"]
 SCORING_THRESHOLDS = [0.5, 0.6, 0.7, 0.8, 0.9]    
 RESULTS_PATH = Path("experiment/results.csv")
 
@@ -54,21 +54,24 @@ class Reasoning(dspy.Module):
         return self.predict(**kwargs)   
 
 def main(chosen_model, method, file_path: Path):
+    lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
+    dspy.configure(lm=lm)
+    
     dataset_name = file_path.parent.stem
     data = load_dataset(file_path=file_path)
     
     dataset = []
-    try:
-        for label, question, choices in data.values[:4]:
+    try:  # Hacky try-except block to create dspy.Example dataset, to be remade later
+        for label, question, choices in data.values:
             dataset.append(
                 dspy.Example(
-                    answer=label,
+                    response=label,
                     question=question,
                     choices=choices
                 ).with_inputs("question", "choices")
             )
         inpoets = "question, choices"
-        outputs = "answer"
+        outputs = "response"
     except: 
         for label, question in data.values:
             dataset.append(
@@ -80,9 +83,6 @@ def main(chosen_model, method, file_path: Path):
         inpoets = "question"
         outputs = "response"
 
-    lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
-    dspy.configure(lm=lm)
-    
     if method == "zero-shot":
         prompter = dspy.Predict(f"{inpoets} -> {outputs}")
     elif method == "default":
@@ -91,7 +91,7 @@ def main(chosen_model, method, file_path: Path):
         prompter = Reasoning(
             inpoets=inpoets, 
             outputs=outputs, 
-            # reasoning_hint="Avadra Kadavra!"
+            # reasoning_hint="Avada Kadavra!"
         )
 
     
@@ -113,20 +113,21 @@ def main(chosen_model, method, file_path: Path):
         )
 
         score = evaluate(prompter)
-        # print(f"Our estimated accuracy is: {score} %")
         update_results(score, chosen_model, dataset_name, threshold, method)
 
 
 def update_results(score, chosen_model, dataset_name, threshold_val, method):
     file_path = Path(f"experiment/{method}.csv")
     df = pd.read_csv(file_path, index_col=[0, 1])
+    
     df.loc[(dataset_name, chosen_model), f"{threshold_val}"] = score
     df.to_csv(file_path)
     
-
+# HELPER FUNCTION CONCERNING RECORDING SCORES
 def create_results_file(method_name: str = None):
-    paths = Path("dataset/zero-shot_cot").glob("**/*.csv")
-    dataset_names = [x.parent.stem for x in sorted(paths)]
+    """This function should only be run once if the csv with recorded results doesn't exist"""
+    datasets = Path("dataset/zero-shot_cot").glob("**/*.csv")
+    dataset_names = [x.parent.stem for x in sorted(datasets)]
     
     iterables = [dataset_names, LLM_MODEL]
     index = pd.MultiIndex.from_product(iterables, names=["dataset", "model"])
@@ -142,5 +143,5 @@ if __name__ == "__main__":
 
     prepped_datasets = Path("dataset/zero-shot_cot").glob("**/data.csv")
     prepped_datasets = sorted(prepped_datasets)
-    file_path = prepped_datasets[-2]
-    main(chosen_model=LLM_MODEL[0], method=method, file_path=file_path)
+    file_path = prepped_datasets[4]
+    main(chosen_model=LLM_MODEL[2], method=method, file_path=file_path)
