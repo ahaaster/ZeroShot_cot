@@ -28,7 +28,7 @@ def prepare_dataset():
         
         df.at[idx, "choices"] = choice_list
     
-    return df
+    return df[["label", "question", "choices"]]
 
 
 if __name__ == "__main__":

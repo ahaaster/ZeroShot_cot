@@ -16,8 +16,8 @@ def prepare_dataset():
     result = []
     for data in dataset:
         result.append({
+            "label": int(data["lSolutions"][0]),
             "question": data["sQuestion"],
-            "label": int(data["lSolutions"][0])
         })
     
     return result    

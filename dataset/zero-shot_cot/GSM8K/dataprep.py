@@ -16,9 +16,9 @@ def prepare_dataset():
         label = query["answer"]
         label = label.split("\n#### ")[-1]
         df.at[idx, "answer"] = label
-        df.rename(columns={"asnwer": "label"})
-    
-    return df    
+        
+    df = df.rename(columns={"answer": "label"})    
+    return df[["label", "question"]]
 
 if __name__ == "__main__":
     result = prepare_dataset()

@@ -18,8 +18,8 @@ def prepare_dataset():
     for data in dataset:
         label = True if data["target_scores"]["Yes"] == 1 else False
         result.append({
+            "label": label,
             "question": data["input"],
-            "label": label
         })
 
     return result    

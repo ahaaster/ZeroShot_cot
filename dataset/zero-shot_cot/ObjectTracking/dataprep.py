@@ -22,8 +22,8 @@ def prepare_dataset():
                 label = key
         
         result.append({
+            "label": label.strip(".,"),
             "question": data["input"],
-            "label": label.strip(".,")
         })
     
     return result
