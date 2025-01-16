@@ -17,5 +17,5 @@ ObjectTracking,openai/gpt-4o-mini,97.2,97.2,96.93,96.93,96.93
 ObjectTracking,openai/gpt-4o,0.0,0.0,0.0,0.0,0.0
 StrategyQA,openai/gpt-3.5-turbo,92.1,91.4,84.8,80.7,66.7
 StrategyQA,openai/gpt-4,48.08,48.08,34.37,34.37,34.24
-StrategyQA,openai/gpt-4o-mini,0.0,0.0,0.0,0.0,0.0
+StrategyQA,openai/gpt-4o-mini,39.48,36.86,28.73,21.0,7.95
 StrategyQA,openai/gpt-4o,0.0,0.0,0.0,0.0,0.0
