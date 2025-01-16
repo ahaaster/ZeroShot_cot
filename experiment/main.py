@@ -32,7 +32,24 @@ class ConclusionChoice(dspy.Signature):
     query = dspy.InputField()
     output = dspy.OutputField(desc="Therefore, among A through E, the answer is")
 
+class CoT(dspy.Module):
+    """This is how DSPy's ChainOfThought module works"""
+    def __init__(self, signature):
+        # This modifies the signature from '*inputs -> *outputs' to '*inputs -> reasoning, *outputs'
+        rationale_field = dspy.OutputField(prefix="Reasoning: Let's think step by step.")
+        signature = dspy.Signature(signature).prepend_outputfield(rationale_field)
 
+        self.predict = dspy.Predict(signature)
+    
+    def forward(self, **kwargs):
+        # Just forward the inputs to the sub-module
+        return self.predict(**kwargs)
+
+    def forward(self, **kwargs):
+        # First retrieve the reasoning, then add this to the original query for a final answer prompt
+        query = self.query_gen(**kwargs)
+        kwargs[self.reason_prefix] = query[self.reason_prefix]
+        return self.predict(**kwargs)
 
 class Reasoning1(dspy.Signature):
     """"""
