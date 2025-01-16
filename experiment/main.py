@@ -8,6 +8,8 @@ from secret import secret
 
 
 API_KEY = secret if secret else ""
+SCORING_THRESHOLD = 0.8
+
 
 class CoT(dspy.Module):
     """This is how DSPy's ChainOfThought module works"""
@@ -87,7 +89,7 @@ def main(chosen_model, method, file_path: Path):
             # reasoning_hint="Avadra Kadavra!"
         )
 
-    def semantic_scoring(example, prediction, threshold=0.65):
+    def semantic_scoring(example, prediction, threshold=SCORING_THRESHOLD):
         score = SemanticF1(decompositional=True)(example, prediction)
         return 1 if score > threshold else 0
 
@@ -95,43 +97,18 @@ def main(chosen_model, method, file_path: Path):
     metric = semantic_scoring
     
     evaluate = dspy.Evaluate(
-        devset=dataset[:100],
+        devset=dataset[:300],
         metric=metric,
         num_threads=8,
         display_progress=True,
-        display_table=4,
+        # display_table=4,
         provide_traceback=True
     )
 
     x = evaluate(prompter)
-    print(x)
+    print(f"Our estimated accuracy is: {x} %")
 
-    # predictions = []
-    # for idx, query in enumerate(dataset[:3]):
-    #     response = prompter(**query.inputs())
-    #     score = metric(query.labels(), response[f"{outputs}"])
-    #     predictions.append(response[f"{outputs}"])
-    #     print(response)
-    #     print(query.labels())
-    #     print()
-
-
-    # x = lm.inspect_history(n=1)
-    # print(x)
     
-    # for _, row in data.iterrows():
-    #     question = row["question"]
-    #     choices = row["choices"]
-    #     label = row["labels"]
-
-    #     reasoning = first_step(query=question, choices=choices)
-    #     print(reasoning)
-    #     final_question = f"{question} \n\n{reasoning.output}"
-    #     print(final_question)
-
-    #     response = second_step(query=final_question)
-    #     print(response.output)
-    #     print(f"{label = }")
         
 if __name__ == "__main__":
     LLM_MODEL = ["openai/gpt-4", "openai/gpt-4o", "openai/gpt-4o-mini", "openai/gpt-3.5-turbo"][-1]
