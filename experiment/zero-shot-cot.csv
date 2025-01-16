@@ -8,7 +8,7 @@ GSM8K,openai/gpt-4,0.0,0.0,0.0,0.0,0.0
 GSM8K,openai/gpt-4o-mini,0.0,0.0,0.0,0.0,0.0
 GSM8K,openai/gpt-4o,0.0,0.0,0.0,0.0,0.0
 MultiArith,openai/gpt-3.5-turbo,0.0,0.0,0.0,0.0,0.0
-MultiArith,openai/gpt-4,0.0,0.0,0.0,0.0,0.0
+MultiArith,openai/gpt-4,36.0,36.0,34.17,33.67,32.5
 MultiArith,openai/gpt-4o-mini,0.0,0.0,0.0,0.0,0.0
 MultiArith,openai/gpt-4o,0.0,0.0,0.0,0.0,0.0
 ObjectTracking,openai/gpt-3.5-turbo,0.0,0.0,0.0,0.0,0.0
