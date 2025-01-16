@@ -14,7 +14,7 @@ MultiArith,openai/gpt-4o,26.83,26.0,23.17,19.33,17.17
 ObjectTracking,openai/gpt-3.5-turbo,62.93,62.53,61.6,60.93,56.27
 ObjectTracking,openai/gpt-4,0.0,0.0,0.0,0.0,0.0
 ObjectTracking,openai/gpt-4o-mini,97.2,97.2,96.93,96.93,96.93
-ObjectTracking,openai/gpt-4o,0.0,0.0,0.0,0.0,0.0
+ObjectTracking,openai/gpt-4o,87.73,87.73,87.2,87.2,87.2
 StrategyQA,openai/gpt-3.5-turbo,92.1,91.4,84.8,80.7,66.7
 StrategyQA,openai/gpt-4,48.08,48.08,34.37,34.37,34.24
 StrategyQA,openai/gpt-4o-mini,39.48,36.86,28.73,21.0,7.95
