@@ -2,7 +2,7 @@ dataset,model,0.5,0.6,0.7,0.8,0.9
 CommonsenseQA,openai/gpt-3.5-turbo,74.86,74.61,59.71,58.23,57.08
 CommonsenseQA,openai/gpt-4,0.0,0.0,0.0,0.0,0.0
 CommonsenseQA,openai/gpt-4o-mini,44.06,43.57,23.75,22.69,22.44
-CommonsenseQA,openai/gpt-4o,0.0,0.0,0.0,0.0,0.0
+CommonsenseQA,openai/gpt-4o,77.07,77.07,64.62,64.54,64.54
 GSM8K,openai/gpt-3.5-turbo,75.66,74.37,71.8,70.36,67.7
 GSM8K,openai/gpt-4,0.0,0.0,0.0,0.0,0.0
 GSM8K,openai/gpt-4o-mini,72.25,71.65,66.94,66.26,65.05
