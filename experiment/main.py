@@ -101,7 +101,6 @@ def main(chosen_model, method, file_path: Path, track_scores: bool = False):
     if prompter is None:  # sanity check
         return
 
-    
     for threshold in SCORING_THRESHOLDS:
         def semantic_scoring(example, prediction):
             score = SemanticF1(decompositional=True)(example, prediction)
@@ -110,10 +109,11 @@ def main(chosen_model, method, file_path: Path, track_scores: bool = False):
         # metric = SemanticF1(decompositional=True)
         metric = semantic_scoring
         
+        # THIS IS WHERE THE MAGIC HAPPENS
         evaluate = dspy.Evaluate(
             devset=dataset,
             metric=metric,
-            num_threads=16,  # Adjust to specs of local CPU available
+            num_threads=16,  # Adjust to available specs of local CPU for speed
             display_progress=True,
             # display_table=4,
             provide_traceback=True
@@ -149,14 +149,13 @@ def create_results_file(method_name: str = None):
 
 
 if __name__ == "__main__":
-    method = METHODS[0] 
     track_scores = True
+    method = METHODS[0] 
+    # create_results_file(method_name=method)  # DON'T RUN THIS UNLESS ABSOLUTELY SURE. WILL WIPE EXISTING FILE CLEAN
 
     prepped_datasets = Path("dataset/zero-shot_cot").glob("**/data.csv")
     prepped_datasets: list[Path] = sorted(prepped_datasets)
-    # file_path: Path = prepped_datasets[0]
-
-    # create_results_file(method_name=method)
+    
     for file_path in prepped_datasets[:]:
         main(LLM_MODEL[3], method, file_path, track_scores)
 
