@@ -53,6 +53,19 @@ class Reasoning(dspy.Module):
         kwargs[self.reason_prefix] = query[self.reason_prefix]
         return self.predict(**kwargs)   
 
+def get_prompter(method_name, inpoets, outputs):
+    method_dict = {
+        METHODS[0]: dspy.Predict(f"{inpoets} -> {outputs}"),
+        METHODS[1]: dspy.ChainOfThought(f"{inpoets} -> {outputs}"),
+        METHODS[2]: CoT(f"{inpoets} -> {outputs}"),
+        METHODS[-1]: Reasoning(
+            inpoets=inpoets, 
+            outputs=outputs, 
+            # reasoning_hint="Avada Kadavra!"
+        )
+    }
+    return method.get(method_name, None)
+
 
 def main(chosen_model, method, file_path: Path, track_scores: bool = False):
     lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
@@ -84,19 +97,8 @@ def main(chosen_model, method, file_path: Path, track_scores: bool = False):
         inpoets = "question"
         outputs = "response"
 
-    if method == METHODS[0]:
-        prompter = dspy.Predict(f"{inpoets} -> {outputs}")
-    elif method == METHODS[1]:
-        prompter = ChainOfThought(f"{inpoets} -> {outputs}")
-    elif method == METHODS[2]:
-        prompter = CoT(f"{inpoets} -> {outputs}")
-    elif method == METHODS[-1]: 
-        prompter = Reasoning(
-            inpoets=inpoets, 
-            outputs=outputs, 
-            # reasoning_hint="Avada Kadavra!"
-        )
-    else:
+    prompter = get_prompter(method_name=method)
+    if prompter is None:  # sanity check
         return
 
     
@@ -156,7 +158,7 @@ if __name__ == "__main__":
 
     # create_results_file(method_name=method)
     for file_path in prepped_datasets[:]:
-        main(LLM_MODEL[2], method, file_path, track_scores)
+        main(LLM_MODEL[3], method, file_path, track_scores)
 
 # Copy pasted constants for easy visual access main() arguments indexing
 #   LLM_MODEL = ["openai/gpt-3.5-turbo", "openai/gpt-4", "openai/gpt-4o-mini", "openai/gpt-4o"]
