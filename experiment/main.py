@@ -107,7 +107,7 @@ def main(chosen_model, method, file_path: Path, track_scores: bool = False):
         evaluate = dspy.Evaluate(
             devset=dataset,
             metric=metric,
-            num_threads=8,
+            num_threads=16,  # Adjust to specs of local CPU available
             display_progress=True,
             # display_table=4,
             provide_traceback=True
@@ -148,6 +148,6 @@ if __name__ == "__main__":
 
     prepped_datasets = Path("dataset/zero-shot_cot").glob("**/data.csv")
     prepped_datasets: list[Path] = sorted(prepped_datasets)
-    file_path: Path = prepped_datasets[4]
+    file_path: Path = prepped_datasets[1]
 
     main(LLM_MODEL[3], method, file_path, track_scores)
