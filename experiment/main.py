@@ -62,7 +62,7 @@ def main(chosen_model, method, file_path: Path, track_scores: bool = False):
     data = load_dataset(file_path=file_path)
     
     dataset = []
-    try:  # Hacky try-except block to create dspy.Example dataset, to be remade later
+    try:  # Hacky try-except block to create dspy.Example dataset depending on problem set, to be remade later
         for label, question, choices in data.values:
             dataset.append(
                 dspy.Example(
@@ -148,6 +148,6 @@ if __name__ == "__main__":
 
     prepped_datasets = Path("dataset/zero-shot_cot").glob("**/data.csv")
     prepped_datasets: list[Path] = sorted(prepped_datasets)
-    file_path: Path = prepped_datasets[1]
+    file_path: Path = prepped_datasets[3]
 
-    main(LLM_MODEL[3], method, file_path, track_scores)
+    main(LLM_MODEL[1], method, file_path, track_scores)
