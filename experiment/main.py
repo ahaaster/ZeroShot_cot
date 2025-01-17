@@ -4,7 +4,7 @@ import pandas as pd
 from pathlib import Path
 from dspy.evaluate import SemanticF1
 
-from utils import Num, load_dataset
+from utils import load_dataset
 from secret import secret
 
 
@@ -71,8 +71,7 @@ def main(chosen_model, method_name, file_path: Path, track_scores: bool = False)
     lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
     dspy.configure(lm=lm)
     
-    dataset_name = file_path.parent.stem
-    data = load_dataset(file_path=file_path)
+    data, dataset_name = load_dataset(file_path=file_path)
     
     dataset = []
     try:  # Hacky try-except block to create dspy.Example dataset depending on problem set, to be remade later
@@ -120,10 +119,11 @@ def main(chosen_model, method_name, file_path: Path, track_scores: bool = False)
         )
 
         score = evaluate(prompter)
-        if track_scores:
-            update_results(score, chosen_model, dataset_name, threshold, method)
-        else:
+        if not track_scores:
             print(f"{chosen_model} had an accuracy of {score} % on the {dataset_name} dataset")
+            continue
+        
+        update_results(score, chosen_model, dataset_name, threshold, method)
 
 
 def update_results(score, chosen_model, dataset_name, threshold_val, method):
@@ -149,15 +149,15 @@ def create_results_file(method_name: str = None):
 
 
 if __name__ == "__main__":
-    track_scores = True
+    track_scores = False
     method = METHODS[0] 
     # create_results_file(method_name=method)  # DON'T RUN THIS UNLESS ABSOLUTELY SURE. WILL WIPE EXISTING FILE CLEAN
 
     prepped_datasets = Path("dataset/zero-shot_cot").glob("**/data.csv")
     prepped_datasets: list[Path] = sorted(prepped_datasets)
     
-    for file_path in prepped_datasets[:]:
-        main(LLM_MODEL[1], method, file_path, track_scores)
+    for file_path in prepped_datasets[2]:
+        main(LLM_MODEL[0], method, file_path, track_scores)
 
 # Copy pasted constants for easy visual access main() arguments indexing
 #   LLM_MODEL = ["openai/gpt-3.5-turbo", "openai/gpt-4", "openai/gpt-4o-mini", "openai/gpt-4o"]

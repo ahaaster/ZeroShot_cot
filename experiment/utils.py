@@ -1,14 +1,15 @@
 import json
 import pandas as pd
 from pathlib import Path
-from typing import Optional, Union
+from typing import Any
 
-Num = Union[int, float]
-
-def load_dataset(file_path:[Path, str]):
-    file_path = Path("dataset/zero-shot_cot/MultiArith/MultiArith.json") if file_path is None else Path(file_path)
+def load_dataset(file_path: Path) -> (Any, str):
+    dir_name = get_directory_name(file_path)
     if file_path.suffix == ".json":
         with open(file_path) as file:
-            return json.load(file)
+            return json.load(file), dir_name
     elif file_path.suffix == ".csv":
-        return pd.read_csv(file_path)
+        return pd.read_csv(file_path), dir_name
+
+def get_directory_name(file_path: Path) -> str:
+    return file_path.parent.stem
