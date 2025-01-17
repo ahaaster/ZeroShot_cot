@@ -64,10 +64,10 @@ def get_prompter(method_name, inpoets, outputs):
             # reasoning_hint="Avada Kadavra!"
         )
     }
-    return method.get(method_name, None)
+    return method_dict.get(method_name, None)
 
 
-def main(chosen_model, method, file_path: Path, track_scores: bool = False):
+def main(chosen_model, method_name, file_path: Path, track_scores: bool = False):
     lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
     dspy.configure(lm=lm)
     
@@ -97,7 +97,7 @@ def main(chosen_model, method, file_path: Path, track_scores: bool = False):
         inpoets = "question"
         outputs = "response"
 
-    prompter = get_prompter(method_name=method)
+    prompter = get_prompter(method_name, inpoets, outputs)
     if prompter is None:  # sanity check
         return
 
@@ -157,7 +157,7 @@ if __name__ == "__main__":
     prepped_datasets: list[Path] = sorted(prepped_datasets)
     
     for file_path in prepped_datasets[:]:
-        main(LLM_MODEL[3], method, file_path, track_scores)
+        main(LLM_MODEL[1], method, file_path, track_scores)
 
 # Copy pasted constants for easy visual access main() arguments indexing
 #   LLM_MODEL = ["openai/gpt-3.5-turbo", "openai/gpt-4", "openai/gpt-4o-mini", "openai/gpt-4o"]
