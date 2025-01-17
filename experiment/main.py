@@ -53,7 +53,8 @@ class Reasoning(dspy.Module):
         kwargs[self.reason_prefix] = query[self.reason_prefix]
         return self.predict(**kwargs)   
 
-def main(chosen_model, method, file_path: Path):
+
+def main(chosen_model, method, file_path: Path, track_scores: bool = False):
     lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
     dspy.configure(lm=lm)
     
@@ -113,7 +114,10 @@ def main(chosen_model, method, file_path: Path):
         )
 
         score = evaluate(prompter)
-        update_results(score, chosen_model, dataset_name, threshold, method)
+        if track_scores:
+            update_results(score, chosen_model, dataset_name, threshold, method)
+        else:
+            print(f"{chosen_model} had an accuracy of {score} % on the {dataset_name} dataset")
 
 
 def update_results(score, chosen_model, dataset_name, threshold_val, method):
@@ -140,8 +144,10 @@ def create_results_file(method_name: str = None):
 
 if __name__ == "__main__":
     method = METHODS[-1] 
+    track_scores = True
 
     prepped_datasets = Path("dataset/zero-shot_cot").glob("**/data.csv")
-    prepped_datasets = sorted(prepped_datasets)
-    file_path = prepped_datasets[4]
-    main(chosen_model=LLM_MODEL[2], method=method, file_path=file_path)
+    prepped_datasets: list[Path] = sorted(prepped_datasets)
+    file_path: Path = prepped_datasets[4]
+
+    main(LLM_MODEL[3], method, file_path, track_scores)
