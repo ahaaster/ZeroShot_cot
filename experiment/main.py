@@ -9,7 +9,7 @@ from secret import secret
 
 
 LLM_MODEL = ["openai/gpt-3.5-turbo", "openai/gpt-4", "openai/gpt-4o-mini", "openai/gpt-4o"]
-METHODS = ["zero-shot", "cot-default", "zero-shot-cot"]
+METHODS = ["zero-shot", "cot_default", "cot_imitation", "zero-shot-cot"]
 SCORING_THRESHOLDS = [0.5, 0.6, 0.7, 0.8, 0.9]    
 RESULTS_PATH = Path("experiment/results.csv")
 
@@ -84,16 +84,20 @@ def main(chosen_model, method, file_path: Path, track_scores: bool = False):
         inpoets = "question"
         outputs = "response"
 
-    if method == "zero-shot":
+    if method == METHODS[0]:
         prompter = dspy.Predict(f"{inpoets} -> {outputs}")
-    elif method == "default":
+    elif method == METHODS[1]:
+        prompter = ChainOfThought(f"{inpoets} -> {outputs}")
+    elif method == METHODS[2]:
         prompter = CoT(f"{inpoets} -> {outputs}")
-    else: 
+    elif method == METHODS[-1]: 
         prompter = Reasoning(
             inpoets=inpoets, 
             outputs=outputs, 
             # reasoning_hint="Avada Kadavra!"
         )
+    else:
+        return
 
     
     for threshold in SCORING_THRESHOLDS:
@@ -143,11 +147,18 @@ def create_results_file(method_name: str = None):
 
 
 if __name__ == "__main__":
-    method = METHODS[-1] 
+    method = METHODS[0] 
     track_scores = True
 
     prepped_datasets = Path("dataset/zero-shot_cot").glob("**/data.csv")
     prepped_datasets: list[Path] = sorted(prepped_datasets)
-    file_path: Path = prepped_datasets[3]
+    # file_path: Path = prepped_datasets[0]
 
-    main(LLM_MODEL[1], method, file_path, track_scores)
+    # create_results_file(method_name=method)
+    for file_path in prepped_datasets[:]:
+        main(LLM_MODEL[2], method, file_path, track_scores)
+
+# Copy pasted constants for easy visual access main() arguments indexing
+#   LLM_MODEL = ["openai/gpt-3.5-turbo", "openai/gpt-4", "openai/gpt-4o-mini", "openai/gpt-4o"]
+#   METHODS = ["zero-shot", "cot_default", "cot_imitation", "zero-shot-cot"]
+#   SCORING_THRESHOLDS = [0.5, 0.6, 0.7, 0.8, 0.9]    
