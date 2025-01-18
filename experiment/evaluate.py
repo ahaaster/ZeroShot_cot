@@ -2,6 +2,9 @@ from dspy import Module, Signature, ChainOfThought
 from dspy.evaluate import SemanticRecallPrecision, f1_score
 
 
+# TODO: Pull request DSPy for implementation of self.question, self.response customisability
+
+
 # An adjustable version of the standard dspy module of the same name
 class SemanticF1(Module):
     def __init__(
