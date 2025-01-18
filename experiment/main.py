@@ -64,14 +64,16 @@ def get_prompter(method_name, inpoets, outputs):
             # reasoning_hint="Avada Kadavra!"
         )
     }
-    return method_dict.get(method_name, None)
+    return method_dict.get(method_name)
 
 
 def main(chosen_model, method_name, file_path: Path, track_scores: bool = False):
+    assert method_name in METHODS, f"Select a module from options: {METHODS}"
+    assert chosen_model in LLM_MODEL, f"Select a LLM model from options: {LLM_MODEL}"
+    data, dataset_name = load_dataset(file_path=file_path)
+
     lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
     dspy.configure(lm=lm)
-    
-    data, dataset_name = load_dataset(file_path=file_path)
     
     dataset = []
     try:  # Hacky try-except block to create dspy.Example dataset depending on problem set, to be remade later
@@ -97,8 +99,6 @@ def main(chosen_model, method_name, file_path: Path, track_scores: bool = False)
         outputs = "response"
 
     prompter = get_prompter(method_name, inpoets, outputs)
-    if prompter is None:  # sanity check
-        return
 
     for threshold in SCORING_THRESHOLDS:
         def semantic_scoring(example, prediction):
@@ -151,8 +151,10 @@ def create_results_file(method_name: str = None):
 if __name__ == "__main__":
     track_scores = False
     method = METHODS[0] 
-    # create_results_file(method_name=method)  # DON'T RUN THIS UNLESS ABSOLUTELY SURE. WILL WIPE EXISTING FILE CLEAN
-
+    
+    # DON'T RUN THIS UNLESS ABSOLUTELY SURE. WILL WIPE EXISTING FILE CLEAN
+    # create_results_file(method_name=method)  
+    
     prepped_datasets = Path("dataset/zero-shot_cot").glob("**/data.csv")
     prepped_datasets: list[Path] = sorted(prepped_datasets)
     
