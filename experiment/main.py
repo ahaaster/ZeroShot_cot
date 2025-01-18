@@ -4,8 +4,9 @@ import pandas as pd
 from pathlib import Path
 from dspy.evaluate import SemanticF1
 
-from utils import load_dataset
-from secret import secret
+from .prompter import Reasoning, CoT
+from .utils import load_dataset
+from .secret import secret
 
 
 LLM_MODEL = ["openai/gpt-3.5-turbo", "openai/gpt-4", "openai/gpt-4o-mini", "openai/gpt-4o"]
@@ -15,43 +16,6 @@ RESULTS_PATH = Path("experiment/results.csv")
 
 API_KEY = secret if secret else ""
 
-
-class CoT(dspy.Module):
-    """This is how DSPy's ChainOfThought module works"""
-    def __init__(self, signature, rationale_type=None, **config):
-        super().__init__()
-        signature = dspy.signatures.signature.ensure_signature(signature)
-        
-        prefix = "Reasoning: Let's think step by step in order to"
-        desc = "${reasoning}"
-        rationale_type = rationale_type or dspy.OutputField(prefix=prefix, desc=desc)
-        extended_signature = signature.prepend("reasoning", rationale_type, type_=str)
-
-        self.predict = dspy.Predict(extended_signature, **config)
-       
-    def forward(self, **kwargs):
-        return self.predict(**kwargs)
-
-class Reasoning(dspy.Module):
-    # Supply a decomposed signature in the form of '*inpoets -> *outputs'
-    # First retrieve a rationale to create a final query, 
-    #   then use this rationale with the original inpoet to generate the answer in a second prompt
-    def __init__(self, inpoets: str, outputs: str, reasoning_hint: str = "Let's think step by step"):
-        self.reason_prefix = "reasoning" 
-
-        reasoning_field = dspy.OutputField(prefix=f"{self.reason_prefix}: {reasoning_hint}")
-        reasoning_sig = dspy.Signature(f"{inpoets} ->").prepend(self.reason_prefix, reasoning_field, type_=str)
-        self.query_gen = dspy.Predict(reasoning_sig)
-        
-        # answer_field = dspy.OutputField(prefix="Therefore the answer is", desc="The answer is a number")
-        conclusion_sig = dspy.Signature(f"{inpoets}, {self.reason_prefix} -> {outputs}")
-        self.predict = dspy.Predict(conclusion_sig)
-
-    def forward(self, **kwargs):
-        # First retrieve the reasoning, then add this to the original query for a final answer prompt
-        query = self.query_gen(**kwargs)
-        kwargs[self.reason_prefix] = query[self.reason_prefix]
-        return self.predict(**kwargs)   
 
 def get_prompter(method_name, inpoets, outputs):
     method_dict = {
