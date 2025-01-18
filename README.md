@@ -8,7 +8,12 @@ pip install pipenv
 ```
 
 #### Use
-Installing packages for the virtual environment
+Install everything specified in the Pipfile automatically
+```
+pipenv install
+```
+
+Installing packages for the virtual environment and include them in the Pipfile
 ```
 pipenv install [package]
 ```
