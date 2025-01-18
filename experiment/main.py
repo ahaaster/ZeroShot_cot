@@ -6,6 +6,7 @@ from dspy import Example, Evaluate, Predict
 from dspy.evaluate import SemanticF1
 
 from prompter import Reasoning, CoT
+from evaluate import SemanticF1 as Similarity
 from utils import load_dataset
 from secret import secret
 
@@ -47,43 +48,21 @@ def main(chosen_model, method_name, file_path: Path, track_scores: bool = False)
 
     label_name, *input_names = data.columns
     dataset = [Example(**row).with_inputs(*input_names) for _, row in data.iterrows()]
-    inpoets = ", ".join(input_names)
+
     outputs = "response"
-
-    # try:  # Hacky try-except block to create dspy.Example dataset depending on problem set, to be remade later
-    #     for label, question, choices in data.values:
-    #         dataset.append(
-    #             dspy.Example(
-    #                 response=label,
-    #                 question=question,
-    #                 choices=choices
-    #             ).with_inputs("question", "choices")
-    #         )
-    #     inpoets = "question, choices"
-    #     outputs = "response"
-    # except:
-    #     for label, question in data.values:
-    #         dataset.append(
-    #             dspy.Example(
-    #                 response=label,
-    #                 question=question,
-    #             ).with_inputs("question")
-    #         )
-    #     inpoets = "question"
-    #     outputs = "response"
-
+    inpoets = ", ".join(input_names)
     prompter = get_prompter(method_name, inpoets, outputs)
 
     for threshold in SCORING_THRESHOLDS:
 
-        def semantic_scoring(example, prediction):
-            score = SemanticF1(decompositional=True)(example, prediction)
-            return 1 if score > threshold else 0
+        # def semantic_scoring(example, prediction):
+        #     score = SemanticF1(decompositional=True)(example, prediction)
+        #     return 1 if score > threshold else 0
 
         # metric = SemanticF1(decompositional=True)
-        metric = semantic_scoring
+        # metric = semantic_scoring
+        metric = Similarity(threshold=threshold, output=outputs)
 
-        # THIS IS WHERE THE MAGIC HAPPENS
         evaluate = Evaluate(
             devset=dataset,
             metric=metric,
