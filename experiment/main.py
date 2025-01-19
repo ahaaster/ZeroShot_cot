@@ -24,18 +24,18 @@ RESULTS_PATH = Path("experiment/results.csv")
 API_KEY = secret if secret else ""
 
 
-def get_prompter(method_name, inpoets, outputs):
-    if isinstance(inpoets, list):
-        inpoets = ", ".join(inpoets)
+def get_prompter(method_name, inputs, outputs="answer"):
+    if isinstance(inputs, list):
+        inputs = ", ".join(inputs)
     if isinstance(outputs, list):
         outputs = ", ".join(outputs)
 
     method_dict = {
-        METHODS[0]: dspy.Predict(f"{inpoets} -> {outputs}"),
-        METHODS[1]: dspy.ChainOfThought(f"{inpoets} -> {outputs}"),
-        METHODS[2]: CoT(f"{inpoets} -> {outputs}"),
+        METHODS[0]: dspy.Predict(f"{inputs} -> {outputs}"),
+        METHODS[1]: dspy.ChainOfThought(f"{inputs} -> {outputs}"),
+        METHODS[2]: CoT(f"{inputs} -> {outputs}"),
         METHODS[-1]: Reasoning(
-            inpoets=inpoets,
+            inputs=inputs,
             outputs=outputs,
             # reasoning_hint="Avada Kadavra!"
         ),
@@ -50,20 +50,18 @@ def main(
     track_scores: bool = False,
     **kwargs,
 ) -> None:
-    assert method_name in METHODS, f"Select a module from options: {METHODS}"
-    assert chosen_model in LLM_MODEL, f"Select a LLM model from options: {LLM_MODEL}"
-    data, dataset_name = load_dataset(file_path=file_path)
+
     model_name = get_model_name(chosen_model)
     eval_config = kwargs.pop("config")
 
+    data, dataset_name = load_dataset(file_path=file_path)
     label_name, *input_names = data.columns
     dataset = [Example(**row).with_inputs(*input_names) for _, row in data.iterrows()]
 
     lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
     dspy.configure(lm=lm)
 
-    outputs = "answer"
-    prompter = get_prompter(method_name, input_names, outputs)
+    prompter = get_prompter(method_name, input_names)
 
     for threshold in SCORING_THRESHOLDS[:1]:
         metric = Similarity(
