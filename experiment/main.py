@@ -25,6 +25,11 @@ API_KEY = secret if secret else ""
 
 
 def get_prompter(method_name, inpoets, outputs):
+    if isinstance(inpoets, list):
+        inpoets = ", ".join(inpoets)
+    if isinstance(outputs, list):
+        outputs = ", ".join(outputs)
+
     method_dict = {
         METHODS[0]: dspy.Predict(f"{inpoets} -> {outputs}"),
         METHODS[1]: dspy.ChainOfThought(f"{inpoets} -> {outputs}"),
@@ -38,11 +43,18 @@ def get_prompter(method_name, inpoets, outputs):
     return method_dict.get(method_name)
 
 
-def main(chosen_model, method_name, file_path: Path, track_scores: bool = False):
+def main(
+    chosen_model: str,
+    method_name: str,
+    file_path: Path,
+    track_scores: bool = False,
+    **kwargs,
+) -> None:
     assert method_name in METHODS, f"Select a module from options: {METHODS}"
     assert chosen_model in LLM_MODEL, f"Select a LLM model from options: {LLM_MODEL}"
     data, dataset_name = load_dataset(file_path=file_path)
     model_name = get_model_name(chosen_model)
+    eval_config = kwargs.pop("config")
 
     label_name, *input_names = data.columns
     dataset = [Example(**row).with_inputs(*input_names) for _, row in data.iterrows()]
@@ -51,8 +63,7 @@ def main(chosen_model, method_name, file_path: Path, track_scores: bool = False)
     dspy.configure(lm=lm)
 
     outputs = "answer"
-    inpoets = ", ".join(input_names)
-    prompter = get_prompter(method_name, inpoets, outputs)
+    prompter = get_prompter(method_name, input_names, outputs)
 
     for threshold in SCORING_THRESHOLDS[:1]:
         metric = Similarity(
@@ -62,20 +73,9 @@ def main(chosen_model, method_name, file_path: Path, track_scores: bool = False)
             output_name=outputs,
         )
 
-        evaluate = Evaluate(
-            devset=dataset[:16],
-            metric=metric,
-            num_threads=16,  # Adjust to available specs of local CPU for speed
-            display_progress=True,
-            display_table=10,
-            # provide_traceback=True,
-            # max_error=5,
-            # return_all_scores=False,
-            # return_outputs=False,
-            # failure_score=0.0,
-        )
-
+        evaluate = Evaluate(devset=dataset[:16], metric=metric, **eval_config)
         score = evaluate(prompter)
+
         if not track_scores:
             print(
                 f"{model_name} had an accuracy of {score} % on the {dataset_name} dataset"
@@ -95,7 +95,7 @@ def update_results(score, model_name, dataset_name, threshold_val, method):
 
 # HELPER FUNCTION CONCERNING RECORDING SCORES
 def create_results_file(method_name: str = None):
-    """This function should only be run once if the csv with recorded results doesn't exist"""
+    """This function should only be run once if the csv with recorded results doesn't exist yet"""
     datasets = Path("dataset/zero-shot_cot").glob("**/*.csv")
 
     dataset_names = [get_directory_name(x) for x in sorted(datasets)]
@@ -110,19 +110,32 @@ def create_results_file(method_name: str = None):
     df.to_csv(file_path)
 
 
-if __name__ == "__main__":
-    method = METHODS[0]
+# Copy pasted constants for easy visual access to set kwargs
+#   LLM_MODEL = ["openai/gpt-3.5-turbo", "openai/gpt-4", "openai/gpt-4o-mini", "openai/gpt-4o"]
+#   METHODS = ["zero-shot", "cot_default", "cot_imitation", "zero-shot-cot"]
 
-    # create_results_file(method_name=method)  # DON'T RUN THIS UNLESS ABSOLUTELY SURE. WILL WIPE EXISTING FILE CLEAN
+if __name__ == "__main__":
+    kwargs = {
+        "chosen_model": LLM_MODEL[0],
+        "method_name": METHODS[0],
+        "track_scores": False,
+        "config": {
+            num_threads: 16,  # Adjust to available specs of local CPU for speed
+            display_progress: True,
+            display_table: 10,
+            # provide_traceback: True,
+            # max_error: 5,
+            # return_all_scores: False,
+            # return_outputs: False,
+            # failure_score: 0.0,
+        },
+    }
+
+    # RUNNING THIS FUNCTION WILL WIPE EXISTING FILE CLEAN
+    # create_results_file(kwargs["method_name"])
 
     prepped_datasets = Path("dataset/zero-shot_cot").glob("**/data.csv")
     prepped_datasets: list[Path] = sorted(prepped_datasets)
 
     for file_path in prepped_datasets[3:4]:
-        main(LLM_MODEL[0], method, file_path, track_scores=False)
-
-
-# Copy pasted constants for easy visual access main() arguments indexing
-#   LLM_MODEL = ["openai/gpt-3.5-turbo", "openai/gpt-4", "openai/gpt-4o-mini", "openai/gpt-4o"]
-#   METHODS = ["zero-shot", "cot_default", "cot_imitation", "zero-shot-cot"]
-#   SCORING_THRESHOLDS = [0.5, 0.6, 0.7, 0.8, 0.9]
+        main(file_path=file_path, **kwargs)
