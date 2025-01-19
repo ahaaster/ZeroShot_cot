@@ -50,27 +50,29 @@ def main(chosen_model, method_name, file_path: Path, track_scores: bool = False)
     lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
     dspy.configure(lm=lm)
 
-    outputs = "response"
+    outputs = "answer"
     inpoets = ", ".join(input_names)
     prompter = get_prompter(method_name, inpoets, outputs)
 
-    for threshold in SCORING_THRESHOLDS:
-
-        # def semantic_scoring(example, prediction):
-        #     score = SemanticF1(decompositional=True)(example, prediction)
-        #     return 1 if score > threshold else 0
-
-        # metric = SemanticF1(decompositional=True)
-        # metric = semantic_scoring
-        metric = Similarity(threshold=threshold, output=outputs, hit_or_miss=True)
+    for threshold in SCORING_THRESHOLDS[:1]:
+        metric = Similarity(
+            threshold=threshold,
+            input_name=input_names[0],
+            label_name=label_name,
+            output_name=outputs,
+        )
 
         evaluate = Evaluate(
-            devset=dataset[:10],
+            devset=dataset[:16],
             metric=metric,
             num_threads=16,  # Adjust to available specs of local CPU for speed
             display_progress=True,
-            display_table=4,
-            provide_traceback=True,
+            display_table=10,
+            # provide_traceback=True,
+            # max_error=5,
+            # return_all_scores=False,
+            # return_outputs=False,
+            # failure_score=0.0,
         )
 
         score = evaluate(prompter)
