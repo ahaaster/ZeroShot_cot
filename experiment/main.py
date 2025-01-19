@@ -5,7 +5,7 @@ from pathlib import Path
 from dspy import Example, Evaluate, Predict
 from dspy.evaluate import SemanticF1
 
-from prompter import Reasoning, CoT
+from prompter import select_prompter
 from evaluate import SemanticF1 as Similarity
 from utils import load_dataset, get_directory_name, get_model_name
 from secret import secret
@@ -22,25 +22,6 @@ SCORING_THRESHOLDS = [0.5, 0.6, 0.7, 0.8, 0.9]
 RESULTS_PATH = Path("experiment/results.csv")
 
 API_KEY = secret if secret else ""
-
-
-def get_prompter(method_name, inputs, outputs="answer"):
-    if isinstance(inputs, list):
-        inputs = ", ".join(inputs)
-    if isinstance(outputs, list):
-        outputs = ", ".join(outputs)
-
-    method_dict = {
-        METHODS[0]: dspy.Predict(f"{inputs} -> {outputs}"),
-        METHODS[1]: dspy.ChainOfThought(f"{inputs} -> {outputs}"),
-        METHODS[2]: CoT(f"{inputs} -> {outputs}"),
-        METHODS[-1]: Reasoning(
-            inputs=inputs,
-            outputs=outputs,
-            # reasoning_hint="Avada Kadavra!"
-        ),
-    }
-    return method_dict.get(method_name)
 
 
 def main(
@@ -61,7 +42,7 @@ def main(
     lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
     dspy.configure(lm=lm)
 
-    prompter = get_prompter(method_name, input_names)
+    prompter = select_prompter(method_name, input_names)
 
     for threshold in SCORING_THRESHOLDS[:1]:
         metric = Similarity(

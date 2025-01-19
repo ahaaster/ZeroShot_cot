@@ -4,6 +4,25 @@ from dspy import OutputField, InputField
 from dspy.signatures.signature import ensure_signature
 
 
+def select_prompter(method_name, inputs, outputs="answer") -> Module:
+    if isinstance(inputs, list):
+        inputs = ", ".join(inputs)
+    if isinstance(outputs, list):
+        outputs = ", ".join(outputs)
+
+    method_dict = {
+        METHODS[0]: dspy.Predict(f"{inputs} -> {outputs}"),
+        METHODS[1]: dspy.ChainOfThought(f"{inputs} -> {outputs}"),
+        METHODS[2]: CoT(f"{inputs} -> {outputs}"),
+        METHODS[-1]: Reasoning(
+            inputs=inputs,
+            outputs=outputs,
+            # reasoning_hint="Avada Kadavra!"
+        ),
+    }
+    return method_dict.get(method_name)
+
+
 class Reasoning(Module):
     # Supply a decomposed signature in the form of '*inputs -> *outputs'
     # First retrieve a rationale to create a final query,
