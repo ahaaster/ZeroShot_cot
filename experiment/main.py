@@ -33,13 +33,14 @@ def main(
 ) -> None:
 
     model_name = get_model_name(chosen_model)
-    eval_config = kwargs.pop("config")
+    lm_config = kwargs.pop("lm_config")
+    eval_config = kwargs.pop("eval_config")
 
     data, dataset_name = load_dataset(file_path=file_path)
     label_name, *input_names = data.columns
     dataset = [Example(**row).with_inputs(*input_names) for _, row in data.iterrows()]
 
-    lm = dspy.LM(chosen_model, max_tokens=2000, api_key=API_KEY)
+    lm = dspy.LM(chosen_model, **lm_config)
     dspy.configure(lm=lm)
 
     prompter = select_prompter(method_name, input_names)
@@ -81,7 +82,8 @@ if __name__ == "__main__":
         "chosen_model": LLM_MODEL[0],
         "method_name": METHODS[0],
         "track_scores": False,
-        "config": {
+        "lm_config": {"max_tokens": 2000, "api_key": API_KEY},
+        "eval_config": {
             num_threads: 16,  # Adjust to available specs of local CPU for speed
             display_progress: True,
             display_table: 10,
