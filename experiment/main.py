@@ -57,11 +57,7 @@ def main(
         score = evaluate(prompter)
 
         if not track_scores:
-            print(
-                f"{model_name} had an accuracy of {score} % on the {dataset_name} dataset"
-            )
             continue
-
         update_results(score, model_name, dataset_name, threshold, method)
 
 
@@ -84,14 +80,14 @@ if __name__ == "__main__":
         "track_scores": False,
         "lm_config": {"max_tokens": 2000, "api_key": API_KEY},
         "eval_config": {
-            num_threads: 16,  # Adjust to available specs of local CPU for speed
-            display_progress: True,
-            display_table: 10,
-            # provide_traceback: True,
-            # max_error: 5,
-            # return_all_scores: False,
-            # return_outputs: False,
-            # failure_score: 0.0,
+            "num_threads": 16,  # Adjust to available specs of local CPU for speed
+            "display_progress": True,
+            "display_table": 10,
+            # "provide_traceback": True,
+            # "max_error": 5,
+            # "return_all_scores": False,
+            # "return_outputs": False,
+            # "failure_score": 0.0,
         },
     }
 
