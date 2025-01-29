@@ -12,9 +12,7 @@ def main():
     x = lm("Hello World!", tempature=0.7)
     y = lm(messages=[{"role": "user", "content": "Hello World!"}])
 
-    print(x)
-    print()
-    print(y)
+    print(f"{x}\n\n{y}")
 
 
 if __name__ == "__main__":
