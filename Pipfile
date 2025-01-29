@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 dspy = "*"
 pandas = "*"
-ollama = "*"
 
 [dev-packages]
 black = "*"
