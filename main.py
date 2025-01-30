@@ -1,28 +1,48 @@
 import dspy
 import pandas as pd
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 from dspy import Example
 
 LOCAL_MODELS = ["llama3.2:1b", "deepseek-r1:1.5b", "phi3.5", "gemma:2b", "qwen2.5:3b"]
 
 
 def main():
-    chosen_model = LOCAL_MODELS[2]
-    lm = dspy.LM(
-        f"ollama_chat/{chosen_model}",
-        api_base="http://localhost:11434",
-        api_key="",
-        # cache=False,
-    )
+    # chosen_model = LOCAL_MODELS[2]
+    # lm = dspy.LM(
+    #     f"ollama_chat/{chosen_model}",
+    #     api_base="http://localhost:11434",
+    #     api_key="",
+    #     # cache=False,
+    # )
 
-    x = lm("Hello World!", tempature=0.7)
-    y = lm(messages=[{"role": "user", "content": "Hello World!"}])
-    print(f"{x}\n\n{y}")
+    # x = lm("Hello World!", tempature=0.7)
+    # y = lm(messages=[{"role": "user", "content": "Hello World!"}])
+    # print(f"{x}\n\n{y}")
 
-    data_path = Path("cot/MultiArith")
-    data = get_datasets(data_path)
-    print(data[:2])
+    data_path = Path("cot/CommonsenseQA")
+    data = get_datasets(data_path)[:1]
+
+    labels, inputs = get_labels_and_inputs(data)
+    print(f"{labels= } | {inputs= }")
+
+
+def get_labels_and_inputs(dataset: list[Example] | Example) -> (list[str], list[str]):
+    data = dataset[0] if isinstance(dataset, list) else dataset
+    input_keys: set = data._input_keys
+    keys: list[str] = data.keys()
+
+    labels = filter_list(keys, input_keys, include=False)
+    inputs = filter_list(keys, input_keys, include=True)
+    return labels, inputs
+
+
+def filter_list(
+    item_list: Iterable, conditional: str | Iterable, include: bool = False
+) -> list:
+    if include:
+        return [item for item in item_list if item in conditional]
+    return [item for item in item_list if item not in conditional]
 
 
 def get_datasets(data_path: Path = None) -> list[Example]:
