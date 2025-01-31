@@ -14,6 +14,7 @@ def main():
         f"ollama_chat/{chosen_model}",
         api_base="http://localhost:11434",
         api_key="",
+        cache=False,
     )
 
     # x = lm("Hello World!", tempature=0.7)
@@ -24,14 +25,16 @@ def main():
     dataset = get_datasets(data_path)
 
     labels, inputs = get_labels_and_inputs(dataset)
-    print(f"{labels= } | {inputs= }")
+    # print(f"{labels= } | {inputs= }")
     for data in dataset[:3]:
-        print(data[inputs[0]])
-        resp = lm(
-            messages=[
-                {"role": "user", "content": f"{data[inputs[0]]}\n{data[inputs[1]]}"}
-            ]
-        )
+        print(f"{'='*30}\n{data[inputs[0]]}")
+        print(data[labels[0]])
+        prompt = f"{data[inputs[0]]}\n{data[inputs[1]]}"
+        print(prompt)
+        resp = lm(messages=[{"role": "user", "content": prompt}])
+        print()
+        print(resp)
+        resp = lm(prompt)
         print(resp)
 
 
