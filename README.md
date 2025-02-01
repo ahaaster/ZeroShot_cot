@@ -1,28 +1,22 @@
-# Automated Prompt Programming: 
-Bringing zero-shot performance on small LLMs to the human level
+# Automated Prompt Programming 
+Lifting zero-shot performance on small LLMs to the human level
 
-## Pipenv
-### Installation
+## Usage
+### Pre-requisites
 ```
 pip install pipenv
 ```
-
-#### Use
-Install everything specified in the Pipfile automatically
+### Installation
+This command will install all required dependencies
 ```
-pipenv install
+pipenv sync
 ```
-
-Installing packages for the virtual environment and include them in the Pipfile
-```
-pipenv install [package]
-```
-
-You spawn the virtual environment with the following terminal command
+### Running an experiment
+Start up the virtual environment in your terminal
 ```
 pipenv shell
 ```
-Running a python file (while in virtual environment)
+Running the python file (while in virtual environment)
 ```
-python experiment/main.py
+python main.py
 ```
