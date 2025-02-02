@@ -9,7 +9,7 @@ LOCAL_MODELS = ["llama3.2:1b", "deepseek-r1:1.5b", "phi3.5", "gemma:2b", "qwen2.
 
 
 def main():
-    chosen_model = LOCAL_MODELS[2]
+    chosen_model = LOCAL_MODELS[1]
     lm = LM(
         f"ollama_chat/{chosen_model}",
         api_base="http://localhost:11434",
@@ -24,7 +24,7 @@ def main():
     data_path = Path("cot/CommonsenseQA")
     dataset = get_datasets(data_path)
 
-    labels, inputs = get_labels_and_inputs(dataset)
+    labels, inputs = get_labels_and_inputs(dataset[0])
     # print(f"{labels= } | {inputs= }")
     for data in dataset[:3]:
         print(f"{'='*30}\n{data[inputs[0]]}")
@@ -38,13 +38,13 @@ def main():
         print(resp)
 
 
-def get_labels_and_inputs(dataset: list[Example] | Example) -> (list[str], list[str]):
-    data = dataset[0] if isinstance(dataset, list) else dataset
+def get_labels_and_inputs(dataset: Example) -> (list[str], list[str]):
+    # data = dataset[0] if isinstance(dataset, list) else dataset
     input_keys: set = data._input_keys
     keys: list[str] = data.keys()
 
-    labels = filter_list(keys, input_keys, include=False)
-    inputs = filter_list(keys, input_keys, include=True)
+    labels: list[str] = filter_list(keys, input_keys, include=False)
+    inputs: list[str] = filter_list(keys, input_keys, include=True)
     return labels, inputs
 
 
