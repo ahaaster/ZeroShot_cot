@@ -1,11 +1,39 @@
 # import dspy
 from json import load as read_json
-from pandas import read_csv
+from pandas import read_csv, DataFrame
 from pathlib import Path
 from typing import Any, Iterable
+from dataclasses import dataclass, field
 from dspy import LM, Example, Evaluate
 
 LOCAL_MODELS = ["llama3.2:1b", "deepseek-r1:1.5b", "phi3.5", "gemma:2b", "qwen2.5:3b"]
+
+
+@dataclass
+class Dataset:
+    source_path: Path
+    label_name: str = None
+    input_names: list[str] = None
+    dataset_name: str = field(init=False)
+    dataset: list[Example] = field(init=False)
+
+    def __post_init__(self):
+        self.dataset_name = get_dir_name(self.source_path)
+        self.dataset = init_dataset()
+
+    def init_dataset(self) -> list[Example]:
+        data = load_dataset(self.source_path)
+        self.label_name, *inputs = data.columns
+        self.input_names = inputs
+        return [Example(**row).with_inputs(*inputs) for _, row in data.iterrows()]
+
+    def get_input_names(self, concat_str: str = ", ") -> str:
+        return concat_str.join(self.input_names)
+
+    def create_prompt(self, idx: int = 0) -> str:
+        data = self.dataset[idx]
+        prompt = [data[inpoet] for inpoet in self.input_names]
+        return "\n".join(prompt)
 
 
 def main():
@@ -16,10 +44,6 @@ def main():
         api_key="",
         cache=False,
     )
-
-    # x = lm("Hello World!", tempature=0.7)
-    # y = lm(messages=[{"role": "user", "content": "Hello World!"}])
-    # print(f"{x}\n\n{y}")
 
     data_path = Path("cot/CommonsenseQA")
     dataset = get_datasets(data_path)
