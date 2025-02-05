@@ -19,10 +19,17 @@ class Dataset:
 
     def __post_init__(self):
         self.dataset_name = get_dir_name(self.source_path)
-        self.dataset = init_dataset()
+        self.dataset = self._init_dataset()
 
-    def init_dataset(self) -> list[Example]:
-        data = load_dataset(self.source_path)
+    def __iter__(self):
+        for example in self.dataset:
+            yield example
+
+    def __getitem__(self, key):
+        return self.dataset[key]
+
+    def _init_dataset(self) -> list[Example]:
+        data: DataFrame = read_csv(self.source_path)
         self.label_name, *inputs = data.columns
         self.input_names = inputs
         return [Example(**row).with_inputs(*inputs) for _, row in data.iterrows()]
@@ -45,21 +52,25 @@ def main():
         cache=False,
     )
 
-    data_path = Path("cot/CommonsenseQA")
-    dataset = get_datasets(data_path)
+    data_path = fetch_datasets(Path("cot/CommonsenseQA"))[0]
+    dataset = Dataset(data_path)
 
-    labels, inputs = get_labels_and_inputs(dataset[0])
-    # print(f"{labels= } | {inputs= }")
     for data in dataset[:3]:
-        print(f"{'='*30}\n{data[inputs[0]]}")
-        print(data[labels[0]])
-        prompt = f"{data[inputs[0]]}\n{data[inputs[1]]}"
-        print(prompt)
-        resp = lm(messages=[{"role": "user", "content": prompt}])
-        print()
-        print(resp)
-        resp = lm(prompt)
-        print(resp)
+        print(data)
+
+    # dataset = get_datasets(data_path)
+    # labels, inputs = get_labels_and_inputs(dataset[0])
+    # print(f"{labels= } | {inputs= }")
+    # for data in dataset[:3]:
+    #     print(f"{'='*30}\n{data[inputs[0]]}")
+    #     print(data[labels[0]])
+    #     prompt = f"{data[inputs[0]]}\n{data[inputs[1]]}"
+    #     print(prompt)
+    #     resp = lm(messages=[{"role": "user", "content": prompt}])
+    #     print()
+    #     print(resp)
+    #     resp = lm(prompt)
+    #     print(resp)
 
 
 def get_labels_and_inputs(dataset: Example) -> (list[str], list[str]):
