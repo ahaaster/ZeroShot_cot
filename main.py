@@ -73,44 +73,9 @@ def main():
     #     print(resp)
 
 
-def get_labels_and_inputs(dataset: Example) -> (list[str], list[str]):
-    # data = dataset[0] if isinstance(dataset, list) else dataset
-    input_keys: set = data._input_keys
-    keys: list[str] = data.keys()
-
-    labels: list[str] = filter_list(keys, input_keys, include=False)
-    inputs: list[str] = filter_list(keys, input_keys, include=True)
-    return labels, inputs
-
-
-def filter_list(
-    item_list: Iterable, conditional: str | Iterable, include: bool = False
-) -> list:
-    if include:
-        return [item for item in item_list if item in conditional]
-    return [item for item in item_list if item not in conditional]
-
-
-def get_datasets(data_path: Path = None) -> list[Example]:
-    prepared_datasets: list[Path] = fetch_datasets(data_path)
-    data, dataset_name = load_dataset(prepared_datasets[0])
-
-    label_name, *input_names = data.columns
-    return [Example(**row).with_inputs(*input_names) for _, row in data.iterrows()]
-
-
-def fetch_datasets(dir_path: str | Path = "") -> list[Path]:
+def fetch_datasets(dir_path: Path | str = "") -> list[Path]:
     file_path = Path("dataset") / dir_path
     return sorted(file_path.glob("**/data.csv"))
-
-
-def load_dataset(file_path: Path) -> (Any, str):
-    dir_name = get_dir_name(file_path)
-    if file_path.suffix == ".json":
-        with open(file_path) as file:
-            return read_json(file), dir_name
-    elif file_path.suffix == ".csv":
-        return read_csv(file_path), dir_name
 
 
 def get_dir_name(file_path: Path) -> str:
