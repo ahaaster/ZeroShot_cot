@@ -44,33 +44,27 @@ class Dataset:
 
 
 def main():
-    chosen_model = LOCAL_MODELS[1]
+    chosen_model = LOCAL_MODELS[0]
     lm = LM(
         f"ollama_chat/{chosen_model}",
         api_base="http://localhost:11434",
         api_key="",
         cache=False,
+        temperature=0.9,
     )
 
     data_path = fetch_datasets(Path("cot/CommonsenseQA"))[0]
     dataset = Dataset(data_path)
 
-    for data in dataset[:3]:
-        print(data)
-
-    # dataset = get_datasets(data_path)
-    # labels, inputs = get_labels_and_inputs(dataset[0])
-    # print(f"{labels= } | {inputs= }")
-    # for data in dataset[:3]:
-    #     print(f"{'='*30}\n{data[inputs[0]]}")
-    #     print(data[labels[0]])
-    #     prompt = f"{data[inputs[0]]}\n{data[inputs[1]]}"
-    #     print(prompt)
-    #     resp = lm(messages=[{"role": "user", "content": prompt}])
-    #     print()
-    #     print(resp)
-    #     resp = lm(prompt)
-    #     print(resp)
+    for idx, data in enumerate(dataset[20:24]):
+        prompt = dataset.create_prompt(idx)
+        print(prompt)
+        print("-" * 30)
+        resp1 = lm(messages=[{"role": "user", "content": prompt}])
+        resp2 = lm(prompt)
+        print(resp1)
+        print(resp2)
+        print("=" * 40)
 
 
 def fetch_datasets(dir_path: Path | str = "") -> list[Path]:
