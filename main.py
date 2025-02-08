@@ -19,11 +19,12 @@ def main():
         # temperature=0.9,
     )
 
-    data_path = fetch_datasets(Path("cot/CommonsenseQA"))[0]
-    dataset = Dataset(data_path)
+    query_path = Path("dataset/cot/CommonsenseQA")
+    data_path = fetch_datasets(query_path, file_name="data")
+    dataset = Dataset(data_path[0])
 
     responses = []
-    for example in tqdm(dataset[:3]):
+    for example in tqdm(dataset):
         prompt = create_prompt(example)
         resp = lm(messages=[{"role": "user", "content": prompt}])
 
@@ -47,15 +48,6 @@ def record_responses(
     file_path.mkdir(parents=True, exist_ok=True)
     model_name = convert_model_filename(chosen_model)
     df.to_csv(f"{file_path}/{model_name}.csv", index=False)
-
-
-def convert_model_filename(model_name: str) -> str:
-    return model_name.replace(".", "_").replace(":", "=")
-
-
-def revert_model_filename(file_name: Path) -> str:
-    file_name = file_name.stem
-    return file_name.replace("_", ".").replace("=", ":")
 
 
 def create_prompt(data: Example, join_string: str = "\n") -> str:
@@ -92,13 +84,21 @@ class Dataset:
         return concat_str.join(self.input_names)
 
 
-def fetch_datasets(dir_path: Path | str = "") -> list[Path]:
-    file_path = Path("dataset") / dir_path
-    return sorted(file_path.glob("**/data.csv"))
+def fetch_datasets(dir_path: Path, file_name: str = "*") -> list[Path]:
+    return sorted(dir_path.glob(f"**/{file_name}.csv"))
 
 
 def get_dir_name(file_path: Path) -> str:
     return file_path.parent.stem
+
+
+def convert_model_filename(model_name: str) -> str:
+    return model_name.replace(".", "_").replace(":", "=")
+
+
+def revert_model_filename(file_name: Path) -> str:
+    file_name = file_name.stem
+    return file_name.replace("_", ".").replace("=", ":")
 
 
 if __name__ == "__main__":
