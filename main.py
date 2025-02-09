@@ -15,28 +15,31 @@ def main():
         f"ollama_chat/{chosen_model}",
         api_base="http://localhost:11434",
         api_key="",
-        # cache=False,
-        # temperature=0.9,
     )
 
     query_path = Path("dataset/cot/CommonsenseQA")
-    data_path = fetch_datasets(query_path, file_name="data")
-    dataset = Dataset(data_path[0])
+    data_paths = fetch_datasets(query_path, file_name="data")
 
+    for data_path in data_paths:
+        dataset = Dataset(data_path)
+        responses = prompt_simple(dataset)
+        record_responses(responses, "base", dataset.name, chosen_model)
+
+
+def prompt_simple(dataset: Dataset) -> list[str]:
     responses = []
     for example in tqdm(dataset):
-        prompt = create_prompt(example)
-        resp = lm(messages=[{"role": "user", "content": prompt}])[0]
+        prompt: str = create_prompt(example)
+        resp: list = lm(messages=[{"role": "user", "content": prompt}])
 
         responses.append(
             {
                 "prompt": prompt,
-                "response": resp,
+                "response": resp[0],
                 "ground_truth": example[dataset.label_name],
             }
         )
-
-    record_responses(responses, "base", dataset.name, chosen_model)
+    return responses
 
 
 def record_responses(
