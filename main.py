@@ -10,7 +10,7 @@ LOCAL_MODELS = ["llama3.2:1b", "deepseek-r1:1.5b", "phi3.5", "gemma:2b", "qwen2.
 
 
 def main():
-    chosen_model = LOCAL_MODELS[0]
+    chosen_model = LOCAL_MODELS[-2]
     lm = LM(
         f"ollama_chat/{chosen_model}",
         api_base="http://localhost:11434",
@@ -26,12 +26,12 @@ def main():
     responses = []
     for example in tqdm(dataset):
         prompt = create_prompt(example)
-        resp = lm(messages=[{"role": "user", "content": prompt}])
+        resp = lm(messages=[{"role": "user", "content": prompt}])[0]
 
         responses.append(
             {
                 "prompt": prompt,
-                "response": resp[0],
+                "response": resp,
                 "ground_truth": example[dataset.label_name],
             }
         )
@@ -70,6 +70,9 @@ class Dataset:
     def __iter__(self):
         for example in self.dataset:
             yield example
+
+    def __len__(self):
+        return len(self.dataset)
 
     def __getitem__(self, key):
         return self.dataset[key]
