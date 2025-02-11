@@ -50,6 +50,7 @@ def main():
         f"ollama_chat/{chosen_model}",
         api_base="http://localhost:11434",
         api_key="",
+        cache=False,
     )
 
     query_path = Path("dataset/cot/CommonsenseQA")
@@ -74,16 +75,15 @@ def main():
         # Create batches of to be prompted queries
         amount_to_be_prompted: int = len(dataset) - prompts_recorded
         unrecorded = dataset[-amount_to_be_prompted:]
-        batch_n = 50
-        batches = [
+        batch_n = 64
+        batches: list[list[example]] = [
             unrecorded[i : i + batch_n] for i in range(0, len(unrecorded), batch_n)
         ]
 
         for data_batch in tqdm(batches):
-            # responses = prompt_simple(data_batch, lm=lm)
             responses = []
             for example in tqdm(data_batch):
-                prompt: str = create_prompt(example)
+                prompt: str = create_prompt(example, dataset.input_names)
                 response: list[str] = lm(messages=[{"role": "user", "content": prompt}])
                 responses.append(
                     {
@@ -96,42 +96,11 @@ def main():
             batch_df = pd.DataFrame(responses)
             df_results = pd.concat([df_results, batch_df])
             print(df_results)
-
             df_results.to_csv(f"{results_dir}/{model_name}.csv", index=False)
 
-        # responses = prompt_simple(dataset, lm=lm)
-        # record_responses(responses, method, dataset.name, chosen_model)
 
-
-def prompt_simple(dataset: Dataset, lm: LM) -> list[str]:
-    responses = []
-    for example in tqdm(dataset):
-        prompt: str = create_prompt(example)
-        resp: list = lm(messages=[{"role": "user", "content": prompt}])
-
-        responses.append(
-            {
-                "prompt": prompt,
-                "response": resp[0],
-                "ground_truth": example[dataset.label_name],
-            }
-        )
-    return responses
-
-
-def record_responses(
-    responses: list[str], method_name: str, dataset_name: str, chosen_model: str
-) -> None:
-    df = pd.DataFrame(responses)
-
-    file_path = Path("results") / method_name / dataset_name
-    file_path.mkdir(parents=True, exist_ok=True)
-    model_name = convert_model_filename(chosen_model)
-    df.to_csv(f"{file_path}/{model_name}.csv", index=False)
-
-
-def create_prompt(data: Example, join_string: str = "\n") -> str:
-    prompt = [data[key] for key in data._input_keys]
+def create_prompt(data: Example, input_keys: list[str], join_string: str = "\n") -> str:
+    prompt = [data[key] for key in input_keys]
     return join_string.join(prompt)
 
 
