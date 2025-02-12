@@ -8,7 +8,7 @@ from tqdm import tqdm
 import itertools
 
 LOCAL_MODELS = ["llama3.2:1b", "deepseek-r1:1.5b", "phi3.5", "gemma:2b", "qwen2.5:3b"]
-CHOSEN_MODEL = LOCAL_MODELS[2]
+CHOSEN_MODEL = LOCAL_MODELS[0]
 
 
 @dataclass
@@ -54,7 +54,8 @@ def main():
         cache=False,
     )
 
-    query_path = Path("dataset/cot/CommonsenseQA")
+    # query_path = Path("dataset/cot/CommonsenseQA")
+    query_path = Path("dataset/cot")
     data_paths = fetch_datasets(query_path, file_name="data")
 
     for data_path in data_paths:
