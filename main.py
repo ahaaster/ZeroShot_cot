@@ -8,6 +8,7 @@ from tqdm import tqdm
 import itertools
 
 LOCAL_MODELS = ["llama3.2:1b", "deepseek-r1:1.5b", "phi3.5", "gemma:2b", "qwen2.5:3b"]
+CHOSEN_MODEL = LOCAL_MODELS[2]
 
 
 @dataclass
@@ -43,7 +44,7 @@ class Dataset:
 
 
 def main():
-    chosen_model = LOCAL_MODELS[-1]
+    chosen_model = CHOSEN_MODEL
     method = "base"
 
     lm = LM(
@@ -74,8 +75,11 @@ def main():
 
         # Create batches of to be prompted queries
         amount_to_be_prompted: int = len(dataset) - prompts_recorded
+        if amount_to_be_prompted == 0:
+            continue
+
         unrecorded = dataset[-amount_to_be_prompted:]
-        batch_n = 64
+        batch_n = 25
         batches: list[list[example]] = [
             unrecorded[i : i + batch_n] for i in range(0, len(unrecorded), batch_n)
         ]
@@ -95,7 +99,7 @@ def main():
 
             batch_df = pd.DataFrame(responses)
             df_results = pd.concat([df_results, batch_df])
-            print(df_results)
+            print(df_results.tail(3))
             df_results.to_csv(f"{results_dir}/{model_name}.csv", index=False)
 
 
