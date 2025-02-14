@@ -3,14 +3,15 @@ import pandas as pd
 from tqdm import tqdm
 from pathlib import Path
 
-from experiment import Dataset, prompt_control, fetch_datasets
+from experiment import Dataset, prompt_control
+from experiment.utils import fetch_datasets
 
 LOCAL_MODELS = ["llama3.2:1b", "deepseek-r1:1.5b", "phi3.5", "gemma:2b", "qwen2.5:3b"]
 PROMPT_METHODS = {
     "control": prompt_control,
     "basic": None,
     "constraint": None,
-    "zeroshot-cot": None,
+    "cot": None,
     "multihop?": None,
 }
 
