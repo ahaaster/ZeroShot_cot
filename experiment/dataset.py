@@ -1,7 +1,7 @@
+import pandas as pd
 from dspy import Example
 from pathlib import Path
 from dataclasses import dataclass, field
-from pandas import read_csv, DataFrame
 
 from .utils import get_dir_name
 
@@ -29,7 +29,7 @@ class Dataset:
         return self.dataset[key]
 
     def _init_dataset(self) -> list[Example]:
-        data: DataFrame = read_csv(self.source_path)
+        data: pd.DataFrame = pd.read_csv(self.source_path)
         self.label_name, *inputs = data.columns
         self.input_names = inputs
         return [Example(**row).with_inputs(*inputs) for _, row in data.iterrows()]
