@@ -18,7 +18,7 @@ PROMPT_METHODS = {
 
 def main():
     method = "control"
-    chosen_model = LOCAL_MODELS[0]
+    chosen_model = LOCAL_MODELS[1]
     chosen_datasets = Path("dataset/cot")
     prompter = PROMPT_METHODS[method]
 
