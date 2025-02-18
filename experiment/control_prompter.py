@@ -12,7 +12,7 @@ def create_prompt(data: Example, input_keys: list[str], join_string: str = "\n")
     return join_string.join(prompt)
 
 
-def prompt_control(lm: LM, dataset: Dataset, model_name: str):
+def prompt_control(lm: LM, dataset: Dataset, model_name: str, record_results: bool):
     # Check first if we already recorded some prompts
     results_dir = Path("results/control") / dataset.name
     model_name = convert_model_filename(model_name)
@@ -55,5 +55,9 @@ def prompt_control(lm: LM, dataset: Dataset, model_name: str):
 
         batch_df = pd.DataFrame(responses)
         df_results = pd.concat([df_results, batch_df])
-        print(df_results.tail(3))
+
+        if not record_results:
+            print(df_results.tail(3))
+            continue
+
         df_results.to_csv(f"{results_dir}/{model_name}.csv", index=False)
