@@ -8,7 +8,7 @@ from experiment.utils import fetch_datasets
 from experiment.evaluation import evaluate_metrics
 
 EXPERIMENTS = ["prompt", "metric_eval"]
-EXPERIMENT = EXPERIMENTS[1]
+EXPERIMENT = EXPERIMENTS[0]
 
 # Prompt 'settings'
 LOCAL_MODELS = ["llama3.2:1b", "deepseek-r1:1.5b", "phi3.5", "gemma:2b", "qwen2.5:3b"]
@@ -24,9 +24,9 @@ PROMPT_METHODS = {
 def main(experiment: str):
     if experiment == "prompt":
         method = "control"
-        chosen_model = LOCAL_MODELS[1]
+        chosen_model = LOCAL_MODELS[2]
         chosen_datasets = Path("dataset/cot")
-        run_prompts(method, chosen_model, chosen_datasets, record_results=False)
+        run_prompts(method, chosen_model, chosen_datasets, record_results=True)
 
     elif experiment == "metric_eval":
         evaluate_metrics()
