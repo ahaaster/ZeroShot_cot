@@ -19,8 +19,8 @@ class Dataset:
         self.dataset = self._init_dataset()
 
     def __iter__(self):
-        for example in self.dataset:
-            yield example
+        for dspy_example in self.dataset:
+            yield dspy_example
 
     def __len__(self):
         return len(self.dataset)
