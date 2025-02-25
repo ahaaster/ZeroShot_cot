@@ -13,15 +13,15 @@ def create_prompt(data: Example, input_keys: list[str], join_string: str = "\n")
 
 
 def prompt_control(lm: LM, dataset: Dataset, model_name: str, record_results: bool):
-    # Check first if we already recorded some prompts
+    # Load previous dataset paths
     results_dir = Path("results/control") / dataset.name
     model_name = convert_model_filename(model_name)
     results_path = fetch_datasets(results_dir, model_name)
 
-    # Have (some) results been recorded yet?
+    # Check if the previous dataset is empty or not
     if results_path:
-        prompts_recorded = len(pd.read_csv(results_path[0]))
         df_results = pd.read_csv(results_path[0])
+        prompts_recorded = len(df_results)
     else:
         results_dir.mkdir(parents=True, exist_ok=True)
         prompts_recorded = 0
@@ -39,6 +39,7 @@ def prompt_control(lm: LM, dataset: Dataset, model_name: str, record_results: bo
         unrecorded[i : i + batch_n] for i in range(0, len(unrecorded), batch_n)
     ]
 
+    # Function part that actually prompts
     for data_batch in tqdm(batches):
         responses = []
         for example in tqdm(data_batch):
