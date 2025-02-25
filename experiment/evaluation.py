@@ -1,3 +1,4 @@
+import re
 import dspy
 import pandas as pd
 from pathlib import Path
@@ -7,16 +8,27 @@ from .dataset import Dataset
 from .utils import fetch_datasets
 
 
-def exact_match(resp: list[str], ground_truth: list[str]) -> float:
-    pass
+def exact_match(resp: str, label: str) -> float:
+    return resp == label
 
 
-def decoding_score(resp: list[str], ground_truth: list[str]) -> float:
-    pass
+def decode_response(response: str, format: str, last: bool = False) -> str:
+    regex_formats = {
+        "number": r"-?\d+\.?\d*",
+        "multiple choice": r"[A-Z][\)|\.]",
+        "boolean": r"([tT]rue|[fF]alse|untrue|[yY]es|[nN]o\b|\w*[Nn].t\s\w*\s?true)",
+        "text": r"([A-Z][^\.!?]*[\.!?])",  # Simply matches for full sentences
+    }
 
+    regex_string = regex_formats[answer_format]
+    matches = re.findall(regex_string, response)
 
-def semantic_scoring(resp: list[str], ground_truth: list[str]) -> float:
-    pass
+    if not matches:
+        return ""
+    elif last:
+        return matches[-1]
+    else:
+        return matches[0]
 
 
 def evaluate_metrics():
