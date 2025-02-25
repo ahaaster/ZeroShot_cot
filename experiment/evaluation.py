@@ -15,7 +15,7 @@ def decoding_score(resp: list[str], ground_truth: list[str]) -> float:
     pass
 
 
-def semantic_scoreing(resp: list[str], ground_truth: list[str]) -> float:
+def semantic_scoring(resp: list[str], ground_truth: list[str]) -> float:
     pass
 
 
