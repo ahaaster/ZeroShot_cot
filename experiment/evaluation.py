@@ -16,7 +16,7 @@ def decode_response(response: str, answer_type: str, last: bool = False) -> str:
     regex_formats = {
         "number": r"-?\d+\.?\d*",
         "multiple choice": r"[A-Z][\)|\.]",
-        "boolean": r"([tT]rue|[fF]alse|untrue|[yY]es|[nN]o\b|\w*[Nn].t\s\w*\s?true)",
+        "boolean": r"([tT]rue|[fF]alse|[Uu]ntrue|[yY]es|[nN]o\b|\w*[Nn].t\s\w*\s?true)",
         "text": r"([A-Z][^\.!?]*[\.!?])",  # Simply matches for full sentences
     }
 
