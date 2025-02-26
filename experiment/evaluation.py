@@ -12,7 +12,7 @@ def exact_match(resp: str, label: str) -> float:
     return resp == label
 
 
-def decode_response(response: str, format: str, last: bool = False) -> str:
+def decode_response(response: str, answer_type: str, last: bool = False) -> str:
     regex_formats = {
         "number": r"-?\d+\.?\d*",
         "multiple choice": r"[A-Z][\)|\.]",
@@ -20,7 +20,7 @@ def decode_response(response: str, format: str, last: bool = False) -> str:
         "text": r"([A-Z][^\.!?]*[\.!?])",  # Simply matches for full sentences
     }
 
-    regex_string = regex_formats[answer_format]
+    regex_string = regex_formats[answer_type]
     matches = re.findall(regex_string, response)
 
     if not matches:
@@ -29,6 +29,13 @@ def decode_response(response: str, format: str, last: bool = False) -> str:
         return matches[-1]
     else:
         return matches[0]
+
+
+def decode_match(
+    response: str, label: str, answer_type: str, last: bool = False
+) -> str:
+    decoded_resp = decode_response(response, answer_type, last)
+    return exact_match(decoded_resp, label)
 
 
 def evaluate_metrics():
