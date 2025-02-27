@@ -14,10 +14,10 @@ def exact_match(resp: str, label: str) -> float:
 
 def decode_response(response: str, answer_type: str, last: bool = False) -> str:
     regex_formats = {
-        "number": r"-?\d+\.?\d*",
-        "multiple choice": r"[A-Z][\)|\.]",
-        "boolean": r"([tT]rue|[fF]alse|[Uu]ntrue|[yY]es|[nN]o\b|\w*[Nn].t\s\w*\s?true)",
         "text": r"([A-Z][^\.!?]*[\.!?])",  # Simply matches for full sentences
+        "multiple choice": r"[A-Z][\)|\.]",
+        "number": r"-?\d+\.?\d*",
+        "boolean": r"([tT]rue|[fF]alse|[Uu]ntrue|[yY]es|[nN]o\b|\w*[Nn].t\s\w*\s?true)",
     }
 
     regex_string = regex_formats[answer_type]
