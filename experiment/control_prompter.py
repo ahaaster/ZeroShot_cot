@@ -13,7 +13,7 @@ def create_prompt(data: Example, input_keys: list[str], join_string: str = "\n")
 
 
 def prompt_control(
-    lm: LM, dataset: Dataset, model_name: str, record_results: bool = False
+    dataset: Dataset, model_name: str, *, lm: LM, record_results: bool = False, **kwargs
 ):
     # Load intermediate results
     results_dir = Path("results/control") / dataset.name

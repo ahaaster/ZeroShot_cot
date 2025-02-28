@@ -1,41 +1,73 @@
 import re
-import dspy
 import pandas as pd
 from pathlib import Path
+from dataclasses import dataclass
+
+from dspy import Module
 from dspy.evaluate import SemanticF1
 
 from .dataset import Dataset
 from .utils import fetch_datasets
 
 
-def exact_match(resp: str, label: str) -> bool:
+@dataclass
+class Decoder:
+    answer_format: str = "text"
+    greedy_first: bool = False  # True/False means respectively pick first/last
+
+    def __post_init__(self):
+        self.regex_format = self._init_regex()
+
+    def __call__(self, string) -> str:
+        return self.decode(string) if len(string) > 1 else string
+
+    def _init_regex(self):
+        regex_formats = {
+            "text": r"([A-Z][^\.!?]*[\.!?])",  # Simply matches for full sentences
+            "mc": r"[A-Z][\)|\.]",  # Multiple Choice
+            "number": r"-?\d+\.?\d*",
+            "boolean": r"([tT]rue|[fF]alse|[Uu]ntrue|[yY]es|[nN]o\b|\w*[Nn].t\s\w*\s?true)",
+        }
+        return regex_formats[self.answer_format]
+
+    def decode(self, string: str) -> str:
+        matches = re.findall(self.regex_format, string)
+
+        if not matches:
+            return ""
+        elif self.greedy_first:
+            return matches[0]
+        else:
+            return matches[-1]
+
+    def cleanup_string(self, string: str) -> str:
+        if self.answer_format == "mc":
+            return re.sub(r"[\)|\.]", "", string)
+
+
+@dataclass
+class Metric(Module):
+    metric_func: callable
+    label_name: str = "label"
+    output_name: str = "response"
+    decoder: Decoder = None
+
+    def forward(self, example, pred, trace=None):
+        label = example[self.label_name]
+        resp = pred[self.output_name]
+
+        if self.decoder is not None:
+            resp = self.decoder(resp)
+            resp = self.decoder.cleanup_string(resp)
+        return self.metric_func(resp, label)
+
+
+def exact_match(resp, label):
+    return resp == label
+
+
+def exact_match_lower(resp: str, label: str) -> bool:
     return resp.lower() == label.lower()
-
-
-def decode_response(response: str, answer_type: str, last: bool = False) -> str:
-    regex_formats = {
-        "text": r"([A-Z][^\.!?]*[\.!?])",  # Simply matches for full sentences
-        "multiple choice": r"[A-Z][\)|\.]",
-        "number": r"-?\d+\.?\d*",
-        "boolean": r"([tT]rue|[fF]alse|[Uu]ntrue|[yY]es|[nN]o\b|\w*[Nn].t\s\w*\s?true)",
-    }
-
-    regex_string = regex_formats[answer_type]
-    matches = re.findall(regex_string, response)
-
-    if not matches:
-        return ""
-    elif last:
-        return matches[-1]
-    else:
-        return matches[0]
-
-
-def decode_match(
-    response: str, label: str, answer_type: str, last: bool = False
-) -> bool:
-    decoded_resp = decode_response(response, answer_type, last)
-    return exact_match(decoded_resp, label)
 
 
 def evaluate_metrics() -> None:
