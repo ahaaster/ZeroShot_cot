@@ -12,7 +12,9 @@ def create_prompt(data: Example, input_keys: list[str], join_string: str = "\n")
     return join_string.join(prompt)
 
 
-def prompt_control(lm: LM, dataset: Dataset, model_name: str, record_results: bool):
+def prompt_control(
+    lm: LM, dataset: Dataset, model_name: str, record_results: bool = False
+):
     # Load intermediate results
     results_dir = Path("results/control") / dataset.name
     df_results = get_saved_data(results_dir, model_name)
@@ -51,5 +53,4 @@ def prompt_control(lm: LM, dataset: Dataset, model_name: str, record_results: bo
             print(df_results.tail(3))
             continue
 
-        # df_results.to_csv(f"{results_dir}/{model_name}.csv", index=False)
         save_results(df_results, results_dir, model_name)
