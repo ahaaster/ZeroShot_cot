@@ -8,8 +8,8 @@ from .dataset import Dataset
 from .utils import fetch_datasets
 
 
-def exact_match(resp: str, label: str) -> float:
-    return resp == label
+def exact_match(resp: str, label: str) -> bool:
+    return resp.lower() == label.lower()
 
 
 def decode_response(response: str, answer_type: str, last: bool = False) -> str:
@@ -33,12 +33,12 @@ def decode_response(response: str, answer_type: str, last: bool = False) -> str:
 
 def decode_match(
     response: str, label: str, answer_type: str, last: bool = False
-) -> str:
+) -> bool:
     decoded_resp = decode_response(response, answer_type, last)
     return exact_match(decoded_resp, label)
 
 
-def evaluate_metrics():
+def evaluate_metrics() -> None:
     path_dataset = Path("dataset/cot/MultiArith")
     label_path: list = fetch_datasets(path_dataset, file_name="data")
     df = pd.read_csv(label_path[0])
