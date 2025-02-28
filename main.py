@@ -40,7 +40,6 @@ def run_prompts(
         f"ollama_chat/{chosen_model}",
         api_base="http://localhost:11434",
         api_key="",
-        cache=False,
     )
 
     data_paths = fetch_datasets(chosen_datasets, file_name="data")

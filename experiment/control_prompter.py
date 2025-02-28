@@ -4,7 +4,7 @@ from dspy import Example, LM
 from pathlib import Path
 
 from .dataset import Dataset
-from .utils import convert_model_filename, fetch_datasets
+from .utils import get_saved_data, save_results
 
 
 def create_prompt(data: Example, input_keys: list[str], join_string: str = "\n") -> str:
@@ -13,22 +13,12 @@ def create_prompt(data: Example, input_keys: list[str], join_string: str = "\n")
 
 
 def prompt_control(lm: LM, dataset: Dataset, model_name: str, record_results: bool):
-    # Load previous dataset paths
+    # Load intermediate results
     results_dir = Path("results/control") / dataset.name
-    model_name = convert_model_filename(model_name)
-    results_path = fetch_datasets(results_dir, model_name)
-
-    # Check if the previous dataset is empty or not
-    if results_path:
-        df_results = pd.read_csv(results_path[0])
-        prompts_recorded = len(df_results)
-    else:
-        results_dir.mkdir(parents=True, exist_ok=True)
-        prompts_recorded = 0
-        df_results = pd.DataFrame()
+    df_results = get_saved_data(results_dir, model_name)
 
     # Determine portion of dataset to be prompted
-    n_unprompted: int = len(dataset) - prompts_recorded
+    n_unprompted: int = len(dataset) - len(df_results)
     if n_unprompted == 0:
         return
 
@@ -61,4 +51,5 @@ def prompt_control(lm: LM, dataset: Dataset, model_name: str, record_results: bo
             print(df_results.tail(3))
             continue
 
-        df_results.to_csv(f"{results_dir}/{model_name}.csv", index=False)
+        # df_results.to_csv(f"{results_dir}/{model_name}.csv", index=False)
+        save_results(df_results, results_dir, model_name)
