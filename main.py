@@ -8,7 +8,7 @@ from experiment.utils import fetch_datasets
 from experiment.evaluation import evaluate_metrics
 
 EXPERIMENTS = ["prompt", "metric_eval"]
-EXPERIMENT = EXPERIMENTS[0]
+EXPERIMENT = EXPERIMENTS[1]
 
 # Prompt 'settings'
 LOCAL_MODELS = ["llama3.2:1b", "deepseek-r1:1.5b", "phi3.5", "gemma:2b", "qwen2.5:3b"]

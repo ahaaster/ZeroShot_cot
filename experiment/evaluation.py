@@ -71,10 +71,42 @@ def exact_match_lower(resp: str, label: str) -> bool:
 
 
 def evaluate_metrics() -> None:
-    path_dataset = Path("dataset/cot/MultiArith")
+    path_dataset = Path("dataset/cot/CommonsenseQA")
     label_path: list = fetch_datasets(path_dataset, file_name="data")
     df = pd.read_csv(label_path[0])
-    label_series = df.loc[:, "label"]
+    label_series = df.loc[:6, "label"]
 
     shuffled_series = label_series.sample(frac=1)
-    print(shuffled_series.head())
+    shuffled_series2 = "Therefore it is " + shuffled_series
+
+    aligned_df = pd.concat([label_series, label_series], ignore_index=True, axis=1)
+    # shuffled_df = pd.DataFrame()
+
+    confirm_list = [
+        "Therefore it is ",
+        "Thus, ",
+        "The most likely answer is ",
+    ]
+
+    for string in confirm_list:
+        temp_series = string + label_series
+        temp_df = pd.concat([label_series, temp_series], ignore_index=True, axis=1)
+        aligned_df = pd.concat([aligned_df, temp_df], ignore_index=True)
+
+    print(aligned_df.sample(frac=1))
+
+    deny_list = [
+        "Therefore it is not ",
+        "Definitely not ",
+        "I don't think it is ",
+    ]
+
+    nonsense_list = [
+        "kjs hdjaksh djkahjkdhasjdhjjakha akhkasdj ",
+        "me you, you me, mimimimimi ",
+        "I don't want you to win for doing this, buddy ",
+    ]
+
+    df = pd.DataFrame([label_series.values, shuffled_series.values]).T
+
+    # print(shuffled_series2)
