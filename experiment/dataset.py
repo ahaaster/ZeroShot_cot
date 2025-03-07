@@ -10,6 +10,7 @@ from .utils import get_dir_name
 @dataclass
 class Dataset:
     source_path: Path
+    model_name: str
     label_name: str = None
     input_names: list[str] = None
     name: str = field(init=False)

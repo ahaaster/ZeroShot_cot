@@ -12,20 +12,7 @@ def create_prompt(data: Example, input_keys: list[str], join_string: str = "\n")
     return join_string.join(prompt)
 
 
-def prompt_control(
-    dataset: Dataset, model_name: str, *, lm: LM, record_results: bool = False, **kwargs
-):
-    # Load intermediate results
-    results_dir = Path("results/control") / dataset.name
-    df_results = get_saved_data(results_dir, model_name)
-
-    # Determine portion of dataset to be prompted
-    n_unprompted: int = len(dataset) - len(df_results)
-    if n_unprompted == 0:
-        return
-
-    # Create batches of to be prompted queries
-    unrecorded: Dataset = dataset[-n_unprompted:]
+def prompt_control(dataset: Dataset, *, lm: LM, record_results: bool = False, **kwargs):
     batch_n = 25
     batches: list[list[example]] = [
         unrecorded[i : i + batch_n] for i in range(0, len(unrecorded), batch_n)
@@ -53,4 +40,4 @@ def prompt_control(
             print(df_results.tail(3))
             continue
 
-        save_results(df_results, results_dir, model_name)
+        save_results(df_results, results_dir, dataset.model_name)

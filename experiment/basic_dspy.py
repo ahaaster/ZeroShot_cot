@@ -9,9 +9,7 @@ from .utils import save_results
 from .evaluation import Metric, Decoder, exact_match, exact_match_lower
 
 
-def basic_dspy(
-    dataset: Dataset, model_name: str, *, record_results: bool = False, **kwargs
-):
+def basic_dspy(dataset: Dataset, *, record_results: bool = False, **kwargs):
     # Check if results have been recorded already
     results_dir = Path("results/basic") / dataset.name
     if results_dir.exists():
@@ -41,4 +39,4 @@ def basic_dspy(
         return
 
     results_df = pd.DataFrame(results)
-    save_results(results_df, results_dir, model_name)
+    save_results(results_df, results_dir, dataset.model_name)
