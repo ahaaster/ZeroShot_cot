@@ -1,10 +1,11 @@
 import dspy
+import numpy as np
 import pandas as pd
 from tqdm import tqdm
 from pathlib import Path
 
 from experiment import Dataset, prompt_control, basic_dspy
-from experiment.utils import fetch_datasets, get_saved_data
+from experiment.utils import fetch_datasets, get_saved_data, get_dir_name
 from experiment.evaluation import evaluate_metrics
 
 EXPERIMENTS = ["prompt", "metric_eval"]
@@ -19,9 +20,12 @@ PROMPT_METHODS = {
     "basic": basic_dspy,
     "constraint": None,
     "cot": None,
-    "multihop?": None,
+    "multihop": None,
 }
 PROMPT_METHOD = "basic"
+
+METRICS = ["exact_match", "exact_lower", "semanticF1"]
+METRIC = METRICS[0]
 
 
 def main(experiment: str):
@@ -29,7 +33,8 @@ def main(experiment: str):
         method = PROMPT_METHOD
         chosen_model = LOCAL_MODEL
         chosen_datasets = Path("dataset/cot") / "CommonsenseQA"
-        run_prompts(method, chosen_model, chosen_datasets, record_results=False)
+        metric = METRIC
+        run_prompts(method, chosen_model, chosen_datasets, metric, record_results=True)
 
     elif experiment == "metric_eval":
         evaluate_metrics()
@@ -39,6 +44,7 @@ def run_prompts(
     method: str,
     chosen_model: str,
     chosen_datasets: Path,
+    metric_name: str,
     *,
     record_results: bool = False,
 ):
@@ -65,16 +71,42 @@ def run_prompts(
 
         if n_unprompted > 0:
             unrecorded: Dataset = dataset[-n_unprompted:]
-            print(method, unrecorded.name, f"{n_unprompted=}", type(unrecorded))
-            prompter(unrecorded, chosen_model, record_results=record_results, lm=lm)
+            prompter(
+                unrecorded,
+                record_results=record_results,
+                lm=lm,
+                metric_name=metric_name,
+            )
+
         # Edge case of something going very wrong
         elif n_unprompted != 0:
             raise ValueError(
                 f"For some reason {n_unprompted = }, instead of a non-negative int"
             )
 
-        # If results have been recorded without saved scores -> evaluate
+        # TODO: Evaluate the responses if no scores have been assigned
+
+
+def create_scores_file():
+    """This function should only be run once if the csv with recorded scores doesn't exist yet"""
+    datasets = Path("dataset/cot").glob("**/*.csv")
+
+    dataset_names = [get_dir_name(x) for x in sorted(datasets)]
+    model_names = LOCAL_MODELS
+    index = pd.MultiIndex.from_product(
+        [dataset_names, model_names], names=["dataset", "model"]
+    )
+
+    method_names = [key for key in PROMPT_METHODS.keys()]
+    metric_names = METRICS
+    cols = pd.MultiIndex.from_product(
+        [method_names, metric_names], names=["prompt_method", "metric"]
+    )
+
+    df = pd.DataFrame(np.nan, index=index, columns=cols)
+    df.to_csv("results/scores.csv")
 
 
 if __name__ == "__main__":
+    # create_scores_file()
     main(EXPERIMENT)
