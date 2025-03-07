@@ -1,6 +1,7 @@
 import pandas as pd
-from dspy import Example
+from typing import Self
 from pathlib import Path
+from dspy import Example
 from dataclasses import dataclass, field
 
 from .utils import get_dir_name
@@ -14,19 +15,20 @@ class Dataset:
     name: str = field(init=False)
     dataset: list[Example] = field(init=False)
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         self.name = get_dir_name(self.source_path)
         self.dataset = self._init_dataset()
 
-    def __iter__(self):
+    def __iter__(self) -> Example:
         for dspy_example in self.dataset:
             yield dspy_example
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.dataset)
 
-    def __getitem__(self, key):
-        return self.dataset[key]
+    def __getitem__(self, key) -> Self:
+        self.dataset = self.dataset[key]
+        return self
 
     def _init_dataset(self) -> list[Example]:
         data: pd.DataFrame = pd.read_csv(self.source_path)
