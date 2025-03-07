@@ -23,6 +23,16 @@ def save_results(df: pd.DataFrame, dir_path: Path, model_name: str) -> None:
     df.to_csv(save_path, index=False)
 
 
+def save_score(
+    score: float, model_name: str, method: str, metric_name: str, dataset_name: str
+) -> None:
+    file_path = Path("results/scores.csv")
+    df = pd.read_csv(file_path, index_col=[0, 1], header=[0, 1])
+
+    df.loc[(dataset_name, model_name), (method, metric_name)] = score
+    df.to_csv(file_path)
+
+
 def fetch_datasets(dir_path: Path, file_name: str = "*") -> list[Path]:
     return sorted(dir_path.glob(f"**/{file_name}.csv"))
 
