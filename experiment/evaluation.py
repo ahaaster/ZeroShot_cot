@@ -1,7 +1,7 @@
 import re
 import pandas as pd
 from pathlib import Path
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from dspy import Module
 from dspy.evaluate import SemanticF1
@@ -47,10 +47,19 @@ class Decoder:
 
 @dataclass
 class Metric(Module):
-    metric_func: callable
+    name: str
     label_name: str = "label"
     output_name: str = "response"
     decoder: Decoder = None
+    metric_func: callable = field(init=False)
+
+    def __post_init__(self):
+        metrics = {
+            "exact_match": exact_match,
+            "exact_lower": exact_match_lower,
+            "semanticF1": SemanticF1,
+        }
+        self.metric_func = metrics[self.name]
 
     def forward(self, example, pred, trace=None):
         label = example[self.label_name]
