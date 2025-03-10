@@ -10,14 +10,20 @@ from .evaluation import Metric, Decoder
 
 
 def basic_dspy(
-    dataset: Dataset, *, metric_name: str, record_results: bool = False, **kwargs
+    dataset: Dataset,
+    *,
+    metric_name: str,
+    decode: bool = False,
+    record_results: bool = False,
+    **kwargs,
 ):
     method = "basic"
     output_name = "answer"
-    signature = f"{dataset.get_input_names()} -> {output_name}"
+    # signature = f"{dataset.get_input_names()} -> {output_name}"  # Maybe this causes errors
+    signature = dspy.Signature(f"{dataset.get_input_names()} -> {output_name}")
     prompter = Predict(signature=signature)
 
-    decoder = Decoder(dataset.answer_format, greedy_first=False)
+    decoder = Decoder(dataset.answer_format, kwargs["greedy_first"]) if decode else None
     metric = Metric(metric_name, dataset.label_name, output_name, decoder)
 
     prompt_that_shit = Evaluate(
@@ -25,15 +31,17 @@ def basic_dspy(
         metric=metric,
         num_threads=16,
         display_progress=True,
-        # display_table=True,
+        display_table=kwargs["display_table"],
         # return_all_scores=True,  # return_outputs geeft al all_scores inbegrepen
         return_outputs=True,
         provide_traceback=True,
+        max_errors=10_000,
     )
 
     avg_score, results = prompt_that_shit(prompter)
 
     if not record_results:
+        # print(results)
         return
 
     results_df = pd.DataFrame(results)
