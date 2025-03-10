@@ -13,28 +13,30 @@ EXPERIMENT = EXPERIMENTS[0]
 
 # Prompt 'settings'
 LOCAL_MODELS = ["llama3.2:1b", "deepseek-r1:1.5b", "phi3.5", "gemma:2b", "qwen2.5:3b"]
-LOCAL_MODEL = LOCAL_MODELS[1]
-
 PROMPT_METHODS = {
     "control": prompt_control,
     "basic": basic_dspy,
-    "constraint": None,
+    "constraint": basic_dspy,
     "cot": None,
     "multihop": None,
 }
-PROMPT_METHOD = "basic"
-
-METRICS = ["exact_match", "exact_lower", "semanticF1"]
-METRIC = METRICS[0]
+METRICS = ["exact_match", "semanticF1", "semanticF1-decoded"]
 
 
 def main(experiment: str):
     if experiment == "prompt":
-        method = PROMPT_METHOD
-        chosen_model = LOCAL_MODEL
-        chosen_datasets = Path("dataset/cot") / "CommonsenseQA"
-        metric = METRIC
-        run_prompts(method, chosen_model, chosen_datasets, metric, record_results=True)
+        kwargs = {
+            "method": "basic",
+            "chosen_model": LOCAL_MODELS[0],
+            "cache": True,
+            "metric_name": METRICS[0],
+            "record_results": True,
+            "display_table": 8,
+            "decode": True,
+            "greedy_first": False,
+            "chosen_datasets": Path("dataset/cot"),  # / "GSM8K",
+        }
+        run_prompts(**kwargs)
 
     elif experiment == "metric_eval":
         evaluate_metrics()
@@ -44,15 +46,13 @@ def run_prompts(
     method: str,
     chosen_model: str,
     chosen_datasets: Path,
-    metric_name: str,
-    *,
-    record_results: bool = False,
+    **kwargs,
 ):
     lm = dspy.LM(
         f"ollama_chat/{chosen_model}",
         api_base="http://localhost:11434",
         api_key="",
-        cache=True,
+        cache=kwargs.pop("cache", True),
     )
     dspy.configure(lm=lm)
     prompter = PROMPT_METHODS[method]
@@ -73,9 +73,8 @@ def run_prompts(
             unrecorded: Dataset = dataset[-n_unprompted:]
             prompter(
                 unrecorded,
-                record_results=record_results,
                 lm=lm,
-                metric_name=metric_name,
+                **kwargs,
             )
 
         # Edge case of something going very wrong
