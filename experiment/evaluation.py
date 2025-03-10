@@ -25,7 +25,7 @@ class Decoder:
         regex_formats = {
             "text": r"([A-Z][^\.!?]*[\.!?])",  # Simply matches for full sentences
             "mc": r"[A-Z][\)|\.]",  # Multiple Choice
-            "number": r"-?\d+\.?\d*",
+            "number": r"-?\d*\,?\d+\.?\d*",
             "boolean": r"([tT]rue|[fF]alse|[Uu]ntrue|[yY]es|[nN]o\b|\w*[Nn].t\s\w*\s?true)",
         }
         return regex_formats[self.answer_format]
@@ -41,8 +41,15 @@ class Decoder:
             return matches[-1]
 
     def cleanup_string(self, string: str) -> str:
-        if self.answer_format == "mc":
+        if not string:
+            return string
+
+        elif self.answer_format == "mc":
             return re.sub(r"[\)|\.]", "", string)
+        elif self.answer_format == "number":
+            # Remove comma separator for magnitudes of 1,000
+            string = re.sub(r",", "", string)
+            return float(string)
 
 
 @dataclass
@@ -56,7 +63,6 @@ class Metric(Module):
     def __post_init__(self):
         metrics = {
             "exact_match": exact_match,
-            "exact_lower": exact_match_lower,
             "semanticF1": SemanticF1,
         }
         self.metric_func = metrics[self.name]
@@ -72,11 +78,16 @@ class Metric(Module):
 
 
 def exact_match(resp, label):
-    return resp == label
+    if resp is None:
+        print(
+            f"HERE {resp = } | {type(resp)}, while it should be {label=} | {type(label)}"
+        )
+        return False
 
-
-def exact_match_lower(resp: str, label: str) -> bool:
-    return resp.lower() == label.lower()
+    elif isinstance(resp, int | float):
+        return float(resp) == float(label)
+    elif isinstance(resp, str):
+        return str(resp).lower() == str(label).lower()
 
 
 def evaluate_metrics() -> None:
