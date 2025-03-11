@@ -115,7 +115,7 @@ def evaluate_results(df: pd.DataFrame, answer_format: str, **kwargs) -> float:
         score = metric(resp, label)
         score_list.append(score)
 
-    return np.average(score_list)
+    return np.average(score_list) * 100
 
 
 def evaluate_metrics() -> None:
