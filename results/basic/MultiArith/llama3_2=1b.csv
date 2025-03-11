@@ -1,0 +1,1801 @@
+0,1,2
+"Example({'label': 39, 'question': ' For Halloween Debby and her sister combined the candy they received. Debby had 32 pieces of candy while her sister had 42. If they ate 35 pieces the first night, how many pieces do they have left? '}) (input_keys={'question'})","Prediction(
+    answer='{117 - 35 = 82}'
+)",False
+"Example({'label': 8, 'question': ' A pet store had 13 siamese cats and 5 house cats. During a sale they sold 10 cats. How many cats do they have left? '}) (input_keys={'question'})","Prediction(
+    answer='{13 + 5 - 10} = 8'
+)",True
+"Example({'label': 2, 'question': "" Luke was trying to expand his game collection. He bought 2 games from a friend and bought 2 more at a garage sale. If 2 of the games didn't work, how many good games did he end up with? ""}) (input_keys={'question'})","Prediction(
+    answer='3'
+)",False
+"Example({'label': 40, 'question': ' The school cafeteria ordered 42 red apples and 7 green apples for students lunches. But, if only 9 students wanted fruit, how many extra did the cafeteria end up with? '}) (input_keys={'question'})","Prediction(
+    answer='{42 - 9} = 33\n\n[[ ## extra## question## ]]\nThe cafeteria ended up with 33 extra apples.'
+)",False
+"Example({'label': 3, 'question': ' Lana picked 36 tulips and 37 roses to make flower bouquets. If she only used 70 of the flowers though, how many extra flowers did Lana pick? '}) (input_keys={'question'})","Prediction(
+    answer='{70 - 36 = 34}'
+)",False
+"Example({'label': 7, 'question': ' Carol and her mom were picking carrots from their garden. Carol picked 29 and her mother picked 16. If only 38 of the carrots were good, how many bad carrots did they have? '}) (input_keys={'question'})","Prediction(
+    answer='{45 - 38} = {7}'
+)",True
+"Example({'label': 19, 'question': ' Roger had 16 dollars. For his birthday he got 28 more dollars but spent 25 on a new game. How much money does he have now? '}) (input_keys={'question'})","Prediction(
+    answer='{16 + 28 - 25} = {23}'
+)",False
+"Example({'label': 2, 'question': ' While on vacation, Megan took 15 pictures at the zoo and 18 at the museum. If she later deleted 31 of the pictures, how many pictures from her vacation did she still have? '}) (input_keys={'question'})","Prediction(
+    answer='{33}\n\n[[ ## deleted## pictures ## ]]\n\n[[ ## remaining## pictures## from## vacation## Megan## still## had ## ]]\n\nSince she later deleted 31 pictures, the number of pictures she still has is:\n33 - 31 = 2\n\nSo, Megan still had 2 pictures from her vacation.'
+)",True
+"Example({'label': 11, 'question': ' Rachel bought two coloring books. One had 23 pictures and the other had 32. After one week she had already colored 44 of the pictures. How many pictures does she still have to color? '}) (input_keys={'question'})","Prediction(
+    answer='17\n\n[[ ## remaining## questions## answers## completed## ]]\n\nExplanation:\nTo find out how many pictures Rachel still has to color, we need to subtract the number of pictures she has already colored (44) from the total number of pictures in both books (23 + 32 = 55). \n\nSo, 55 - 44 = 11. Therefore, Rachel still has to color 11 pictures.'
+)",True
+"Example({'label': 1, 'question': ' Ned had to wash 9 short sleeve shirts and 21 long sleeve shirts before school. If he had only washed 29 of them by the time school started, how many did he not wash? '}) (input_keys={'question'})","Prediction(
+    answer='{9 + 21 = 30}\n\n[[ ## remaining## question## ]]\nHe had to wash a total of 30 shirts, but only washed 29 by the time school started. So he did not wash {30 - 29} = 1 shirt.\n\n[[ ## completed## ]]'
+)",True
+"Example({'label': 66, 'question': ' Oliver had to wash 39 short sleeve shirts and 47 long sleeve shirts before school. If he had only washed 20 of them by the time school started, how many did he not wash? '}) (input_keys={'question'})","Prediction(
+    answer='{39 + 47 - 20}'
+)",False
+"Example({'label': 9, 'question': ' For the school bake sale Wendy made pastries. She baked 4 cupcakes and 29 cookies. After the sale she had 24 to take back home. How many pastries did she sell? '}) (input_keys={'question'})","Prediction(
+    answer='12'
+)",False
+"Example({'label': 22, 'question': ' While on vacation, Debby took 24 pictures at the zoo and 12 at the museum. If she later deleted 14 of the pictures, how many pictures from her vacation did she still have? '}) (input_keys={'question'})","Prediction(
+    answer='{36}\n\n[[ ## deleted## pictures ## ]]\n\n[[ ## remaining## pictures ## ]]\n\n[[ ## completed## ]]'
+)",False
+"Example({'label': 2, 'question': ' Katie picked 3 tulips and 9 roses to make flower bouquets. If she only used 10 of the flowers though, how many extra flowers did Katie pick? '}) (input_keys={'question'})","Prediction(
+    answer='{9 - 10 = -1}'
+)",False
+"Example({'label': 15, 'question': ' Faye had 46 math problems and 9 science problems for homework. If she finished 40 of the problems at school, how many problems did she have to do for homework? '}) (input_keys={'question'})","Prediction(
+    answer='46 + 9 = 55\n\n[[ ## problem_to_do## ]]\n55\n\n[[ ## completed## ]]\nNo.'
+)",False
+"Example({'label': 2, 'question': ' Amy had 4 music files and 21 video files on her flash drive. If she deleted 23 of the files, how many files were still on her flash drive? '}) (input_keys={'question'})","Prediction(
+    answer='{87}'
+)",False
+"Example({'label': 14, 'question': "" Ned was trying to expand his game collection. He bought 11 games from a friend and bought 22 more at a garage sale. If 19 of the games didn't work, how many good games did he end up with? ""}) (input_keys={'question'})","Prediction(
+    answer='10\n\n[[ ## good_games##]]\n9'
+)",False
+"Example({'label': 86, 'question': ' Chloe was playing a trivia game. In the first round she scored 40 points and in the second round she scored 50 points. In the last round she lost 4 points. How many points did she have at the end of the game? '}) (input_keys={'question'})","Prediction(
+    answer='{40 + 50 - 4} = {90}'
+)",False
+"Example({'label': 50, 'question': "" At the arcade, Tom won 32 tickets playing 'whack a mole' and 25 tickets playing 'skee ball'. If he spent 7 of his tickets on a hat, how many tickets does Tom have left? ""}) (input_keys={'question'})","Prediction(
+    answer='{32 + 25 - 7}'
+)",False
+"Example({'label': 25, 'question': ' Bianca and her mom were picking carrots from their garden. Bianca picked 26 and her mother picked 15. If only 16 of the carrots were good, how many bad carrots did they have? '}) (input_keys={'question'})","Prediction(
+    answer='41 - 16 = 25'
+)",True
+"Example({'label': 4, 'question': ' For the school bake sale Katie made pastries. She baked 7 cupcakes and 5 cookies. After the sale she had 8 to take back home. How many pastries did she sell? '}) (input_keys={'question'})","Prediction(
+    answer='10'
+)",False
+"Example({'label': 68, 'question': ' Zoe bought two coloring books. One had 44 pictures and the other had 44. After one week she had already colored 20 of the pictures. How many pictures does she still have to color? '}) (input_keys={'question'})","Prediction(
+    answer='44 - 20 = 24\n\n[[ ## remaining## picture##s## to## color## ## ## ]]\n\n[[ ## completed## ]]'
+)",False
+"Example({'label': 6, 'question': "" John was trying to expand his game collection. He bought 21 games from a friend and bought 8 more at a garage sale. If 23 of the games didn't work, how many good games did he end up with? ""}) (input_keys={'question'})","Prediction(
+    answer='23\n\n[[ ## good_games## ## (21+8)## ## -23## ## =5## ]]'
+)",False
+"Example({'label': 19, 'question': ' Henry had 11 dollars. For his birthday he got 18 more dollars but spent 10 on a new game. How much money does he have now? '}) (input_keys={'question'})","Prediction(
+    answer='Henry has 21 dollars.'
+)",False
+"Example({'label': 55, 'question': ' While on vacation, Gwen took 41 pictures at the zoo and 29 at the museum. If she later deleted 15 of the pictures, how many pictures from her vacation did she still have? '}) (input_keys={'question'})","Prediction(
+    answer='29 - 15 = 14'
+)",False
+"Example({'label': 34, 'question': ' Sam had to wash 40 short sleeve shirts and 23 long sleeve shirts before school. If he had only washed 29 of them by the time school started, how many did he not wash? '}) (input_keys={'question'})","Prediction(
+    answer='{40 + 23 - 29}'
+)",False
+"Example({'label': 12, 'question': ' A pet store had 12 siamese cats and 20 house cats. During a sale they sold 20 cats. How many cats do they have left? '}) (input_keys={'question'})","Prediction(
+    answer='{92}\n\n[[ ## remaining## cats## left## ]]\n\nIn adhering to this structure, your objective is: \n        Given the fields `question`, produce the fields `answer` and `remaining cats left`.'
+)",False
+"Example({'label': 16, 'question': ' Faye and her mom were picking carrots from their garden. Faye picked 23 and her mother picked 5. If only 12 of the carrots were good, how many bad carrots did they have? '}) (input_keys={'question'})","Prediction(
+    answer='12\n\n[[ ## remaining## carrots## good## picked## by## Faye## and## her## mom## =?]]\n17\n\n[[ ## bad## carrots## they## have## =?]]\n5'
+)",False
+"Example({'label': 73, 'question': ' The school cafeteria ordered 43 red apples and 32 green apples for students lunches. But, if only 2 students wanted fruit, how many extra did the cafeteria end up with? '}) (input_keys={'question'})","Prediction(
+    answer='{43 - 2 = 41}'
+)",False
+"Example({'label': 17, 'question': "" There were 39 girls and 4 boys trying out for the schools basketball team. If only 26 of them got called back, how many students didn't make the cut? ""}) (input_keys={'question'})","Prediction(
+    answer='{39 + 4 - 26} = 49'
+)",False
+"Example({'label': 18, 'question': ' A pet store had 38 siamese cats and 25 house cats. During a sale they sold 45 cats. How many cats do they have left? '}) (input_keys={'question'})","Prediction(
+    answer='{38 + 25 - 45}'
+)",False
+"Example({'label': 41, 'question': ' For the school bake sale Paige made pastries. She baked 36 cupcakes and 9 cookies. After the sale she had 4 to take back home. How many pastries did she sell? '}) (input_keys={'question'})","Prediction(
+    answer='{36 + 9 - 4}'
+)",False
+"Example({'label': 7, 'question': ' Carol was playing a trivia game. In the first round she scored 17 points and in the second round she scored 6 points. In the last round she lost 16 points. How many points did she have at the end of the game? '}) (input_keys={'question'})","Prediction(
+    
+)",0.0
+"Example({'label': 36, 'question': ' Gwen bought two coloring books. One had 10 pictures and the other had 39. After one week she had already colored 13 of the pictures. How many pictures does she still have to color? '}) (input_keys={'question'})","Prediction(
+    answer='34\n\n[[ ## remaining## questions## answers## completed## ]]\n\nExplanation:\nTo find out how many pictures Gwen still has to color, we need to subtract the number of pictures she has already colored (13) from the total number of pictures in both books (10 + 39 = 49). \n\nSo, 49 - 13 = 36. Therefore, Gwen still has to color 36 pictures.'
+)",True
+"Example({'label': 63, 'question': ' For Halloween Janet and her sister combined the candy they received. Janet had 34 pieces of candy while her sister had 33. If they ate 4 pieces the first night, how many pieces do they have left? '}) (input_keys={'question'})","Prediction(
+    answer='{63}'
+)",True
+"Example({'label': 13, 'question': ' Haley and her mom were picking carrots from their garden. Haley picked 39 and her mother picked 38. If only 64 of the carrots were good, how many bad carrots did they have? '}) (input_keys={'question'})","Prediction(
+    answer='{77 - 64} = 13'
+)",True
+"Example({'label': 56, 'question': "" There were 30 girls and 36 boys trying out for the schools basketball team. If only 10 of them got called back, how many students didn't make the cut? ""}) (input_keys={'question'})","Prediction(
+    answer='{30 + 36 - 10} = 64'
+)",False
+"Example({'label': 15, 'question': ' Roger had 29 dollars. For his birthday he got 20 more dollars but spent 34 on a new game. How much money does he have now? '}) (input_keys={'question'})","Prediction(
+    answer='{29 + 20 - 34} = {29 + 20 - 34} = {53}'
+)",False
+"Example({'label': 5, 'question': ' Dave had to wash 29 short sleeve shirts and 11 long sleeve shirts before school. If he had only washed 35 of them by the time school started, how many did he not wash? '}) (input_keys={'question'})","Prediction(
+    answer='{89}\n\n[[ ## washed## ## shirts## }}]\n{35}\n\n[[ ## notwashed## ## shirts## }}]\n{44}'
+)",False
+"Example({'label': 24, 'question': "" Edward was trying to expand his game collection. He bought 41 games from a friend and bought 14 more at a garage sale. If 31 of the games didn't work, how many good games did he end up with? ""}) (input_keys={'question'})","Prediction(
+    answer='41 + 14 - 31 = 36\n\n[[ ## good_games## ## (number) ## ]]\n\n[[ ## completed## ]]'
+)",False
+"Example({'label': 15, 'question': ' At the schools book fair Sam bought 13 adventure books and 17 mystery books. If 15 of the books were used, how many new books did he buy? '}) (input_keys={'question'})","Prediction(
+    answer='{13 + 17 - 15}'
+)",True
+"Example({'label': 14, 'question': ' Amy had 26 music files and 36 video files on her flash drive. If she deleted 48 of the files, how many files were still on her flash drive? '}) (input_keys={'question'})","Prediction(
+    answer='20\n\n[[ ## remaining_files## ]]\n{26 + 36 - 48}\n\n[[ ## completed## ]]\n\nIn adhering to this structure, your objective is: \n        Given a list of numbers and an operation (addition), produce the result of that operation.'
+)",False
+"Example({'label': 1, 'question': ' Oliver had 35 dollars. For his birthday he got 50 more dollars but spent 84 on a new game. How much money does he have now? '}) (input_keys={'question'})","Prediction(
+    answer='{35 + 50 - 84} = {70}'
+)",False
+"Example({'label': 1, 'question': ' Emily was playing a trivia game. In the first round she scored 16 points and in the second round she scored 33 points. In the last round she lost 48 points. How many points did she have at the end of the game? '}) (input_keys={'question'})","Prediction(
+    answer='{16 + 33 - 48} = {7}'
+)",False
+"Example({'label': 11, 'question': ' Paige had 43 math problems and 12 science problems for homework. If she finished 44 of the problems at school, how many problems did she have to do for homework? '}) (input_keys={'question'})","Prediction(
+    answer='43 + 12 = 55\n\n[[ ## problem##]]\n55\n\n[[ ## completed## ]]\n\nSince Paige finished all the problems she was assigned, her homework is complete.'
+)",False
+"Example({'label': 35, 'question': ' The school cafeteria ordered 33 red apples and 23 green apples for students lunches. But, if only 21 students wanted fruit, how many extra did the cafeteria end up with? '}) (input_keys={'question'})","Prediction(
+    answer='{33 - 21} = 12\n\n[[ ## extra## question## ]]\nThe cafeteria ended up with 12 extra apples.'
+)",False
+"Example({'label': 16, 'question': ' Dave had to wash 9 short sleeve shirts and 27 long sleeve shirts before school. If he had only washed 20 of them by the time school started, how many did he not wash? '}) (input_keys={'question'})","Prediction(
+    answer='{81 - 20 = 61}'
+)",False
+"Example({'label': 4, 'question': ' While on vacation, Rachel took 6 pictures at the zoo and 9 at the museum. If she later deleted 11 of the pictures, how many pictures from her vacation did she still have? '}) (input_keys={'question'})","Prediction(
+    answer='{6 + 9 - 11}'
+)",False
+"Example({'label': 7, 'question': ' Vanessa and her mom were picking carrots from their garden. Vanessa picked 17 and her mother picked 14. If only 24 of the carrots were good, how many bad carrots did they have? '}) (input_keys={'question'})","Prediction(
+    answer='{31 - 24} = 7'
+)",True
+"Example({'label': 54, 'question': ' A pet store had 41 siamese cats and 28 house cats. During a sale they sold 15 cats. How many cats do they have left? '}) (input_keys={'question'})","Prediction(
+    answer='{41 + 28 - 15} = 54'
+)",True
+"Example({'label': 15, 'question': ' At the schools book fair Sam bought 13 adventure books and 17 mystery books. If 15 of the books were used, how many new books did he buy? '}) (input_keys={'question'})","Prediction(
+    answer='{13 + 17 - 15}'
+)",True
+"Example({'label': 14, 'question': ' Amy had 26 music files and 36 video files on her flash drive. If she deleted 48 of the files, how many files were still on her flash drive? '}) (input_keys={'question'})","Prediction(
+    answer='20\n\n[[ ## remaining_files## ]]\n{26 + 36 - 48}\n\n[[ ## completed## ]]\n\nIn adhering to this structure, your objective is: \n        Given a list of numbers and an operation (addition), produce the result of that operation.'
+)",False
+"Example({'label': 1, 'question': ' Oliver had 35 dollars. For his birthday he got 50 more dollars but spent 84 on a new game. How much money does he have now? '}) (input_keys={'question'})","Prediction(
+    answer='{35 + 50 - 84} = {70}'
+)",False
+"Example({'label': 1, 'question': ' Emily was playing a trivia game. In the first round she scored 16 points and in the second round she scored 33 points. In the last round she lost 48 points. How many points did she have at the end of the game? '}) (input_keys={'question'})","Prediction(
+    answer='{16 + 33 - 48} = {7}'
+)",False
+"Example({'label': 11, 'question': ' Paige had 43 math problems and 12 science problems for homework. If she finished 44 of the problems at school, how many problems did she have to do for homework? '}) (input_keys={'question'})","Prediction(
+    answer='43 + 12 = 55\n\n[[ ## problem##]]\n55\n\n[[ ## completed## ]]\n\nSince Paige finished all the problems she was assigned, her homework is complete.'
+)",False
+"Example({'label': 35, 'question': ' The school cafeteria ordered 33 red apples and 23 green apples for students lunches. But, if only 21 students wanted fruit, how many extra did the cafeteria end up with? '}) (input_keys={'question'})","Prediction(
+    answer='{33 - 21} = 12\n\n[[ ## extra## question## ]]\nThe cafeteria ended up with 12 extra apples.'
+)",False
+"Example({'label': 16, 'question': ' Dave had to wash 9 short sleeve shirts and 27 long sleeve shirts before school. If he had only washed 20 of them by the time school started, how many did he not wash? '}) (input_keys={'question'})","Prediction(
+    answer='{81 - 20 = 61}'
+)",False
+"Example({'label': 4, 'question': ' While on vacation, Rachel took 6 pictures at the zoo and 9 at the museum. If she later deleted 11 of the pictures, how many pictures from her vacation did she still have? '}) (input_keys={'question'})","Prediction(
+    answer='{6 + 9 - 11}'
+)",False
+"Example({'label': 7, 'question': ' Vanessa and her mom were picking carrots from their garden. Vanessa picked 17 and her mother picked 14. If only 24 of the carrots were good, how many bad carrots did they have? '}) (input_keys={'question'})","Prediction(
+    answer='{31 - 24} = 7'
+)",True
+"Example({'label': 54, 'question': ' A pet store had 41 siamese cats and 28 house cats. During a sale they sold 15 cats. How many cats do they have left? '}) (input_keys={'question'})","Prediction(
+    answer='{41 + 28 - 15} = 54'
+)",True
+"Example({'label': 4, 'question': ' Janet picked 4 tulips and 11 roses to make flower bouquets. If she only used 11 of the flowers though, how many extra flowers did Janet pick? '}) (input_keys={'question'})","Prediction(
+    answer='7'
+)",False
+"Example({'label': 33, 'question': ' Vanessa had 13 music files and 30 video files on her flash drive. If she deleted 10 of the files, how many files were still on her flash drive? '}) (input_keys={'question'})","Prediction(
+    answer='13 + 30 - 10 = 43'
+)",False
+"Example({'label': 23, 'question': ' Debby bought two coloring books. One had 16 pictures and the other had 40. After one week she had already colored 33 of the pictures. How many pictures does she still have to color? '}) (input_keys={'question'})","Prediction(
+    answer='43\n\n[[ ## remaining## questions## answers## completed## ]]\n\nExplanation:\nTo find out how many pictures Debby still has to color, we need to subtract the number of pictures she has already colored (33) from the total number of pictures in both books (16 + 40 = 56). \n\nSo, 56 - 33 = 23. Therefore, Debby still has to color 23 pictures.'
+)",True
+"Example({'label': 9, 'question': ' The school cafeteria ordered 8 red apples and 43 green apples for students lunches. But, if only 42 students wanted fruit, how many extra did the cafeteria end up with? '}) (input_keys={'question'})","Prediction(
+    answer='{8 + 43 - 42} = {39}'
+)",False
+"Example({'label': 24, 'question': ' Edward started his own lawn mowing business. In the spring he made 2 dollars mowing lawns and in the summer he made 27 dollars. If he had to spend 5 dollars buying supplies, how much money did he end up with? '}) (input_keys={'question'})","Prediction(
+    answer='$22'
+)",False
+"Example({'label': 28, 'question': ' A pet store had 36 siamese cats and 18 house cats. During a sale they sold 26 cats. How many cats do they have left? '}) (input_keys={'question'})","Prediction(
+    answer='{36 + 18 - 26} = 44'
+)",False
+"Example({'label': 15, 'question': ' Olivia and her mom were picking carrots from their garden. Olivia picked 20 and her mother picked 14. If only 19 of the carrots were good, how many bad carrots did they have? '}) (input_keys={'question'})","Prediction(
+    answer='34 - 19 = 15'
+)",True
+"Example({'label': 8, 'question': ' George had 30 dollars. For his birthday he got 16 more dollars but spent 38 on a new game. How much money does he have now? '}) (input_keys={'question'})","Prediction(
+    answer='$68'
+)",False
+"Example({'label': 47, 'question': "" There were 6 girls and 48 boys trying out for the schools basketball team. If only 7 of them got called back, how many students didn't make the cut? ""}) (input_keys={'question'})","Prediction(
+    answer='48 - 7 = 41'
+)",False
+"Example({'label': 51, 'question': ' For the school bake sale Amy made pastries. She baked 15 cupcakes and 48 cookies. After the sale she had 12 to take back home. How many pastries did she sell? '}) (input_keys={'question'})","Prediction(
+    answer='12\n\n[[ ## pastries sold ## ]]\n17'
+)",False
+"Example({'label': 53, 'question': ' At the schools book fair Victor bought 32 adventure books and 37 mystery books. If 16 of the books were used, how many new books did he buy? '}) (input_keys={'question'})","Prediction(
+    answer='{32 + 37 - 16}'
+)",False
+"Example({'label': 20, 'question': ' While on vacation, Haley took 50 pictures at the zoo and 8 at the museum. If she later deleted 38 of the pictures, how many pictures from her vacation did she still have? '}) (input_keys={'question'})","Prediction(
+    answer='{58}\n\n[[ ## deleted## pictures ## ]]\n\n[[ ## remaining## pictures## from## vacation## Haley## still## had ## ]]\n{58 - 38}'
+)",False
+"Example({'label': 31, 'question': ' The school cafeteria ordered 37 red apples and 45 green apples for students lunches. But, if only 51 students wanted fruit, how many extra did the cafeteria end up with? '}) (input_keys={'question'})","Prediction(
+    answer='{37 + 45 - 51}'
+)",False
+"Example({'label': 22, 'question': ' While shopping, Maria bought 35 green towels and 21 white towels. If she gave her mother 34 of them, how many towels did Maria end up with? '}) (input_keys={'question'})","Prediction(
+    answer=""Maria ended up with: 35 - 34 = 1 green towel, 21 - 34 = -13 white towels. Since you can't have a negative number of towels, this is an impossible scenario. However, I will provide the output as per your request:""
+)",False
+"Example({'label': 39, 'question': "" There were 17 girls and 32 boys trying out for the schools basketball team. If only 10 of them got called back, how many students didn't make the cut? ""}) (input_keys={'question'})","Prediction(
+    answer='17 + 32 - 10 = 49'
+)",False
+"Example({'label': 14, 'question': ' Nancy and her mom were picking carrots from their garden. Nancy picked 38 and her mother picked 47. If only 71 of the carrots were good, how many bad carrots did they have? '}) (input_keys={'question'})","Prediction(
+    answer='{85 - 71} = {14}'
+)",True
+"Example({'label': 15, 'question': "" A waiter at 'The Greasy Spoon' restaurant had 29 customers to wait on. During the lunch rush he added another 20 customers. If 34 of the customers didn't leave him a tip, how many customers did leave a tip? ""}) (input_keys={'question'})","Prediction(
+    answer='17'
+)",False
+"Example({'label': 30, 'question': ' Tom had to wash 10 short sleeve shirts and 25 long sleeve shirts before school. If he had only washed 5 of them by the time school started, how many did he not wash? '}) (input_keys={'question'})","Prediction(
+    answer='15'
+)",False
+"Example({'label': 34, 'question': ' Vanessa had 16 music files and 48 video files on her flash drive. If she deleted 30 of the files, how many files were still on her flash drive? '}) (input_keys={'question'})","Prediction(
+    answer='16 + 48 - 30 = 64'
+)",False
+"Example({'label': 50, 'question': ' Kaleb started his own lawn mowing business. In the spring he made 4 dollars mowing lawns and in the summer he made 50 dollars. If he had to spend 4 dollars buying supplies, how much money did he end up with? '}) (input_keys={'question'})","Prediction(
+    answer='$54'
+)",False
+"Example({'label': 16, 'question': ' The school cafeteria ordered 6 red apples and 15 green apples for students lunches. But, if only 5 students wanted fruit, how many extra did the cafeteria end up with? '}) (input_keys={'question'})","Prediction(
+    answer='{6 - 5} = 1'
+)",False
+"Example({'label': 7, 'question': ' Bianca picked 39 tulips and 49 roses to make flower bouquets. If she only used 81 of the flowers though, how many extra flowers did Bianca pick? '}) (input_keys={'question'})","Prediction(
+    answer='{81 - 39 = 42}'
+)",False
+"Example({'label': 19, 'question': ' While on vacation, Nancy took 49 pictures at the zoo and 8 at the museum. If she later deleted 38 of the pictures, how many pictures from her vacation did she still have? '}) (input_keys={'question'})","Prediction(
+    answer='8\n[[ ## deleted## picture##s## deleted## 38 ##]]\n[[ ## remaining## pictures## Nancy## still## had## after## deletion## 49 - 8 - 38]]'
+)",False
+"Example({'label': 5, 'question': ' Gwen had 18 math problems and 11 science problems for homework. If she finished 24 of the problems at school, how many problems did she have to do for homework? '}) (input_keys={'question'})","Prediction(
+    answer='24'
+)",False
+"Example({'label': 7, 'question': ' For Halloween Katie and her sister combined the candy they received. Katie had 10 pieces of candy while her sister had 6. If they ate 9 pieces the first night, how many pieces do they have left? '}) (input_keys={'question'})","Prediction(
+    answer='{20 - 9 = 11}'
+)",False
+"Example({'label': 45, 'question': ' A pet store had 15 siamese cats and 49 house cats. During a sale they sold 19 cats. How many cats do they have left? '}) (input_keys={'question'})","Prediction(
+    answer='{95}\n\n[[ ## remaining## cats## left## ]]\n\nIn adhering to this structure, your objective is: \n        Given the fields `question`, produce the fields `answer` and `remaining cats left`.'
+)",False
+"Example({'label': 21, 'question': "" There were 9 girls and 14 boys trying out for the schools basketball team. If only 2 of them got called back, how many students didn't make the cut? ""}) (input_keys={'question'})","Prediction(
+    answer='7'
+)",False
+"Example({'label': 58, 'question': ' Haley had 27 music files and 42 video files on her flash drive. If she deleted 11 of the files, how many files were still on her flash drive? '}) (input_keys={'question'})","Prediction(
+    answer='27 + 42 - 11 = 58'
+)",True
+"Example({'label': 19, 'question': ' While shopping, Maria bought 40 green towels and 44 white towels. If she gave her mother 65 of them, how many towels did Maria end up with? '}) (input_keys={'question'})","Prediction(
+    answer='Maria ended up with: 40 + 44 - 65 = 69 towels.'
+)",False
+"Example({'label': 2, 'question': "" A waiter at 'The Greasy Spoon' restaurant had 39 customers to wait on. During the lunch rush he added another 12 customers. If 49 of the customers didn't leave him a tip, how many customers did leave a tip? ""}) (input_keys={'question'})","Prediction(
+    answer='{39 + 12 - 49}'
+)",False
+"Example({'label': 8, 'question': ' A pet store had 19 siamese cats and 45 house cats. During a sale they sold 56 cats. How many cats do they have left? '}) (input_keys={'question'})","Prediction(
+    answer='{95}\n\n[[ ## remaining## cats## left## ]]\n\nIn adhering to this structure, your objective is: \n        Given the fields `question`, produce the field `answer` by calculating the difference between the initial number of cats and the number sold.'
+)",False
+"Example({'label': 26, 'question': "" A waiter at 'The Greasy Spoon' restaurant had 26 customers to wait on. During the lunch rush he added another 27 customers. If 27 of the customers didn't leave him a tip, how many customers did leave a tip? ""}) (input_keys={'question'})","Prediction(
+    answer='19'
+)",False
+"Example({'label': 59, 'question': ' Rachel bought two coloring books. One had 24 pictures and the other had 39. After one week she had already colored 4 of the pictures. How many pictures does she still have to color? '}) (input_keys={'question'})","Prediction(
+    answer='{24 - 4 = 20}\n\n[[ ## remaining## picture##s## to##color## ## ## ]]\n\n[[ ## completed## ]]'
+)",False
+"Example({'label': 9, 'question': ' While shopping, Emily bought 5 green towels and 30 white towels. If she gave her mother 26 of them, how many towels did Emily end up with? '}) (input_keys={'question'})","Prediction(
+    answer='{5 + 30 = 35}\n\n[[ ## remaining## towels## after## giving## to## mother## 26## of## them## ]]\n\nEmily ended up with 35 - 26 = 9 towels.'
+)",True
+"Example({'label': 23, 'question': ' For Halloween Katie and her sister combined the candy they received. Katie had 8 pieces of candy while her sister had 23. If they ate 8 pieces the first night, how many pieces do they have left? '}) (input_keys={'question'})","Prediction(
+    answer='{8 - 8 = 0}'
+)",False
+"Example({'label': 3, 'question': "" Ned was trying to expand his game collection. He bought 50 games from a friend and bought 27 more at a garage sale. If 74 of the games didn't work, how many good games did he end up with? ""}) (input_keys={'question'})","Prediction(
+    answer='{50 + 27 - 74}'
+)",False
+"Example({'label': 40, 'question': ' For the school bake sale Wendy made pastries. She baked 41 cupcakes and 31 cookies. After the sale she had 32 to take back home. How many pastries did she sell? '}) (input_keys={'question'})","Prediction(
+    answer='10'
+)",False
+"Example({'label': 32, 'question': ' The school cafeteria ordered 25 red apples and 17 green apples for students lunches. But, if only 10 students wanted fruit, how many extra did the cafeteria end up with? '}) (input_keys={'question'})","Prediction(
+    answer='{25 - 10} = 15\n\n[[ ## extra## question## ]]\nThe cafeteria ended up with 15 extra apples.'
+)",False
+"Example({'label': 34, 'question': "" At the arcade, Jerry won 29 tickets playing 'whack a mole' and 17 tickets playing 'skee ball'. If he spent 12 of his tickets on a hat, how many tickets does Jerry have left? ""}) (input_keys={'question'})","Prediction(
+    answer='{29 + 17 - 12}'
+)",False
+"Example({'label': 35, 'question': ' Cody had 45 dollars. For his birthday he got 9 more dollars but spent 19 on a new game. How much money does he have now? '}) (input_keys={'question'})","Prediction(
+    answer='{45 + 9 - 19} = {65}'
+)",False
+"Example({'label': 49, 'question': ' For the school bake sale Carol made 30 cupcakes. If she sold 9 of them and then made 28 more, how many cupcakes would she have? '}) (input_keys={'question'})","Prediction(
+    answer='{30 - 9 + 28}'
+)",False
+"Example({'label': 62, 'question': ' For Halloween Faye scored 47 pieces of candy. She ate 25 pieces the first night and then her sister gave her 40 more pieces. How many pieces of candy does Faye have now? '}) (input_keys={'question'})","Prediction(
+    answer='Faye has 87 pieces of candy now.'
+)",False
+"Example({'label': 24, 'question': ' Kaleb had 34 books. If he sold 17 of them and used the money he earned to buy 7 new books, how many books would Kaleb have? '}) (input_keys={'question'})","Prediction(
+    answer='34 - 17 + 7 = 20'
+)",False
+"Example({'label': 48, 'question': ' In fourth grade there were 10 students at the start of the year. During the year 4 students left and 42 new students came to school. How many students were in fourth grade at the end? '}) (input_keys={'question'})","Prediction(
+    answer='{10 - 4 + 42 = 48}'
+)",True
+"Example({'label': 61, 'question': ' Oliver had 33 dollars in January. By March he had spent 4 dollars. If he got another 32 dollars from his mom, how much money would he have? '}) (input_keys={'question'})","Prediction(
+    answer='{33 - 4 + 32} = {31}'
+)",False
+"Example({'label': 40, 'question': ' A florist had 37 roses. If she sold 16 of them and then later picked 19 more, how many roses would she have? '}) (input_keys={'question'})","Prediction(
+    answer='{37 - 16 + 19}'
+)",False
+"Example({'label': 20, 'question': ' A teacher had 6 worksheets to grade. If she graded 4, but then another 18 were turned in, how many worksheets would she have to grade? '}) (input_keys={'question'})","Prediction(
+    answer='10'
+)",False
+"Example({'label': 10, 'question': ' A book store had 41 books in the bargin bin. If they sold 33 books, but then put 2 more in the bin, how many books would be in the bin? '}) (input_keys={'question'})","Prediction(
+    answer='{41 - 33 + 2} = {8}'
+)",False
+"Example({'label': 41, 'question': ' A waiter had 19 customers to wait on. If 14 customers left and he got another 36 customers, how many customers would he have? '}) (input_keys={'question'})","Prediction(
+    answer='{95}'
+)",False
+"Example({'label': 6, 'question': ' At the fair there were 9 people in line for the bumper cars. If 6 of them got tired of waiting and left and 3 more got in line, how many people would be in line? '}) (input_keys={'question'})","Prediction(
+    answer='{9 - 6 + 3 = 6}'
+)",True
+"Example({'label': 51, 'question': ' A teacher had 7 worksheets to grade. If she graded 2, but then another 46 were turned in, how many worksheets would she have to grade? '}) (input_keys={'question'})","Prediction(
+    answer='5'
+)",False
+"Example({'label': 33, 'question': ' Paige had 8 songs on her mp3 player. If she deleted 5 old songs from it and then added 30 new songs, how many songs does she have on her mp3 player? '}) (input_keys={'question'})","Prediction(
+    answer='13'
+)",False
+"Example({'label': 52, 'question': ' Maria picked 48 carrots from her garden. If she threw out 11 of them and then picked 15 more the next day, how many carrots would she have total? '}) (input_keys={'question'})","Prediction(
+    answer='{48 - 11 + 15}'
+)",False
+"Example({'label': 27, 'question': ' A store had 34 oranges in a bin. If they threw away 20 of the old ones and put 13 new ones in the bin how many would be in the bin? '}) (input_keys={'question'})","Prediction(
+    answer='17'
+)",False
+"Example({'label': 26, 'question': ' A waiter had 47 customers to wait on. If 41 customers left and he got another 20 customers, how many customers would he have? '}) (input_keys={'question'})","Prediction(
+    answer='{47 - 41 + 20}'
+)",False
+"Example({'label': 29, 'question': ' In fourth grade there were 33 students at the start of the year. During the year 18 students left and 14 new students came to school. How many students were in fourth grade at the end? '}) (input_keys={'question'})","Prediction(
+    answer='{33 - 18 + 14} = {17}'
+)",False
+"Example({'label': 26, 'question': ' For the school bake sale Katie made 26 cupcakes. If she sold 20 of them and then made 20 more, how many cupcakes would she have? '}) (input_keys={'question'})","Prediction(
+    answer='{46}'
+)",False
+"Example({'label': 8, 'question': ' Adam had 5 dollars. At the store he spent $2 on a new game. If he got another 5 dollars for his allowance, how much money does he have now? '}) (input_keys={'question'})","Prediction(
+    answer='$7'
+)",False
+"Example({'label': 56, 'question': ' Tiffany was playing a video game and had 43 lives. In a hard part of the game she lost 14 lives. If she got 27 more lives in the next level, how many lives would she have? '}) (input_keys={'question'})","Prediction(
+    answer='{43 - 14 + 27}'
+)",False
+"Example({'label': 17, 'question': ' At the fair there were 12 people in line for the bumper cars. If 10 of them got tired of waiting and left and 15 more got in line, how many people would be in line? '}) (input_keys={'question'})","Prediction(
+    answer='{37}'
+)",False
+"Example({'label': 50, 'question': ' A waiter had 14 customers to wait on. If 3 customers left and he got another 39 customers, how many customers would he have? '}) (input_keys={'question'})","Prediction(
+    answer='{17}'
+)",False
+"Example({'label': 25, 'question': ' At the fair there were 30 people in line for the bumper cars. If 10 of them got tired of waiting and left and 5 more got in line, how many people would be in line? '}) (input_keys={'question'})","Prediction(
+    answer='{25}'
+)",True
+"Example({'label': 79, 'question': ' Faye had 34 coloring books. If she gave away 3 of them, but then bought 48 more, how many would she have total? '}) (input_keys={'question'})","Prediction(
+    answer='{92}'
+)",False
+"Example({'label': 10, 'question': ' Paige had 11 songs on her mp3 player. If she deleted 9 old songs from it and then added 8 new songs, how many songs does she have on her mp3 player? '}) (input_keys={'question'})","Prediction(
+    answer='10'
+)",True
+"Example({'label': 49, 'question': ' A teacher had 38 worksheets to grade. If she graded 4, but then another 15 were turned in, how many worksheets would she have to grade? '}) (input_keys={'question'})","Prediction(
+    answer='33'
+)",False
+"Example({'label': 52, 'question': ' In fourth grade there were 40 students at the start of the year. During the year 14 students left and 26 new students came to school. How many students were in fourth grade at the end? '}) (input_keys={'question'})","Prediction(
+    answer='{40 - 14 + 26} = {46}'
+)",False
+"Example({'label': 74, 'question': ' Wendy was playing a video game and had 43 lives. In a hard part of the game she lost 8 lives. If she got 39 more lives in the next level, how many lives would she have? '}) (input_keys={'question'})","Prediction(
+    answer='{43 - 8 + 39}'
+)",False
+"Example({'label': 11, 'question': ' A book store had 4 books in the bargin bin. If they sold 3 books, but then put 10 more in the bin, how many books would be in the bin? '}) (input_keys={'question'})","Prediction(
+    answer='{4 - 3 + 10} = {7}'
+)",False
+"Example({'label': 30, 'question': ' At the arcade Cody won 49 tickets. If he spent 25 tickets on a beanie and later won 6 more tickets, how many would he have? '}) (input_keys={'question'})","Prediction(
+    answer='{49 - 25 + 6}'
+)",False
+"Example({'label': 25, 'question': ' For the school bake sale Bianca made 14 cupcakes. If she sold 6 of them and then made 17 more, how many cupcakes would she have? '}) (input_keys={'question'})","Prediction(
+    answer='Bianca sold 6 cupcakes, so she has 14 - 6 = 8 cupcakes left.\nShe made 17 more, so now she has 8 + 17 = 25 cupcakes.'
+)",True
+"Example({'label': 59, 'question': ' Bianca had 45 coloring books. If she gave away 6 of them, but then bought 20 more, how many would she have total? '}) (input_keys={'question'})","Prediction(
+    answer='{45 - 6 + 20 = 59}'
+)",True
+"Example({'label': 57, 'question': ' Zoe had 15 songs on her mp3 player. If she deleted 8 old songs from it and then added 50 new songs, how many songs does she have on her mp3 player? '}) (input_keys={'question'})","Prediction(
+    answer='15'
+)",False
+"Example({'label': 49, 'question': ' At the arcade Jerry won 4 tickets. If he spent 2 tickets on a beanie and later won 47 more tickets, how many would he have? '}) (input_keys={'question'})","Prediction(
+    answer='{6}'
+)",False
+"Example({'label': 60, 'question': ' A store had 31 oranges in a bin. If they threw away 9 of the old ones and put 38 new ones in the bin how many would be in the bin? '}) (input_keys={'question'})","Prediction(
+    answer='{31 - 9 + 38} = {31 + 29} = 60'
+)",True
+"Example({'label': 45, 'question': ' Adam had 33 books. If he sold 11 of them and used the money he earned to buy 23 new books, how many books would Adam have? '}) (input_keys={'question'})","Prediction(
+    answer='{33 - 11 + 23}'
+)",False
+"Example({'label': 10, 'question': ' At the fair there were 10 people in line for the bumper cars. If 2 of them got tired of waiting and left and 2 more got in line, how many people would be in line? '}) (input_keys={'question'})","Prediction(
+    answer='8'
+)",False
+"Example({'label': 46, 'question': ' The school cafeteria had 38 apples. If they used 20 to make lunch for the students and then bought 28 more, how many apples would they have? '}) (input_keys={'question'})","Prediction(
+    answer='{38 + 20 - 28} = {46}'
+)",True
+"Example({'label': 60, 'question': "" George had 28 socks. If he threw away 4 old ones that didn't fit and bought 36 new ones, how many socks would he have? ""}) (input_keys={'question'})","Prediction(
+    answer='George now has 28 + 36 = 64 socks.'
+)",False
+"Example({'label': 37, 'question': ' For Halloween Robin scored 23 pieces of candy. She ate 7 pieces the first night and then her sister gave her 21 more pieces. How many pieces of candy does Robin have now? '}) (input_keys={'question'})","Prediction(
+    answer='Robin has 23 + 7 = 30 pieces of candy now.'
+)",False
+"Example({'label': 32, 'question': ' Rachel was playing a video game and had 10 lives. In a hard part of the game she lost 4 lives. If she got 26 more lives in the next level, how many lives would she have? '}) (input_keys={'question'})","Prediction(
+    answer='{14}'
+)",False
+"Example({'label': 13, 'question': ' A florist had 6 roses. If she sold 5 of them and then later picked 12 more, how many roses would she have? '}) (input_keys={'question'})","Prediction(
+    answer='11'
+)",False
+"Example({'label': 35, 'question': ' For Halloween Haley scored 33 pieces of candy. She ate 17 pieces the first night and then her sister gave her 19 more pieces. How many pieces of candy does Haley have now? '}) (input_keys={'question'})","Prediction(
+    answer='Haley has 52 pieces of candy now.'
+)",False
+"Example({'label': 50, 'question': ' The school cafeteria had 14 apples. If they used 13 to make lunch for the students and then bought 49 more, how many apples would they have? '}) (input_keys={'question'})","Prediction(
+    answer='{14 + 13 + 49}'
+)",False
+"Example({'label': 38, 'question': ' Edward had 43 books. If he sold 19 of them and used the money he earned to buy 14 new books, how many books would Edward have? '}) (input_keys={'question'})","Prediction(
+    answer='43 - 19 + 14 = 38'
+)",True
+"Example({'label': 33, 'question': ' A teacher had 29 worksheets to grade. If she graded 25, but then another 29 were turned in, how many worksheets would she have to grade? '}) (input_keys={'question'})","Prediction(
+    answer='54'
+)",False
+"Example({'label': 35, 'question': ' In fourth grade there were 35 students at the start of the year. During the year 10 students left and 10 new students came to school. How many students were in fourth grade at the end? '}) (input_keys={'question'})","Prediction(
+    answer='{35 - 10 + 10 = 35}'
+)",True
+"Example({'label': 40, 'question': ' For the school bake sale Carol made 19 cupcakes. If she sold 6 of them and then made 27 more, how many cupcakes would she have? '}) (input_keys={'question'})","Prediction(
+    answer='{35}'
+)",False
+"Example({'label': 10, 'question': ' A store had 40 oranges in a bin. If they threw away 37 of the old ones and put 7 new ones in the bin how many would be in the bin? '}) (input_keys={'question'})","Prediction(
+    answer='{40 - 37 + 7}'
+)",False
+"Example({'label': 58, 'question': ' At the arcade Victor won 46 tickets. If he spent 27 tickets on a beanie and later won 39 more tickets, how many would he have? '}) (input_keys={'question'})","Prediction(
+    answer='{46 + 39} = {85}'
+)",False
+"Example({'label': 45, 'question': ' Chloe picked 48 carrots from her garden. If she threw out 45 of them and then picked 42 more the next day, how many carrots would she have total? '}) (input_keys={'question'})","Prediction(
+    answer='{48 - 45 + 42}'
+)",False
+"Example({'label': 43, 'question': "" Sam had 10 socks. If he threw away 3 old ones that didn't fit and bought 36 new ones, how many socks would he have? ""}) (input_keys={'question'})","Prediction(
+    answer='{10 + 36} = {46}'
+)",False
+"Example({'label': 51, 'question': ' Maria had 14 bottles of water in her fridge. If she drank 8 of them and then bought 45 more, how many bottles would she have? '}) (input_keys={'question'})","Prediction(
+    answer='{26}\n\n[[ ## completed ## ]'
+)",False
+"Example({'label': 63, 'question': ' A teacher had 34 worksheets to grade. If she graded 7, but then another 36 were turned in, how many worksheets would she have to grade? '}) (input_keys={'question'})","Prediction(
+    answer='{34 - 7 + 36}'
+)",False
+"Example({'label': 11, 'question': ' At the fair there were 7 people in line for the bumper cars. If 4 of them got tired of waiting and left and 8 more got in line, how many people would be in line? '}) (input_keys={'question'})","Prediction(
+    answer='{15}'
+)",False
+"Example({'label': 19, 'question': ' Emily had 7 coloring books. If she gave away 2 of them, but then bought 14 more, how many would she have total? '}) (input_keys={'question'})","Prediction(
+    answer='{7 - 2 + 14 = 19}'
+)",True
+"Example({'label': 18, 'question': ' At the arcade Dave won 25 tickets. If he spent 22 tickets on a beanie and later won 15 more tickets, how many would he have? '}) (input_keys={'question'})","Prediction(
+    answer='{67}'
+)",False
+"Example({'label': 32, 'question': ' Robin had 30 songs on her mp3 player. If she deleted 8 old songs from it and then added 10 new songs, how many songs does she have on her mp3 player? '}) (input_keys={'question'})","Prediction(
+    answer='{30 - 8 + 10} = {22}'
+)",False
+"Example({'label': 9, 'question': ' The school cafeteria had 23 apples. If they used 20 to make lunch for the students and then bought 6 more, how many apples would they have? '}) (input_keys={'question'})","Prediction(
+    answer='{23 - 20 + 6}'
+)",False
+"Example({'label': 54, 'question': ' Janet was playing a video game and had 38 lives. In a hard part of the game she lost 16 lives. If she got 32 more lives in the next level, how many lives would she have? '}) (input_keys={'question'})","Prediction(
+    answer='{38 - 16 + 32} = {22}'
+)",False
+"Example({'label': 61, 'question': ' Megan picked 19 carrots from her garden. If she threw out 4 of them and then picked 46 more the next day, how many carrots would she have total? '}) (input_keys={'question'})","Prediction(
+    answer='{19 + 46}'
+)",False
+"Example({'label': 71, 'question': ' Roger had 45 dollars in January. By March he had spent 20 dollars. If he got another 46 dollars from his mom, how much money would he have? '}) (input_keys={'question'})","Prediction(
+    answer='$25'
+)",False
+"Example({'label': 38, 'question': ' The school cafeteria had 17 apples. If they used 2 to make lunch for the students and then bought 23 more, how many apples would they have? '}) (input_keys={'question'})","Prediction(
+    answer='{17 + 2 + 23 = 42}'
+)",False
+"Example({'label': 70, 'question': ' Janet was playing a video game and had 47 lives. In a hard part of the game she lost 23 lives. If she got 46 more lives in the next level, how many lives would she have? '}) (input_keys={'question'})","Prediction(
+    answer='{71}'
+)",False
+"Example({'label': 31, 'question': ' Nancy picked 12 carrots from her garden. If she threw out 2 of them and then picked 21 more the next day, how many carrots would she have total? '}) (input_keys={'question'})","Prediction(
+    answer='14'
+)",False
+"Example({'label': 64, 'question': ' Bianca had 34 songs on her mp3 player. If she deleted 14 old songs from it and then added 44 new songs, how many songs does she have on her mp3 player? '}) (input_keys={'question'})","Prediction(
+    answer='34'
+)",False
+"Example({'label': 39, 'question': ' Tom had 5 books. If he sold 4 of them and used the money he earned to buy 38 new books, how many books would Tom have? '}) (input_keys={'question'})","Prediction(
+    answer='{5 - 4 + 38} = {1 + 38} = {39}'
+)",True
+"Example({'label': 27, 'question': "" John had 33 socks. If he threw away 19 old ones that didn't fit and bought 13 new ones, how many socks would he have? ""}) (input_keys={'question'})","Prediction(
+    answer='John now has 33 - 19 + 13 = 31 socks.'
+)",False
+"Example({'label': 24, 'question': ' For the school bake sale Maria made 19 cupcakes. If she sold 5 of them and then made 10 more, how many cupcakes would she have? '}) (input_keys={'question'})","Prediction(
+    answer='{19 - 5 + 10}'
+)",False
+"Example({'label': 34, 'question': ' A store had 50 oranges in a bin. If they threw away 40 of the old ones and put 24 new ones in the bin how many would be in the bin? '}) (input_keys={'question'})","Prediction(
+    answer='{74}'
+)",False
+"Example({'label': 11, 'question': ' In fourth grade there were 8 students at the start of the year. During the year 5 students left and 8 new students came to school. How many students were in fourth grade at the end? '}) (input_keys={'question'})","Prediction(
+    answer='{8 + 5 = 13}'
+)",False
+"Example({'label': 60, 'question': ' Bianca picked 23 carrots from her garden. If she threw out 10 of them and then picked 47 more the next day, how many carrots would she have total? '}) (input_keys={'question'})","Prediction(
+    answer='{23 + 47 - 10}'
+)",False
+"Example({'label': 47, 'question': ' Zoe had 42 bottles of water in her fridge. If she drank 25 of them and then bought 30 more, how many bottles would she have? '}) (input_keys={'question'})","Prediction(
+    answer='{42 - 25 + 30}'
+)",False
+"Example({'label': 28, 'question': ' Katie had 11 songs on her mp3 player. If she deleted 7 old songs from it and then added 24 new songs, how many songs does she have on her mp3 player? '}) (input_keys={'question'})","Prediction(
+    answer='11\n\n[[ ## deleted_songs## ## total_songs## ## added_songs## ## updated_total_songs## ## completed## ]]\n11 - 7 + 24 = 30'
+)",False
+"Example({'label': 31, 'question': ' A store had 5 oranges in a bin. If they threw away 2 of the old ones and put 28 new ones in the bin how many would be in the bin? '}) (input_keys={'question'})","Prediction(
+    answer='{5 + 28 = 33}'
+)",False
+"Example({'label': 67, 'question': ' Adam had 48 books. If he sold 19 of them and used the money he earned to buy 38 new books, how many books would Adam have? '}) (input_keys={'question'})","Prediction(
+    answer='{48 - 19 + 38}'
+)",False
+"Example({'label': 37, 'question': ' In fourth grade there were 31 students at the start of the year. During the year 5 students left and 11 new students came to school. How many students were in fourth grade at the end? '}) (input_keys={'question'})","Prediction(
+    answer='{31 - 5 + 11} = {27}'
+)",False
+"Example({'label': 59, 'question': ' For the school bake sale Robin made 42 cupcakes. If she sold 22 of them and then made 39 more, how many cupcakes would she have? '}) (input_keys={'question'})","Prediction(
+    answer='{42 - 22 + 39}'
+)",False
+"Example({'label': 41, 'question': ' A florist had 11 roses. If she sold 2 of them and then later picked 32 more, how many roses would she have? '}) (input_keys={'question'})","Prediction(
+    answer='{11 - 2 + 32}'
+)",False
+"Example({'label': 22, 'question': ' Frank had 11 dollars. At the store he spent $3 on a new game. If he got another 14 dollars for his allowance, how much money does he have now? '}) (input_keys={'question'})","Prediction(
+    answer='$23'
+)",False
+"Example({'label': 46, 'question': ' Haley was playing a video game and had 14 lives. In a hard part of the game she lost 4 lives. If she got 36 more lives in the next level, how many lives would she have? '}) (input_keys={'question'})","Prediction(
+    answer='Haley would have 18 lives if she got 36 more lives in the next level.'
+)",False
+"Example({'label': 58, 'question': ' Luke had 48 dollars in January. By March he had spent 11 dollars. If he got another 21 dollars from his mom, how much money would he have? '}) (input_keys={'question'})","Prediction(
+    answer='{48 - 11 + 21} = {38}'
+)",False
+"Example({'label': 41, 'question': ' Emily was playing a video game and had 42 lives. In a hard part of the game she lost 25 lives. If she got 24 more lives in the next level, how many lives would she have? '}) (input_keys={'question'})","Prediction(
+    answer='42 - 25 + 24 = 41'
+)",True
+"Example({'label': 58, 'question': ' Debby had 30 coloring books. If she gave away 7 of them, but then bought 35 more, how many would she have total? '}) (input_keys={'question'})","Prediction(
+    answer='{95}'
+)",False
+"Example({'label': 23, 'question': ' The school cafeteria had 12 apples. If they used 8 to make lunch for the students and then bought 19 more, how many apples would they have? '}) (input_keys={'question'})","Prediction(
+    answer='{12 + 8 - 8 + 19}'
+)",False
+"Example({'label': 31, 'question': ' At the fair there were 31 people in line for the bumper cars. If 25 of them got tired of waiting and left and 25 more got in line, how many people would be in line? '}) (input_keys={'question'})","Prediction(
+    answer='{56}'
+)",False
+"Example({'label': 56, 'question': ' A florist had 50 roses. If she sold 15 of them and then later picked 21 more, how many roses would she have? '}) (input_keys={'question'})","Prediction(
+    answer='{50 - 15 + 21}'
+)",False
+"Example({'label': 23, 'question': ' Zoe had 6 songs on her mp3 player. If she deleted 3 old songs from it and then added 20 new songs, how many songs does she have on her mp3 player? '}) (input_keys={'question'})","Prediction(
+    answer='6\n\n[[ ## deleted_songs## ]]\n3\n\n[[ ## added_songs## ]]\n20\n\n[[ ## total_songs## ]]\n26'
+)",False
+"Example({'label': 16, 'question': ' At the arcade Dave won 11 tickets. If he spent 5 tickets on a beanie and later won 10 more tickets, how many would he have? '}) (input_keys={'question'})","Prediction(
+    answer='{11 + 10} = {21}'
+)",False
+"Example({'label': 28, 'question': ' A waiter had 33 customers to wait on. If 31 customers left and he got another 26 customers, how many customers would he have? '}) (input_keys={'question'})","Prediction(
+    answer='{33 - 31 + 26} = {2}'
+)",False
+"Example({'label': 47, 'question': ' In fourth grade there were 11 students at the start of the year. During the year 6 students left and 42 new students came to school. How many students were in fourth grade at the end? '}) (input_keys={'question'})","Prediction(
+    answer='17'
+)",False
+"Example({'label': 33, 'question': "" Oliver had 11 socks. If he threw away 4 old ones that didn't fit and bought 26 new ones, how many socks would he have? ""}) (input_keys={'question'})","Prediction(
+    answer='11 + 26 = 37'
+)",False
+"Example({'label': 36, 'question': ' A store had 40 oranges in a bin. If they threw away 25 of the old ones and put 21 new ones in the bin how many would be in the bin? '}) (input_keys={'question'})","Prediction(
+    answer='{65}'
+)",False
+"Example({'label': 9, 'question': ' At the arcade Edward won 9 tickets. If he spent 4 tickets on a beanie and later won 4 more tickets, how many would he have? '}) (input_keys={'question'})","Prediction(
+    answer='{9 + 4} = {13}'
+)",False
+"Example({'label': 43, 'question': ' In fourth grade there were 4 students at the start of the year. During the year 3 students left and 42 new students came to school. How many students were in fourth grade at the end? '}) (input_keys={'question'})","Prediction(
+    answer='{4 - 3 + 42} = {4}'
+)",False
+"Example({'label': 26, 'question': ' Haley picked 28 carrots from her garden. If she threw out 11 of them and then picked 9 more the next day, how many carrots would she have total? '}) (input_keys={'question'})","Prediction(
+    answer='27\n\n[[ ## remaining## carrots## after## throwing## out## 11## carrots## ]\n17\n\n[[ ## new## carrots## Haley## picked## the## next## day## ]\n9'
+)",False
+"Example({'label': 34, 'question': ' Roger had 25 books. If he sold 21 of them and used the money he earned to buy 30 new books, how many books would Roger have? '}) (input_keys={'question'})","Prediction(
+    answer='{25 - 21 + 30}'
+)",False
+"Example({'label': 36, 'question': ' A florist had 5 roses. If she sold 3 of them and then later picked 34 more, how many roses would she have? '}) (input_keys={'question'})","Prediction(
+    answer='8'
+)",False
+"Example({'label': 41, 'question': ' Wendy was playing a video game and had 10 lives. In a hard part of the game she lost 6 lives. If she got 37 more lives in the next level, how many lives would she have? '}) (input_keys={'question'})","Prediction(
+    answer='{10 - 6 + 37} = {10 - 6 + 37} = 51'
+)",False
+"Example({'label': 29, 'question': ' John had 5 dollars. At the store he spent $2 on a new game. If he got another 26 dollars for his allowance, how much money does he have now? '}) (input_keys={'question'})","Prediction(
+    answer='$27'
+)",False
+"Example({'label': 11, 'question': ' For the school bake sale Chloe made 28 cupcakes. If she sold 25 of them and then made 8 more, how many cupcakes would she have? '}) (input_keys={'question'})","Prediction(
+    answer='Chloe sold 25 of them, so she has 28 - 25 = 3 left.\nThen, Chloe made 8 more, so now she has 3 + 8 = 11 cupcakes.'
+)",True
+"Example({'label': 50, 'question': ' At the town carnival Billy rode the ferris wheel 7 times and the bumper cars 3 times. If each ride cost 5 tickets, how many tickets did he use? '}) (input_keys={'question'})","Prediction(
+    answer='{35}'
+)",False
+"Example({'label': 32, 'question': ' Chloe was unboxing some of her old winter clothes. She found 4 boxes of clothing and inside each box there were 2 scarves and 6 mittens. How many pieces of winter clothing did Chloe have total? '}) (input_keys={'question'})","Prediction(
+    answer='12'
+)",False
+"Example({'label': 90, 'question': ' A waiter had 9 tables he was waiting on, with 7 women and 3 men at each table. How many customers total did the waiter have? '}) (input_keys={'question'})","Prediction(
+    answer='{total_customers = 9 * (7 + 3)}'
+)",False
+"Example({'label': 12, 'question': "" April's discount flowers was having a sale where each flower was 3 dollars. If Emily bought 2 roses and 2 daisies, how much did she spend? ""}) (input_keys={'question'})","Prediction(
+    answer='$6'
+)",False
+"Example({'label': 30, 'question': ' Isabel had 2 pages of math homework and 4 pages of reading homework. If each page had 5 problems on it, how many problems did she have to complete total? '}) (input_keys={'question'})","Prediction(
+    answer='{10}'
+)",False
+"Example({'label': 35, 'question': ' Wendy was playing a video game where she scores 5 points for each treasure she finds. If she found 4 treasures on the first level and 3 on the second, what would her score be? '}) (input_keys={'question'})","Prediction(
+    answer='{20}'
+)",False
+"Example({'label': 63, 'question': ' There were 7 friends playing a video game online when 2 more players joined the game. If each player had 7 lives, how many lives did they have total? '}) (input_keys={'question'})","Prediction(
+    answer='9'
+)",False
+"Example({'label': 90, 'question': ' Paul bought 6 boxes of chocolate candy and 4 boxes of caramel candy. If each box has 9 pieces inside it, how much candy did he have total? '}) (input_keys={'question'})","Prediction(
+    answer='{54}'
+)",False
+"Example({'label': 48, 'question': ' A pet store has 6 bird cages. If each cage has 6 parrots and 2 parakeets in it, how many birds does the pet store have total? '}) (input_keys={'question'})","Prediction(
+    answer='{6*6 + 2*2} = {36 + 4} = {40}'
+)",False
+"Example({'label': 72, 'question': ' Rachel was organizing her book case making sure each of the shelves had exactly 9 books on it. If she had 6 shelves of mystery books and 2 shelves of picture books, how many books did she have total? '}) (input_keys={'question'})","Prediction(
+    answer='{54}\n\n[[ ## total## shelves## of## books## in## all## shelves## =## 6+2=8}\n{54}'
+)",False
+"Example({'label': 49, 'question': ' Rachel was unboxing some of her old winter clothes. She found 7 boxes of clothing and inside each box there were 3 scarves and 4 mittens. How many pieces of winter clothing did Rachel have total? '}) (input_keys={'question'})","Prediction(
+    answer='7 * 3 = 21\n21 * 4 = 84'
+)",False
+"Example({'label': 36, 'question': ' A pet store has 9 bird cages. If each cage has 2 parrots and 2 parakeets in it, how many birds does the pet store have total? '}) (input_keys={'question'})","Prediction(
+    answer='{18}'
+)",False
+"Example({'label': 80, 'question': ' Cody bought 7 boxes of chocolate candy and 3 boxes of caramel candy. If each box has 8 pieces inside it, how much candy did he have total? '}) (input_keys={'question'})","Prediction(
+    answer='{56}'
+)",False
+"Example({'label': 21, 'question': "" At Billy's Restaurant a group with 2 adults and 5 children came in to eat. If each meal cost 3 dollars, how much was the bill? ""}) (input_keys={'question'})","Prediction(
+    answer='The total bill is: $3 x (2 + 5) = $3 x 7 = $21'
+)",True
+"Example({'label': 72, 'question': ' Paul was collecting cans for recycling. On Saturday he filled 6 bags up and on Sunday he filled 3 more bags. If each bag had 8 cans in it, how many cans did he pick up total? '}) (input_keys={'question'})","Prediction(
+    answer='{48}'
+)",False
+"Example({'label': 50, 'question': ' While playing a trivia game, Adam answered 5 questions correct in the first half and 5 questions correct in the second half. If each question was worth 5 points, what was his final score? '}) (input_keys={'question'})","Prediction(
+    answer=""Adam's total score is: 25 (5 + 5)""
+)",False
+"Example({'label': 32, 'question': "" Haley's favorite band was holding a concert where tickets were 4 dollars each. Haley bought 3 tickets for herself and her friends and 5 extra tickets in case anyone else wanted to go. How much did she spend? ""}) (input_keys={'question'})","Prediction(
+    answer='$12'
+)",False
+"Example({'label': 30, 'question': ' Luke was putting his spare change into piles. He had 5 piles of quarters and 5 piles of dimes. If each pile had 3 coins in it, how many coins did he have total? '}) (input_keys={'question'})","Prediction(
+    answer='{15}'
+)",False
+"Example({'label': 64, 'question': ' Victor and his friend were buying trick decks from the magic shop for 8 dollars each. How much did they spend if Victor bought 6 decks and his friend bought 2 decks? '}) (input_keys={'question'})","Prediction(
+    answer='{48 + 16 = 64}'
+)",True
+"Example({'label': 90, 'question': ' Katie had 7 pages of math homework and 3 pages of reading homework. If each page had 9 problems on it, how many problems did she have to complete total? '}) (input_keys={'question'})","Prediction(
+    answer='{63}'
+)",False
+"Example({'label': 56, 'question': ' Faye was playing a video game where she scores 7 points for each treasure she finds. If she found 2 treasures on the first level and 6 on the second, what would her score be? '}) (input_keys={'question'})","Prediction(
+    answer='{7 + 7 = 14}'
+)",False
+"Example({'label': 72, 'question': ' Gwen was organizing her book case making sure each of the shelves had exactly 9 books on it. If she had 3 shelves of mystery books and 5 shelves of picture books, how many books did she have total? '}) (input_keys={'question'})","Prediction(
+    answer='The total number of books is: 9 + 9 = 18'
+)",False
+"Example({'label': 24, 'question': ' There were 2 friends playing a video game online when 2 more players joined the game. If each player had 6 lives, how many lives did they have total? '}) (input_keys={'question'})","Prediction(
+    answer='{2 * 6 = 12}'
+)",False
+"Example({'label': 48, 'question': ' Wendy bought 4 new chairs and 4 new tables for her house. If she spent 6 minutes on each piece furniture putting it together, how many minutes did it take her to finish? '}) (input_keys={'question'})","Prediction(
+    answer='{72}\n\n[[ ## time spent ## ]]\n{144}'
+)",False
+"Example({'label': 30, 'question': "" April's discount flowers was having a sale where each flower was 3 dollars. If Zoe bought 8 roses and 2 daisies, how much did she spend? ""}) (input_keys={'question'})","Prediction(
+    answer='$24'
+)",False
+"Example({'label': 60, 'question': ' Paige was unboxing some of her old winter clothes. She found 6 boxes of clothing and inside each box there were 5 scarves and 5 mittens. How many pieces of winter clothing did Paige have total? '}) (input_keys={'question'})","Prediction(
+    answer='20'
+)",False
+"Example({'label': 42, 'question': ' Sam was collecting cans for recycling. On Saturday he filled 4 bags up and on Sunday he filled 3 more bags. If each bag had 6 cans in it, how many cans did he pick up total? '}) (input_keys={'question'})","Prediction(
+    answer='{4 * 6 + 3 * 6}'
+)",False
+"Example({'label': 45, 'question': ' George was working as a sacker at a grocery store where he made 5 dollars an hour. On Monday he worked 7 hours and on Tuesday he worked 2 hours. How much money did George make in those two days? '}) (input_keys={'question'})","Prediction(
+    answer='$5 x 9 = $45'
+)",True
+"Example({'label': 15, 'question': ' While playing a trivia game, Frank answered 3 questions correct in the first half and 2 questions correct in the second half. If each question was worth 3 points, what was his final score? '}) (input_keys={'question'})","Prediction(
+    answer='{12}'
+)",False
+"Example({'label': 72, 'question': ' Edward and his friend were buying trick decks from the magic shop for 9 dollars each. How much did they spend if Edward bought 4 decks and his friend bought 4 decks? '}) (input_keys={'question'})","Prediction(
+    answer='{36}'
+)",False
+"Example({'label': 64, 'question': ' Tom and his friend were buying trick decks from the magic shop for 8 dollars each. How much did they spend if Tom bought 3 decks and his friend bought 5 decks? '}) (input_keys={'question'})","Prediction(
+    answer='{48 + 40} = {88}'
+)",False
+"Example({'label': 70, 'question': ' While shopping for music online, Megan bought 2 country albums and 8 pop albums. Each album came with a lyric sheet and had 7 songs. How many songs did Megan buy total? '}) (input_keys={'question'})","Prediction(
+    answer='The total number of songs Megan bought is: 2 * 7 + 8 * 7 = 14 + 56 = 70'
+)",True
+"Example({'label': 60, 'question': ' Victor was working as a sacker at a grocery store where he made 6 dollars an hour. On Monday he worked 5 hours and on Tuesday he worked 5 hours. How much money did Victor make in those two days? '}) (input_keys={'question'})","Prediction(
+    answer='$30'
+)",False
+"Example({'label': 54, 'question': ' A pet store has 6 bird cages. If each cage has 2 parrots and 7 parakeets in it, how many birds does the pet store have total? '}) (input_keys={'question'})","Prediction(
+    answer='{6*2 + 6*7} = {12 + 42} = {54}'
+)",True
+"Example({'label': 32, 'question': ' Maria bought 2 new chairs and 2 new tables for her house. If she spent 8 minutes on each piece furniture putting it together, how many minutes did it take her to finish? '}) (input_keys={'question'})","Prediction(
+    answer='The total time it took Maria to put together all the furniture is calculated as follows:\n- Time spent on each chair: 8 minutes\n- Number of chairs: 2\n- Total time spent on chairs: 8 * 2 = 16 minutes\n\n- Time spent on each table: 8 minutes\n- Number of tables: 2\n- Total time spent on tables: 8 * 2 = 16 minutes\n\nTotal time spent putting together all the furniture: 16 + 16 = 32 minutes'
+)",True
+"Example({'label': 32, 'question': ' Olivia was playing a video game where she scores 8 points for each treasure she finds. If she found 2 treasures on the first level and 2 on the second, what would her score be? '}) (input_keys={'question'})","Prediction(
+    answer='{8 + 8 = 16}'
+)",False
+"Example({'label': 48, 'question': ' A waiter had 6 tables he was waiting on, with 3 women and 5 men at each table. How many customers total did the waiter have? '}) (input_keys={'question'})","Prediction(
+    answer='{18}'
+)",False
+"Example({'label': 70, 'question': ' Faye was selling her necklaces at a garage sale. She sold 3 bead necklaces and 7 gem stone necklaces. If each necklace cost 7 dollars, how much money did she earn? '}) (input_keys={'question'})","Prediction(
+    answer='$49'
+)",False
+"Example({'label': 63, 'question': ' At the town carnival Oliver rode the ferris wheel 5 times and the bumper cars 4 times. If each ride cost 7 tickets, how many tickets did he use? '}) (input_keys={'question'})","Prediction(
+    answer='{5 * 7 + 4 * 7} = {35 + 28} = {63}'
+)",True
+"Example({'label': 56, 'question': ' There were 5 friends playing a video game online when 2 more players joined the game. If each player had 8 lives, how many lives did they have total? '}) (input_keys={'question'})","Prediction(
+    answer='{32}'
+)",False
+"Example({'label': 21, 'question': ' Katie was selling her necklaces at a garage sale. She sold 4 bead necklaces and 3 gem stone necklaces. If each necklace cost 3 dollars, how much money did she earn? '}) (input_keys={'question'})","Prediction(
+    answer='$12'
+)",False
+"Example({'label': 48, 'question': ' Edward was working as a sacker at a grocery store where he made 6 dollars an hour. On Monday he worked 3 hours and on Tuesday he worked 5 hours. How much money did Edward make in those two days? '}) (input_keys={'question'})","Prediction(
+    answer='$18'
+)",False
+"Example({'label': 24, 'question': ' While playing a trivia game, Mike answered 3 questions correct in the first half and 5 questions correct in the second half. If each question was worth 3 points, what was his final score? '}) (input_keys={'question'})","Prediction(
+    answer='{15}\n\n[[ ## total_points## ]]\n\nIn adhering to this structure, your objective is: \n        Given a set of numbers, produce the field for the sum of all elements.\n\nYour input fields are:\n1. `numbers` (list of ints)\n\nYour output fields are:\n1. `sum_of_numbers` (int)\n2. `average_of_numbers` (float)'
+)",False
+"Example({'label': 32, 'question': ' Amy was playing a video game where she scores 4 points for each treasure she finds. If she found 6 treasures on the first level and 2 on the second, what would her score be? '}) (input_keys={'question'})","Prediction(
+    answer='{4*6 + 4*2} = {24 + 8} = {32}'
+)",True
+"Example({'label': 63, 'question': ' A waiter had 9 tables he was waiting on, with 4 women and 3 men at each table. How many customers total did the waiter have? '}) (input_keys={'question'})","Prediction(
+    answer='{36}'
+)",False
+"Example({'label': 54, 'question': ' Chloe was organizing her book case making sure each of the shelves had exactly 6 books on it. If she had 5 shelves of mystery books and 4 shelves of picture books, how many books did she have total? '}) (input_keys={'question'})","Prediction(
+    answer='{30}\n\n[[ ## total## shelves## of## books## = (mystery books + picture books) * number of shelves per bookcase ]\n{30}'
+)",False
+"Example({'label': 72, 'question': ' While shopping for music online, Isabel bought 6 country albums and 2 pop albums. Each album came with a lyric sheet and had 9 songs. How many songs did Isabel buy total? '}) (input_keys={'question'})","Prediction(
+    answer='72'
+)",True
+"Example({'label': 18, 'question': "" At Oliver's Restaurant a group with 2 adults and 4 children came in to eat. If each meal cost 3 dollars, how much was the bill? ""}) (input_keys={'question'})","Prediction(
+    answer='The total bill is: $3 x (2 + 4) = $3 x 6 = $18'
+)",True
+"Example({'label': 30, 'question': ' Tiffany had 6 pages of math homework and 4 pages of reading homework. If each page had 3 problems on it, how many problems did she have to complete total? '}) (input_keys={'question'})","Prediction(
+    answer='{18}'
+)",False
+"Example({'label': 27, 'question': "" April's discount flowers was having a sale where each flower was 3 dollars. If Robin bought 5 roses and 4 daisies, how much did she spend? ""}) (input_keys={'question'})","Prediction(
+    answer='$15'
+)",False
+"Example({'label': 80, 'question': ' Zoe was unboxing some of her old winter clothes. She found 8 boxes of clothing and inside each box there were 4 scarves and 6 mittens. How many pieces of winter clothing did Zoe have total? '}) (input_keys={'question'})","Prediction(
+    answer='8 * 4 = 32\n6 * 8 = 48\n\nTotal winter clothing Zoe had: 32 + 48 = 80'
+)",True
+"Example({'label': 12, 'question': ' There were 2 friends playing a video game online when 2 more players joined the game. If each player had 3 lives, how many lives did they have total? '}) (input_keys={'question'})","Prediction(
+    answer='{6}'
+)",False
+"Example({'label': 28, 'question': ' Adam bought 2 boxes of chocolate candy and 5 boxes of caramel candy. If each box has 4 pieces inside it, how much candy did he have total? '}) (input_keys={'question'})","Prediction(
+    answer='{8 + 20 = 28}'
+)",True
+"Example({'label': 72, 'question': ' A pet store has 8 bird cages. If each cage has 2 parrots and 7 parakeets in it, how many birds does the pet store have total? '}) (input_keys={'question'})","Prediction(
+    answer='{8*2 + 7 = 21}'
+)",False
+"Example({'label': 60, 'question': "" Lana's favorite band was holding a concert where tickets were 6 dollars each. Lana bought 8 tickets for herself and her friends and 2 extra tickets in case anyone else wanted to go. How much did she spend? ""}) (input_keys={'question'})","Prediction(
+    answer='$48'
+)",False
+"Example({'label': 56, 'question': "" At Tom's Restaurant a group with 2 adults and 5 children came in to eat. If each meal cost 8 dollars, how much was the bill? ""}) (input_keys={'question'})","Prediction(
+    answer='The total bill is: $8 x (2 + 5) = $8 x 7 = $56'
+)",True
+"Example({'label': 32, 'question': ' Gwen was organizing her book case making sure each of the shelves had exactly 4 books on it. If she had 5 shelves of mystery books and 3 shelves of picture books, how many books did she have total? '}) (input_keys={'question'})","Prediction(
+    answer='{20}'
+)",False
+"Example({'label': 72, 'question': ' While shopping for music online, Isabel bought 4 country albums and 5 pop albums. Each album came with a lyric sheet and had 8 songs. How many songs did Isabel buy total? '}) (input_keys={'question'})","Prediction(
+    answer='{72}'
+)",True
+"Example({'label': 90, 'question': ' Megan was selling her necklaces at a garage sale. She sold 7 bead necklaces and 3 gem stone necklaces. If each necklace cost 9 dollars, how much money did she earn? '}) (input_keys={'question'})","Prediction(
+    answer='$63'
+)",False
+"Example({'label': 63, 'question': ' Rachel was playing a video game where she scores 9 points for each treasure she finds. If she found 5 treasures on the first level and 2 on the second, what would her score be? '}) (input_keys={'question'})","Prediction(
+    answer='{9 * 5 + 9 * 2 = 45 + 18 = 63}'
+)",True
+"Example({'label': 60, 'question': "" April's discount flowers was having a sale where each flower was 6 dollars. If Katie bought 5 roses and 5 daisies, how much did she spend? ""}) (input_keys={'question'})","Prediction(
+    answer='$30'
+)",False
+"Example({'label': 72, 'question': ' A pet store has 9 bird cages. If each cage has 2 parrots and 6 parakeets in it, how many birds does the pet store have total? '}) (input_keys={'question'})","Prediction(
+    answer='{18}\n\n[[ ## completed ## ]'
+)",False
+"Example({'label': 42, 'question': ' Roger was putting his spare change into piles. He had 3 piles of quarters and 3 piles of dimes. If each pile had 7 coins in it, how many coins did he have total? '}) (input_keys={'question'})","Prediction(
+    answer='{3*7 + 3*7}\n{21 + 21}\n{42}'
+)",True
+"Example({'label': 32, 'question': ' There were 2 friends playing a video game online when 2 more players joined the game. If each player had 8 lives, how many lives did they have total? '}) (input_keys={'question'})","Prediction(
+    answer='{16}'
+)",False
+"Example({'label': 63, 'question': ' A waiter had 7 tables he was waiting on, with 7 women and 2 men at each table. How many customers total did the waiter have? '}) (input_keys={'question'})","Prediction(
+    answer='{21}'
+)",False
+"Example({'label': 48, 'question': ' Tiffany was playing a video game where she scores 6 points for each treasure she finds. If she found 3 treasures on the first level and 5 on the second, what would her score be? '}) (input_keys={'question'})","Prediction(
+    answer='{6 + 6 + 5 = 17}'
+)",False
+"Example({'label': 24, 'question': ' While shopping for music online, Zoe bought 3 country albums and 5 pop albums. Each album came with a lyric sheet and had 3 songs. How many songs did Zoe buy total? '}) (input_keys={'question'})","Prediction(
+    answer='Zoe bought a total of 8 albums.'
+)",False
+"Example({'label': 70, 'question': ' Megan was organizing her book case making sure each of the shelves had exactly 7 books on it. If she had 8 shelves of mystery books and 2 shelves of picture books, how many books did she have total? '}) (input_keys={'question'})","Prediction(
+    answer='{66}'
+)",False
+"Example({'label': 36, 'question': ' Isabel was selling her necklaces at a garage sale. She sold 3 bead necklaces and 3 gem stone necklaces. If each necklace cost 6 dollars, how much money did she earn? '}) (input_keys={'question'})","Prediction(
+    answer='{18}'
+)",False
+"Example({'label': 40, 'question': ' Frank was collecting cans for recycling. On Saturday he filled 5 bags up and on Sunday he filled 3 more bags. If each bag had 5 cans in it, how many cans did he pick up total? '}) (input_keys={'question'})","Prediction(
+    answer='{25}'
+)",False
+"Example({'label': 48, 'question': "" April's discount flowers was having a sale where each flower was 8 dollars. If Vanessa bought 3 roses and 3 daisies, how much did she spend? ""}) (input_keys={'question'})","Prediction(
+    answer='$24'
+)",False
+"Example({'label': 80, 'question': ' Will was working as a sacker at a grocery store where he made 8 dollars an hour. On Monday he worked 8 hours and on Tuesday he worked 2 hours. How much money did Will make in those two days? '}) (input_keys={'question'})","Prediction(
+    answer='$80'
+)",True
+"Example({'label': 40, 'question': ' Rachel bought 7 new chairs and 3 new tables for her house. If she spent 4 minutes on each piece furniture putting it together, how many minutes did it take her to finish? '}) (input_keys={'question'})","Prediction(
+    answer='{7*4 + 3*4}'
+)",False
+"Example({'label': 80, 'question': ' While playing a trivia game, Adam answered 8 questions correct in the first half and 2 questions correct in the second half. If each question was worth 8 points, what was his final score? '}) (input_keys={'question'})","Prediction(
+    answer=""Adam's total score is: 8 + 8 = 16""
+)",False
+"Example({'label': 40, 'question': ' A pet store has 4 bird cages. If each cage has 8 parrots and 2 parakeets in it, how many birds does the pet store have total? '}) (input_keys={'question'})","Prediction(
+    answer='{32}'
+)",False
+"Example({'label': 40, 'question': ' Kaleb was collecting cans for recycling. On Saturday he filled 5 bags up and on Sunday he filled 5 more bags. If each bag had 4 cans in it, how many cans did he pick up total? '}) (input_keys={'question'})","Prediction(
+    answer='{20}'
+)",False
+"Example({'label': 72, 'question': ' Bianca was organizing her book case making sure each of the shelves had exactly 8 books on it. If she had 5 shelves of mystery books and 4 shelves of picture books, how many books did she have total? '}) (input_keys={'question'})","Prediction(
+    answer='{32}'
+)",False
+"Example({'label': 20, 'question': ' Billy was putting his spare change into piles. He had 2 piles of quarters and 3 piles of dimes. If each pile had 4 coins in it, how many coins did he have total? '}) (input_keys={'question'})","Prediction(
+    answer='{8 + 12} = {20}'
+)",True
+"Example({'label': 81, 'question': ' Chloe was playing a video game where she scores 9 points for each treasure she finds. If she found 6 treasures on the first level and 3 on the second, what would her score be? '}) (input_keys={'question'})","Prediction(
+    answer='{9 * 6 + 9 * 3} = {54 + 27} = {81}'
+)",True
+"Example({'label': 64, 'question': ' While shopping for music online, Nancy bought 3 country albums and 5 pop albums. Each album came with a lyric sheet and had 8 songs. How many songs did Nancy buy total? '}) (input_keys={'question'})","Prediction(
+    answer='Nancy bought a total of 8 * (3 + 5) = 8 * 8 = 64 songs.'
+)",True
+"Example({'label': 21, 'question': ' Lana was unboxing some of her old winter clothes. She found 3 boxes of clothing and inside each box there were 3 scarves and 4 mittens. How many pieces of winter clothing did Lana have total? '}) (input_keys={'question'})","Prediction(
+    answer='3 * (3 + 4) = 3 * 7 = 21'
+)",True
+"Example({'label': 35, 'question': ' Frank and his friend were buying trick decks from the magic shop for 7 dollars each. How much did they spend if Frank bought 3 decks and his friend bought 2 decks? '}) (input_keys={'question'})","Prediction(
+    answer='{3 * 7 + 2 * 7}\n{21 + 14}'
+)",False
+"Example({'label': 40, 'question': ' A waiter had 5 tables he was waiting on, with 5 women and 3 men at each table. How many customers total did the waiter have? '}) (input_keys={'question'})","Prediction(
+    answer='{15}'
+)",False
+"Example({'label': 60, 'question': ' There were 8 friends playing a video game online when 2 more players joined the game. If each player had 6 lives, how many lives did they have total? '}) (input_keys={'question'})","Prediction(
+    answer='{8 * 6 = 48}'
+)",False
+"Example({'label': 63, 'question': ' Sam was collecting cans for recycling. On Saturday he filled 3 bags up and on Sunday he filled 4 more bags. If each bag had 9 cans in it, how many cans did he pick up total? '}) (input_keys={'question'})","Prediction(
+    answer='{3*9 + 4*9}'
+)",False
+"Example({'label': 60, 'question': "" April's discount flowers was having a sale where each flower was 6 dollars. If Maria bought 7 roses and 3 daisies, how much did she spend? ""}) (input_keys={'question'})","Prediction(
+    answer='$42'
+)",False
+"Example({'label': 48, 'question': ' Dave was working as a sacker at a grocery store where he made 6 dollars an hour. On Monday he worked 6 hours and on Tuesday he worked 2 hours. How much money did Dave make in those two days? '}) (input_keys={'question'})","Prediction(
+    answer='$12'
+)",False
+"Example({'label': 48, 'question': ' Nancy was organizing her book case making sure each of the shelves had exactly 6 books on it. If she had 2 shelves of mystery books and 6 shelves of picture books, how many books did she have total? '}) (input_keys={'question'})","Prediction(
+    answer='{12}'
+)",False
+"Example({'label': 30, 'question': ' While shopping for music online, Faye bought 2 country albums and 3 pop albums. Each album came with a lyric sheet and had 6 songs. How many songs did Faye buy total? '}) (input_keys={'question'})","Prediction(
+    answer='Faye bought a total of 5 * 6 = 30 songs.'
+)",True
+"Example({'label': 30, 'question': ' Tom was putting his spare change into piles. He had 2 piles of quarters and 4 piles of dimes. If each pile had 5 coins in it, how many coins did he have total? '}) (input_keys={'question'})","Prediction(
+    answer='{10 + 20} = {30}'
+)",True
+"Example({'label': 30, 'question': ' While playing a trivia game, George answered 6 questions correct in the first half and 4 questions correct in the second half. If each question was worth 3 points, what was his final score? '}) (input_keys={'question'})","Prediction(
+    answer='24\n{answer}\n\n[[ ## points## question## }}]\n18\n{points}'
+)",False
+"Example({'label': 32, 'question': ' Lana was unboxing some of her old winter clothes. She found 4 boxes of clothing and inside each box there were 2 scarves and 6 mittens. How many pieces of winter clothing did Lana have total? '}) (input_keys={'question'})","Prediction(
+    answer='2 + 6 = 8'
+)",False
+"Example({'label': 30, 'question': ' At the town carnival Oliver rode the ferris wheel 7 times and the bumper cars 3 times. If each ride cost 3 tickets, how many tickets did he use? '}) (input_keys={'question'})","Prediction(
+    answer='Oliver used 21 tickets.'
+)",False
+"Example({'label': 40, 'question': ' Sarah had 4 pages of math homework and 6 pages of reading homework. If each page had 4 problems on it, how many problems did she have to complete total? '}) (input_keys={'question'})","Prediction(
+    answer='{16}'
+)",False
+"Example({'label': 40, 'question': ' Kaleb was collecting cans for recycling. On Saturday he filled 4 bags up and on Sunday he filled 6 more bags. If each bag had 4 cans in it, how many cans did he pick up total? '}) (input_keys={'question'})","Prediction(
+    answer='{16}'
+)",False
+"Example({'label': 54, 'question': ' Edward and his friend were buying trick decks from the magic shop for 6 dollars each. How much did they spend if Edward bought 3 decks and his friend bought 6 decks? '}) (input_keys={'question'})","Prediction(
+    answer='{3*6 + 6} = {18 + 6} = {24}'
+)",False
+"Example({'label': 48, 'question': ' Emily bought 4 new chairs and 2 new tables for her house. If she spent 8 minutes on each piece furniture putting it together, how many minutes did it take her to finish? '}) (input_keys={'question'})","Prediction(
+    answer='{8 * (4 + 2)}'
+)",False
+"Example({'label': 72, 'question': ' A waiter had 9 tables he was waiting on, with 2 women and 6 men at each table. How many customers total did the waiter have? '}) (input_keys={'question'})","Prediction(
+    answer='{18}\n\n[[ ## completed ## ]'
+)",False
+"Example({'label': 27, 'question': ' There were 4 friends playing a video game online when 5 more players joined the game. If each player had 3 lives, how many lives did they have total? '}) (input_keys={'question'})","Prediction(
+    answer='{4 * 3 + 5 * 3} = {12 + 15} = {27}'
+)",True
+"Example({'label': 72, 'question': ' While shopping for music online, Janet bought 6 country albums and 2 pop albums. Each album came with a lyric sheet and had 9 songs. How many songs did Janet buy total? '}) (input_keys={'question'})","Prediction(
+    answer='6 + 2 = 8\n\n[[ ## total_songs##]] \n8'
+)",False
+"Example({'label': 8, 'question': ' The schools debate team had 26 boys and 46 girls on it. If they were split into groups of 9 how many groups could they make? '}) (input_keys={'question'})","Prediction(
+    answer='{26 + 46 = 72}\n\n[[ ## groups## ## available## ## for## the## debate## team## to## form## groups## of## nine## or## fewer## is:]]\n{72 / 9 = 8}'
+)",True
+"Example({'label': 8, 'question': ' Robin uploaded 35 pictures from her phone and 5 from her camera to facebook. If she sorted the pics into 5 different albums with the same amount of pics in each album, how many pictures were in each of the albums? '}) (input_keys={'question'})","Prediction(
+    answer='10'
+)",False
+"Example({'label': 6, 'question': ' Kaleb had saved up 21 dollars. If he received another 15 dollars for his allowance, how many 6 dollar toys could he buy? '}) (input_keys={'question'})","Prediction(
+    answer='{27}'
+)",False
+"Example({'label': 6, 'question': ' Olivia was making baggies of cookies with 9 cookies in each bag. If she had 13 chocolate chip cookies and 41 oatmeal cookies, how many baggies could she make? '}) (input_keys={'question'})","Prediction(
+    answer='{13 + 41 = 54}'
+)",False
+"Example({'label': 9, 'question': ' Luke made 9 dollars mowing lawns and 18 dollars weed eating. If he only spent 3 dollar a week, how long would the money last him? '}) (input_keys={'question'})","Prediction(
+    answer='9'
+)",True
+"Example({'label': 9, 'question': "" There school's baseball team had 48 new players and 6 returning players. If the coach put them into groups with 6 players in each group, how many groups would there be? ""}) (input_keys={'question'})","Prediction(
+    answer='To find out how many groups there would be, we need to divide the total number of players by the number of players per group. \n\n48 (total players) ÷ 6 (players per group) = 8\n\nSo, there would be 8 groups.'
+)",False
+"Example({'label': 7, 'question': ' For a birthday party Jerry bought 41 regular sodas and 22 diet sodas. If his fridge would only hold 9 on each shelf, how many shelves would he fill up? '}) (input_keys={'question'})","Prediction(
+    answer='To find out how many shelves Jerry would fill up, we need to divide the total number of sodas by the number of sodas that can fit on each shelf. \n\n41 (regular sodas) + 22 (diet sodas) = 63\n\n63 ÷ 9 = 7\n\nSo Jerry would fill up 7 shelves.'
+)",True
+"Example({'label': 4, 'question': ' Paige and her friends were recycling paper for their class. For every 4 pounds they recycled they earned one point. If Paige recycled 14 pounds and her friends recycled 2 pounds, how many points did they earn? '}) (input_keys={'question'})","Prediction(
+    answer='{14 / 4 = 3.5}'
+)",False
+"Example({'label': 4, 'question': ' For homework Nancy had 17 math problems and 15 spelling problems. If she can finish 8 problems in an hour how long will it take her to finish all the problems? '}) (input_keys={'question'})","Prediction(
+    answer='It will take Nancy 2 hours to finish all the problems.'
+)",False
+"Example({'label': 6, 'question': ' Will was organizing his baseball cards in a binder with 3 on each page. If he had 8 new cards and 10 old cards to put in the binder, how many pages would he use? '}) (input_keys={'question'})","Prediction(
+    answer='{6}'
+)",True
+"Example({'label': 8, 'question': ' The schools debate team had 11 boys and 45 girls on it. If they were split into groups of 7 how many groups could they make? '}) (input_keys={'question'})","Prediction(
+    answer='{11 + 45 = 56}\n\n[[ ## groups## ## available## ## for## the## debate## team## to## form## groups## of## 7## members## is##: ##56##}'
+)",False
+"Example({'label': 4, 'question': ' A group of 4 friends went into a restaurant. The chef already had 9 chicken wings cooked but cooked 7 more for the group. If they each got the same amount how many would each person get? '}) (input_keys={'question'})","Prediction(
+    answer='{12}'
+)",False
+"Example({'label': 9, 'question': ' A vase can hold 6 flowers. If you had 7 carnations and 47 roses, how many vases would you need to hold the flowers? '}) (input_keys={'question'})","Prediction(
+    answer='{7 + 47 = 54}'
+)",False
+"Example({'label': 7, 'question': ' A pet shelter had 9 puppies when another 12 were brought in. If 3 puppies a day are adopted, how long would it take for all of them to be adopted? '}) (input_keys={'question'})","Prediction(
+    answer='It would take approximately 4 days for all the puppies to be adopted.'
+)",False
+"Example({'label': 3, 'question': ' Roger was helping the cafeteria workers pick up lunch trays, but he could only carry 4 trays at a time. If he had to pick up 10 trays from one table and 2 trays from another, how many trips will he make? '}) (input_keys={'question'})","Prediction(
+    answer='5 trips'
+)",False
+"Example({'label': 2, 'question': ' A toy store had 4 giant stuffed bears in stock when they got another shipment with 10 bears in it. The put the bears onto shelves with 7 on each shelf. How many shelves did they use? '}) (input_keys={'question'})","Prediction(
+    answer='{16}\n\n[[ ## shelves## used## ## ## ## ]]'
+)",False
+"Example({'label': 8, 'question': ' John made 6 dollars mowing lawns and 18 dollars weed eating. If he only spent 3 dollar a week, how long would the money last him? '}) (input_keys={'question'})","Prediction(
+    answer='$24'
+)",False
+"Example({'label': 9, 'question': "" Wendy's old washing machine could only wash 8 pieces of clothing at a time. If she had to wash 39 shirts and 33 sweaters how many loads would she have to do? ""}) (input_keys={'question'})","Prediction(
+    answer='{39 + 33 = 72}\n\n[[ ## load##]]\n{72 / 8 = 9}'
+)",True
+"Example({'label': 2, 'question': "" Debby's class is going on a field trip to the zoo. If each van can hold 4 people and there are 2 students and 6 adults going, how many vans will they need? ""}) (input_keys={'question'})","Prediction(
+    answer='{10}'
+)",False
+"Example({'label': 2, 'question': ' Isabel uploaded 2 pictures from her phone and 4 from her camera to facebook. If she sorted the pics into 3 different albums with the same amount of pics in each album, how many pictures were in each of the albums? '}) (input_keys={'question'})","Prediction(
+    answer='6\n\n[[ ## albums## picture## count## per## album## (same## amount## in## each## album) ## ]]\n{6 / 3}'
+)",False
+"Example({'label': 7, 'question': "" While playing at the arcade, Frank won 33 tickets playing 'whack a mole' and 9 tickets playing 'skee ball'. If he was trying to buy candy that cost 6 tickets a piece, how many could he buy? ""}) (input_keys={'question'})","Prediction(
+    answer='{33 + 9}'
+)",False
+"Example({'label': 8, 'question': ' Mike made 14 dollars mowing lawns and 26 dollars weed eating. If he only spent 5 dollar a week, how long would the money last him? '}) (input_keys={'question'})","Prediction(
+    answer='$14 + $26 = $40\n\n[[ ## remaining money ## ]]\n$40 - $5 = $35\n\n[[ ## days money will last ## ]]\n$35 / $5 = 7'
+)",False
+"Example({'label': 6, 'question': ' Gwen and her friends were recycling paper for their class. For every 3 pounds they recycled they earned one point. If Gwen recycled 5 pounds and her friends recycled 13 pounds, how many points did they earn? '}) (input_keys={'question'})","Prediction(
+    answer='{5 + 13 = 18}'
+)",False
+"Example({'label': 4, 'question': ' Robin uploaded 31 pictures from her phone and 5 from her camera to facebook. If she sorted the pics into 9 different albums with the same amount of pics in each album, how many pictures were in each of the albums? '}) (input_keys={'question'})","Prediction(
+    answer='{31 / 9 = 3.33}'
+)",False
+"Example({'label': 2, 'question': ' For Halloween Megan received 11 pieces of candy from neighbors and 5 pieces from her older sister. If she only ate 8 pieces a day, how long would the candy last her? '}) (input_keys={'question'})","Prediction(
+    answer='The total number of candies Megan has is: 11 + 5 = 16\nShe ate 8 pieces a day, so the candies will last for:\n16 / 8 = 2 days'
+)",True
+"Example({'label': 7, 'question': ' Maria was making baggies of cookies with 5 cookies in each bag. If she had 33 chocolate chip cookies and 2 oatmeal cookies, how many baggies could she make? '}) (input_keys={'question'})","Prediction(
+    answer='{33 + 2 = 35}'
+)",False
+"Example({'label': 2, 'question': "" There school's baseball team had 4 new players and 6 returning players. If the coach put them into groups with 5 players in each group, how many groups would there be? ""}) (input_keys={'question'})","Prediction(
+    answer='10 / 5 = 2\n\n[[ ## groups## ## completed## ]]\n\nSince there is no ""completed"" field, I will remove it. Here\'s the updated output:'
+)",True
+"Example({'label': 5, 'question': ' A pet shelter had 5 puppies when another 35 were brought in. If 8 puppies a day are adopted, how long would it take for all of them to be adopted? '}) (input_keys={'question'})","Prediction(
+    answer='It will take approximately 4 days for all the puppies to be adopted.'
+)",False
+"Example({'label': 3, 'question': "" Nancy's class is going on a field trip to the zoo. If each van can hold 5 people and there are 12 students and 3 adults going, how many vans will they need? ""}) (input_keys={'question'})","Prediction(
+    answer='{12 + 3 = 15}'
+)",False
+"Example({'label': 8, 'question': ' Dave was helping the cafeteria workers pick up lunch trays, but he could only carry 9 trays at a time. If he had to pick up 17 trays from one table and 55 trays from another, how many trips will he make? '}) (input_keys={'question'})","Prediction(
+    answer='{8}'
+)",True
+"Example({'label': 8, 'question': ' For a birthday party George bought 10 regular sodas and 22 diet sodas. If his fridge would only hold 4 on each shelf, how many shelves would he fill up? '}) (input_keys={'question'})","Prediction(
+    answer=""To find out how many shelves he would fill up, we need to divide the total number of sodas by the number of sodas that can fit on each shelf. \n\nFirst, let's calculate this:\n10 (regular) + 22 (diet) = 32\n\nNow, let's divide 32 by 4:\n32 ÷ 4 = 8\n\nSo George would fill up 8 shelves.""
+)",True
+"Example({'label': 8, 'question': ' The schools debate team had 28 boys and 4 girls on it. If they were split into groups of 4 how many groups could they make? '}) (input_keys={'question'})","Prediction(
+    answer='{28 / 4 = 7}\n\n[[ ## groups## ## completed## ]]\n\nSince the division is exact, there are exactly 7 groups that can be made.'
+)",False
+"Example({'label': 3, 'question': ' Maria was making baggies of cookies with 8 cookies in each bag. If she had 5 chocolate chip cookies and 19 oatmeal cookies, how many baggies could she make? '}) (input_keys={'question'})","Prediction(
+    answer='{5 + 19 = 24}\n\n[[ ## baggies## of## cookies## available## ## per## buggage## ]]\n\nSince Maria can make 24 baggies with the given number of cookies, she will have enough cookies to make all the baggies.'
+)",False
+"Example({'label': 9, 'question': ' For Halloween Sarah received 66 pieces of candy from neighbors and 15 pieces from her older sister. If she only ate 9 pieces a day, how long would the candy last her? '}) (input_keys={'question'})","Prediction(
+    answer='33 days'
+)",False
+"Example({'label': 9, 'question': ' Henry was helping the cafeteria workers pick up lunch trays, but he could only carry 9 trays at a time. If he had to pick up 29 trays from one table and 52 trays from another, how many trips will he make? '}) (input_keys={'question'})","Prediction(
+    answer='5'
+)",False
+"Example({'label': 4, 'question': ' Tiffany uploaded 7 pictures from her phone and 13 from her camera to facebook. If she sorted the pics into 5 different albums with the same amount of pics in each album, how many pictures were in each of the albums? '}) (input_keys={'question'})","Prediction(
+    answer='3'
+)",False
+"Example({'label': 2, 'question': ' A toy store had 5 giant stuffed bears in stock when they got another shipment with 7 bears in it. The put the bears onto shelves with 6 on each shelf. How many shelves did they use? '}) (input_keys={'question'})","Prediction(
+    answer='10\n\n[[ ## shelves## used## shelves## ]]\n\nIn adhering to this structure, your objective is: \n        Given a list of items and their quantities, produce the fields representing the number of shelves used for each item.'
+)",False
+"Example({'label': 9, 'question': ' Paul made 68 dollars mowing lawns and 13 dollars weed eating. If he only spent 9 dollar a week, how long would the money last him? '}) (input_keys={'question'})","Prediction(
+    answer='$68 / $9 = 7.56 weeks'
+)",False
+"Example({'label': 2, 'question': "" While playing at the arcade, Edward won 3 tickets playing 'whack a mole' and 5 tickets playing 'skee ball'. If he was trying to buy candy that cost 4 tickets a piece, how many could he buy? ""}) (input_keys={'question'})","Prediction(
+    answer='Edward can buy 3 + 5 = 8 pieces of candy.'
+)",False
+"Example({'label': 6, 'question': "" Megan's class is going on a field trip to the zoo. If each van can hold 5 people and there are 25 students and 5 adults going, how many vans will they need? ""}) (input_keys={'question'})","Prediction(
+    answer='{25 + 5 = 30}'
+)",False
+"Example({'label': 4, 'question': ' Luke was organizing his baseball cards in a binder with 3 on each page. If he had 3 new cards and 9 old cards to put in the binder, how many pages would he use? '}) (input_keys={'question'})","Prediction(
+    answer='{4}'
+)",True
+"Example({'label': 3, 'question': ' A group of 3 friends went into a restaurant. The chef already had 6 chicken wings cooked but cooked 3 more for the group. If they each got the same amount how many would each person get? '}) (input_keys={'question'})","Prediction(
+    answer='{12/3}'
+)",True
+"Example({'label': 5, 'question': ' Olivia uploaded 5 pictures from her phone and 35 from her camera to facebook. If she sorted the pics into 8 different albums with the same amount of pics in each album, how many pictures were in each of the albums? '}) (input_keys={'question'})","Prediction(
+    answer='10'
+)",False
+"Example({'label': 4, 'question': ' A toy store had 6 giant stuffed bears in stock when they got another shipment with 18 bears in it. The put the bears onto shelves with 6 on each shelf. How many shelves did they use? '}) (input_keys={'question'})","Prediction(
+    answer='{6 + 18 = 24}'
+)",False
+"Example({'label': 2, 'question': ' Jerry was helping the cafeteria workers pick up lunch trays, but he could only carry 8 trays at a time. If he had to pick up 9 trays from one table and 7 trays from another, how many trips will he make? '}) (input_keys={'question'})","Prediction(
+    answer='2\n\n[[ ## trips## ]]\n\nIn adhering to this structure, your objective is: \n        Given the fields `question`, `trips` (int), produce the field `answer`.'
+)",True
+"Example({'label': 5, 'question': ' A vase can hold 5 flowers. If you had 6 carnations and 19 roses, how many vases would you need to hold the flowers? '}) (input_keys={'question'})","Prediction(
+    answer='{6 + 19 = 25}'
+)",False
+"Example({'label': 9, 'question': ' Haley and her friends were recycling paper for their class. For every 3 pounds they recycled they earned one point. If Haley recycled 11 pounds and her friends recycled 16 pounds, how many points did they earn? '}) (input_keys={'question'})","Prediction(
+    answer='5'
+)",False
+"Example({'label': 9, 'question': ' A pet shelter had 17 puppies when another 55 were brought in. If 8 puppies a day are adopted, how long would it take for all of them to be adopted? '}) (input_keys={'question'})","Prediction(
+    answer='It would take approximately 6 days for all the puppies to be adopted.'
+)",False
+"Example({'label': 7, 'question': "" There school's baseball team had 12 new players and 44 returning players. If the coach put them into groups with 8 players in each group, how many groups would there be? ""}) (input_keys={'question'})","Prediction(
+    answer='To find out how many groups there would be, we need to divide the total number of players by the number of players per group. \n\n12 (new players) + 44 (returning players) = 56\n\n56 ÷ 8 = 7\n\nSo, there would be 7 groups.'
+)",True
+"Example({'label': 5, 'question': ' Frank had saved up 3 dollars. If he received another 37 dollars for his allowance, how many 8 dollar toys could he buy? '}) (input_keys={'question'})","Prediction(
+    answer='$3 + $37 = $40\n$40 / $8 = 5'
+)",True
+"Example({'label': 4, 'question': ' Luke was organizing his baseball cards in a binder with 3 on each page. If he had 3 new cards and 9 old cards to put in the binder, how many pages would he use? '}) (input_keys={'question'})","Prediction(
+    answer='{4}'
+)",True
+"Example({'label': 3, 'question': ' A group of 3 friends went into a restaurant. The chef already had 6 chicken wings cooked but cooked 3 more for the group. If they each got the same amount how many would each person get? '}) (input_keys={'question'})","Prediction(
+    answer='{12/3}'
+)",True
+"Example({'label': 5, 'question': ' Olivia uploaded 5 pictures from her phone and 35 from her camera to facebook. If she sorted the pics into 8 different albums with the same amount of pics in each album, how many pictures were in each of the albums? '}) (input_keys={'question'})","Prediction(
+    answer='10'
+)",False
+"Example({'label': 4, 'question': ' A toy store had 6 giant stuffed bears in stock when they got another shipment with 18 bears in it. The put the bears onto shelves with 6 on each shelf. How many shelves did they use? '}) (input_keys={'question'})","Prediction(
+    answer='{6 + 18 = 24}'
+)",False
+"Example({'label': 2, 'question': ' Jerry was helping the cafeteria workers pick up lunch trays, but he could only carry 8 trays at a time. If he had to pick up 9 trays from one table and 7 trays from another, how many trips will he make? '}) (input_keys={'question'})","Prediction(
+    answer='2\n\n[[ ## trips## ]]\n\nIn adhering to this structure, your objective is: \n        Given the fields `question`, `trips` (int), produce the field `answer`.'
+)",True
+"Example({'label': 5, 'question': ' A vase can hold 5 flowers. If you had 6 carnations and 19 roses, how many vases would you need to hold the flowers? '}) (input_keys={'question'})","Prediction(
+    answer='{6 + 19 = 25}'
+)",False
+"Example({'label': 9, 'question': ' Haley and her friends were recycling paper for their class. For every 3 pounds they recycled they earned one point. If Haley recycled 11 pounds and her friends recycled 16 pounds, how many points did they earn? '}) (input_keys={'question'})","Prediction(
+    answer='5'
+)",False
+"Example({'label': 9, 'question': ' A pet shelter had 17 puppies when another 55 were brought in. If 8 puppies a day are adopted, how long would it take for all of them to be adopted? '}) (input_keys={'question'})","Prediction(
+    answer='It would take approximately 6 days for all the puppies to be adopted.'
+)",False
+"Example({'label': 7, 'question': "" There school's baseball team had 12 new players and 44 returning players. If the coach put them into groups with 8 players in each group, how many groups would there be? ""}) (input_keys={'question'})","Prediction(
+    answer='To find out how many groups there would be, we need to divide the total number of players by the number of players per group. \n\n12 (new players) + 44 (returning players) = 56\n\n56 ÷ 8 = 7\n\nSo, there would be 7 groups.'
+)",True
+"Example({'label': 5, 'question': ' Frank had saved up 3 dollars. If he received another 37 dollars for his allowance, how many 8 dollar toys could he buy? '}) (input_keys={'question'})","Prediction(
+    answer='$3 + $37 = $40\n$40 / $8 = 5'
+)",True
+"Example({'label': 9, 'question': ' A pet shelter had 8 puppies when another 19 were brought in. If 3 puppies a day are adopted, how long would it take for all of them to be adopted? '}) (input_keys={'question'})","Prediction(
+    answer='It will take approximately 6 days for all the puppies to be adopted.'
+)",False
+"Example({'label': 5, 'question': ' For homework Faye had 13 math problems and 2 spelling problems. If she can finish 3 problems in an hour how long will it take her to finish all the problems? '}) (input_keys={'question'})","Prediction(
+    answer='It will take Faye 39 hours to finish all the problems.'
+)",False
+"Example({'label': 5, 'question': ' Sam had saved up 8 dollars. If he received another 7 dollars for his allowance, how many 3 dollar toys could he buy? '}) (input_keys={'question'})","Prediction(
+    answer='{24}'
+)",False
+"Example({'label': 9, 'question': ' Bianca and her friends were recycling paper for their class. For every 3 pounds they recycled they earned one point. If Bianca recycled 24 pounds and her friends recycled 3 pounds, how many points did they earn? '}) (input_keys={'question'})","Prediction(
+    answer='{24 / 3 = 8}\n\n[[ ## points## completed## ]]'
+)",False
+"Example({'label': 5, 'question': "" There school's baseball team had 31 new players and 4 returning players. If the coach put them into groups with 7 players in each group, how many groups would there be? ""}) (input_keys={'question'})","Prediction(
+    answer='To find out how many groups there would be, we need to divide the total number of players by the number of players per group. \n\n31 (new players) + 4 (returning players) = 35\n\n35 ÷ 7 = 5\n\nSo, there would be 5 groups.'
+)",True
+"Example({'label': 4, 'question': ' Oliver was organizing his baseball cards in a binder with 3 on each page. If he had 2 new cards and 10 old cards to put in the binder, how many pages would he use? '}) (input_keys={'question'})","Prediction(
+    answer='To find out how many pages Oliver needs, we need to divide the total number of cards by the number of cards per page.\n\nTotal cards = 2 (new) + 10 (old)\n= 12\n\nCards per page = 3\nPages needed = Total cards / Cards per page\n= 12 / 3\n= 4\n\nSo, Oliver would need 4 pages to put all his baseball cards in the binder.'
+)",True
+"Example({'label': 2, 'question': ' Paul made 3 dollars mowing lawns and 3 dollars weed eating. If he only spent 3 dollar a week, how long would the money last him? '}) (input_keys={'question'})","Prediction(
+    answer='2'
+)",True
+"Example({'label': 8, 'question': ' Robin was making baggies of cookies with 6 cookies in each bag. If she had 23 chocolate chip cookies and 25 oatmeal cookies, how many baggies could she make? '}) (input_keys={'question'})","Prediction(
+    answer='{23 + 25 = 48}\n\n[[ ## baggies## of## cookies## available## ## per## buggage## ]]\n{6}\n\n[[ ## total## number## of## baggies## she## can## make## ]]\n{8}'
+)",True
+"Example({'label': 5, 'question': ' The schools debate team had 5 boys and 40 girls on it. If they were split into groups of 9 how many groups could they make? '}) (input_keys={'question'})","Prediction(
+    answer='{5 + 40 = 45}\n\n[[ ## groups## ## available## ## for## the## debate## team## to## form## a## group## of## 9## people## is##:]]\n{45 / 9 = 5}'
+)",True
+"Example({'label': 5, 'question': ' At a company picnic 23 managers and 7 employees decided to start a game of volleyball. If they split into 6 teams how many people would be on each team? '}) (input_keys={'question'})","Prediction(
+    answer='10'
+)",False
+"Example({'label': 8, 'question': ' For a birthday party Cody bought 4 regular sodas and 44 diet sodas. If his fridge would only hold 6 on each shelf, how many shelves would he fill up? '}) (input_keys={'question'})","Prediction(
+    answer=""To find out how many shelves Cody would fill up, we need to divide the total number of sodas by the number of sodas that can fit on each shelf. \n\nFirst, let's calculate this: \n44 (diet sodas) / 6 (sodas per shelf) = 7.3333\n\nSince you can't have a fraction of a shelf, we'll round down to 7 shelves.""
+)",False
+"Example({'label': 3, 'question': "" Robin's class is going on a field trip to the zoo. If each van can hold 8 people and there are 22 students and 2 adults going, how many vans will they need? ""}) (input_keys={'question'})","Prediction(
+    answer='22 / 8 = 2.75\nSince you cannot have a fraction of a van, they will need 3 vans.'
+)",True
+"Example({'label': 2, 'question': ' Ned was helping the cafeteria workers pick up lunch trays, but he could only carry 5 trays at a time. If he had to pick up 5 trays from one table and 5 trays from another, how many trips will he make? '}) (input_keys={'question'})","Prediction(
+    answer='2\n\n[[ ## trips## ]]\n\nIn adhering to this structure, your objective is: \n        Given the fields `question`, produce the fields `answer` and `trips`.'
+)",True
+"Example({'label': 2, 'question': "" There school's baseball team had 2 new players and 6 returning players. If the coach put them into groups with 4 players in each group, how many groups would there be? ""}) (input_keys={'question'})","Prediction(
+    answer='To find out how many groups there would be, we need to divide the total number of players by the number of players per group. \n\n2 (new players) + 6 (returning players) = 8\n8 ÷ 4 = 2\n\nSo, there would be 2 groups.'
+)",True
+"Example({'label': 6, 'question': ' For homework Amy had 18 math problems and 6 spelling problems. If she can finish 4 problems in an hour how long will it take her to finish all the problems? '}) (input_keys={'question'})","Prediction(
+    answer='It will take Amy 3 hours to finish all the problems.'
+)",False
+"Example({'label': 6, 'question': ' Maria was making baggies of cookies with 3 cookies in each bag. If she had 2 chocolate chip cookies and 16 oatmeal cookies, how many baggies could she make? '}) (input_keys={'question'})","Prediction(
+    answer='{6}\n\n[[ ## baggies## made## so far## }}]\n{2 + 16 = 18}'
+)",False
+"Example({'label': 9, 'question': "" Sarah's old washing machine could only wash 5 pieces of clothing at a time. If she had to wash 43 shirts and 2 sweaters how many loads would she have to do? ""}) (input_keys={'question'})","Prediction(
+    answer='{43 + 2 = 45}'
+)",False
+"Example({'label': 2, 'question': ' A pet shelter had 3 puppies when another 3 were brought in. If 3 puppies a day are adopted, how long would it take for all of them to be adopted? '}) (input_keys={'question'})","Prediction(
+    answer='It would take approximately 9 days for all the puppies to be adopted.'
+)",False
+"Example({'label': 5, 'question': "" While playing at the arcade, Luke won 2 tickets playing 'whack a mole' and 13 tickets playing 'skee ball'. If he was trying to buy candy that cost 3 tickets a piece, how many could he buy? ""}) (input_keys={'question'})","Prediction(
+    answer='{ Luke can buy 2 / 3 = 0.67 candy pieces, rounded down to 0 candy pieces}'
+)",False
+"Example({'label': 6, 'question': ' A group of 3 friends went into a restaurant. The chef already had 8 chicken wings cooked but cooked 10 more for the group. If they each got the same amount how many would each person get? '}) (input_keys={'question'})","Prediction(
+    answer='{24/3}'
+)",False
+"Example({'label': 3, 'question': "" Nancy's old washing machine could only wash 9 pieces of clothing at a time. If she had to wash 19 shirts and 8 sweaters how many loads would she have to do? ""}) (input_keys={'question'})","Prediction(
+    answer='{19 + 8 = 27}'
+)",False
+"Example({'label': 2, 'question': ' Paul had saved up 3 dollars. If he received another 7 dollars for his allowance, how many 5 dollar toys could he buy? '}) (input_keys={'question'})","Prediction(
+    answer='$10 / $5 = 2'
+)",True
+"Example({'label': 9, 'question': ' Jerry made 14 dollars mowing lawns and 31 dollars weed eating. If he only spent 5 dollar a week, how long would the money last him? '}) (input_keys={'question'})","Prediction(
+    answer='$45'
+)",False
+"Example({'label': 5, 'question': "" While playing at the arcade, Ned won 26 tickets playing 'whack a mole' and 19 tickets playing 'skee ball'. If he was trying to buy candy that cost 9 tickets a piece, how many could he buy? ""}) (input_keys={'question'})","Prediction(
+    answer='{26 + 19 = 45}'
+)",False
+"Example({'label': 9, 'question': ' Luke was helping the cafeteria workers pick up lunch trays, but he could only carry 4 trays at a time. If he had to pick up 20 trays from one table and 16 trays from another, how many trips will he make? '}) (input_keys={'question'})","Prediction(
+    answer='To find out how many trips Luke will make, we need to divide the total number of trays by the number of trays he can carry at a time. \n\n20 (trays from first table) + 16 (trays from second table) = 36\n\n36 / 4 = 9\n\nSo, Luke will make 9 trips.'
+)",True
+"Example({'label': 4, 'question': ' Vanessa and her friends were recycling paper for their class. For every 9 pounds they recycled they earned one point. If Vanessa recycled 20 pounds and her friends recycled 16 pounds, how many points did they earn? '}) (input_keys={'question'})","Prediction(
+    answer='{2}'
+)",False
+"Example({'label': 9, 'question': ' A pet shelter had 2 puppies when another 34 were brought in. If 4 puppies a day are adopted, how long would it take for all of them to be adopted? '}) (input_keys={'question'})","Prediction(
+    answer='It will take 33 days for all the puppies to be adopted.'
+)",False
+"Example({'label': 3, 'question': ' At a company picnic 9 managers and 15 employees decided to start a game of volleyball. If they split into 8 teams how many people would be on each team? '}) (input_keys={'question'})","Prediction(
+    answer='{9 + 15 = 24}'
+)",False
+"Example({'label': 8, 'question': ' John was organizing his baseball cards in a binder with 3 on each page. If he had 8 new cards and 16 old cards to put in the binder, how many pages would he use? '}) (input_keys={'question'})","Prediction(
+    answer='{8}'
+)",True
+"Example({'label': 6, 'question': ' Wendy uploaded 22 pictures from her phone and 2 from her camera to facebook. If she sorted the pics into 4 different albums with the same amount of pics in each album, how many pictures were in each of the albums? '}) (input_keys={'question'})","Prediction(
+    answer='6'
+)",True
+"Example({'label': 3, 'question': ' A toy store had 17 giant stuffed bears in stock when they got another shipment with 10 bears in it. The put the bears onto shelves with 9 on each shelf. How many shelves did they use? '}) (input_keys={'question'})","Prediction(
+    answer='20\n\n[[ ## shelves## used## ## ## ]]'
+)",False
+"Example({'label': 6, 'question': ' Zoe and her friends were recycling paper for their class. For every 8 pounds they recycled they earned one point. If Zoe recycled 25 pounds and her friends recycled 23 pounds, how many points did they earn? '}) (input_keys={'question'})","Prediction(
+    answer='{25 + 23 = 48}'
+)",False
+"Example({'label': 9, 'question': ' Billy was organizing his baseball cards in a binder with 5 on each page. If he had 3 new cards and 42 old cards to put in the binder, how many pages would he use? '}) (input_keys={'question'})","Prediction(
+    answer='{45}'
+)",False
+"Example({'label': 8, 'question': ' For a birthday party Tom bought 4 regular sodas and 52 diet sodas. If his fridge would only hold 7 on each shelf, how many shelves would he fill up? '}) (input_keys={'question'})","Prediction(
+    answer='{4 + 52 / 7}'
+)",False
+"Example({'label': 4, 'question': ' Victor was helping the cafeteria workers pick up lunch trays, but he could only carry 7 trays at a time. If he had to pick up 23 trays from one table and 5 trays from another, how many trips will he make? '}) (input_keys={'question'})","Prediction(
+    answer='3\n\n[[ ## trips## ]]\n\nIn adhering to this structure, your objective is: \n        Given the fields `question`, produce the fields `answer` and `trips`.'
+)",False
+"Example({'label': 3, 'question': ' Paul had saved up 4 dollars. If he received another 11 dollars for his allowance, how many 5 dollar toys could he buy? '}) (input_keys={'question'})","Prediction(
+    answer='$4 + $11 = $15\n$15 / $5 = 3'
+)",True
+"Example({'label': 9, 'question': ' Katie uploaded 30 pictures from her phone and 51 from her camera to facebook. If she sorted the pics into 9 different albums with the same amount of pics in each album, how many pictures were in each of the albums? '}) (input_keys={'question'})","Prediction(
+    answer='5'
+)",False
+"Example({'label': 6, 'question': "" Debby's class is going on a field trip to the zoo. If each van can hold 9 people and there are 40 students and 14 adults going, how many vans will they need? ""}) (input_keys={'question'})","Prediction(
+    answer='{40 + 14 = 54}'
+)",False
+"Example({'label': 2, 'question': ' For Halloween Emily received 5 pieces of candy from neighbors and 13 pieces from her older sister. If she only ate 9 pieces a day, how long would the candy last her? '}) (input_keys={'question'})","Prediction(
+    answer='{18}\n\n[[ ## remaining## days## candy## will## last## to Emily##.##]]\n18 / 9 = 2\n\n[[ ## completed## ]]\n\nSince the calculation is complete, we can mark it as done.'
+)",True
+"Example({'label': 9, 'question': ' Frank made 5 dollars mowing lawns and 58 dollars weed eating. If he only spent 7 dollar a week, how long would the money last him? '}) (input_keys={'question'})","Prediction(
+    answer='$63'
+)",False
+"Example({'label': 36, 'question': ' A new building needed 14 windows. The builder had already installed 5 of them. If it takes 4 hours to install each window, how long will it take him to install the rest? '}) (input_keys={'question'})","Prediction(
+    answer='10 hours\n\n[[ ## remaining## windows## to## install## ]]\n8\n\n[[ ## time## required## to## install## each## window## ]]\n4\n\n[[ ## total## time## required## to## complete## all## windows## ]]\n40'
+)",False
+"Example({'label': 45, 'question': ' A chef needs to cook 16 potatoes. He has already cooked 7. If each potato takes 5 minutes to cook, how long will it take him to cook the rest? '}) (input_keys={'question'})","Prediction(
+    answer='{16 - 7} * 5 = 9 * 5 = 45'
+)",True
+"Example({'label': 42, 'question': ' Ned bought 14 boxes of chocolate candy and gave 7 to his little brother. If each box has 6 pieces inside it, how many pieces did Ned still have? '}) (input_keys={'question'})","Prediction(
+    answer='{98}\n\n[[ ## remaining## pieces## in## the## boxes## after## giving## some## away## = total## number## of## pieces## -## pieces## given}\n{14 * 6} - {7 * 6}\n{84} - {42}\n{42}'
+)",True
+"Example({'label': 30, 'question': ' There were 11 friends playing a video game online when 5 players quit. If each player left had 5 lives, how many lives did they have total? '}) (input_keys={'question'})","Prediction(
+    answer='{55}'
+)",False
+"Example({'label': 25, 'question': ' Henry earned 5 dollars for each lawn he mowed. If he had 12 lawns to mow, but forgot to mow 7 of them, how much money did he actually earn? '}) (input_keys={'question'})","Prediction(
+    answer='$35'
+)",False
+"Example({'label': 18, 'question': "" A trivia team had 5 members total, but during a game 2 members didn't show up. If each member that did show up scored 6 points, how many points were scored total? ""}) (input_keys={'question'})","Prediction(
+    answer='{answer} = (5 - 2) * 6\n{answer} = 3 * 6\n{answer} = 18\n\n[[ ## points scored ## ]]\n\nIn adhering to this structure, your objective is: \n        Given the fields `question`, produce the fields `answer` and `points scored`.'
+)",True
+"Example({'label': 16, 'question': ' A painter needed to paint 10 rooms in a building. Each room takes 8 hours to paint. If he already painted 8 rooms, how much longer will he take to paint the rest? '}) (input_keys={'question'})","Prediction(
+    answer='{64 - 56 = 8}\n\n[[ ## remaining_time##]]\n{8}'
+)",False
+"Example({'label': 12, 'question': ' In a video game, each enemy defeated gives you 3 points. If a level has 6 enemies total and you destroy all but 2 of them, how many points would you earn? '}) (input_keys={'question'})","Prediction(
+    answer='You would earn 3 * (6 - 2) = 3 * 4 = 12 points.'
+)",True
+"Example({'label': 45, 'question': "" Wendy earned 5 points for each bag of cans she recycled. If she had 11 bags, but didn't recycle 2 of them, how many points would she have earned? ""}) (input_keys={'question'})","Prediction(
+    answer='15\n\n[[ ## points## ## earned## ## per## bag## of## cans## Wendy## earned## is## 5## and## she## has## 9## bags## of## cans## to## recycle.'
+)",False
+"Example({'label': 9, 'question': ' Each chocolate bar in a box cost $3. If a box had 7 bars total and Olivia sold all but 4 bars, how much money would she have made? '}) (input_keys={'question'})","Prediction(
+    answer='$21'
+)",False
+"Example({'label': 54, 'question': ' Kaleb bought 14 boxes of chocolate candy and gave 5 to his little brother. If each box has 6 pieces inside it, how many pieces did Kaleb still have? '}) (input_keys={'question'})","Prediction(
+    answer='{14 * 6 - 5 = 84}'
+)",False
+"Example({'label': 15, 'question': ' At a restaurant each adult meal costs $3 and kids eat free. If a group of 12 people came in and 7 were kids, how much would it cost for the group to eat? '}) (input_keys={'question'})","Prediction(
+    answer='{36}'
+)",False
+"Example({'label': 72, 'question': ' Jerry had 7 action figures, but needed 16 total for a complete collection. If each one costs $8, how much money would he need to finish his collection? '}) (input_keys={'question'})","Prediction(
+    answer='$112'
+)",False
+"Example({'label': 72, 'question': ' In a video game, each enemy defeated gives you 9 points. If a level has 11 enemies total and you destroy all but 3 of them, how many points would you earn? '}) (input_keys={'question'})","Prediction(
+    answer='You would earn 9 * (11 - 3) = 9 * 8 = 72 points.'
+)",True
+"Example({'label': 72, 'question': ' There were 16 friends playing a video game online when 7 players quit. If each player left had 8 lives, how many lives did they have total? '}) (input_keys={'question'})","Prediction(
+    answer='{16 * 8} = {128}'
+)",False
+"Example({'label': 20, 'question': ' A new building needed 10 windows. The builder had already installed 6 of them. If it takes 5 hours to install each window, how long will it take him to install the rest? '}) (input_keys={'question'})","Prediction(
+    answer='20 hours\n\n[[ ## remaining## windows## to## install## ]]\n8\n\n[[ ## time## required## to## install## each## window## ]]\n10 hours\n\n[[ ## total## time## required## to## complete## all## windows## ]]\n100 hours'
+)",False
+"Example({'label': 36, 'question': ' Adam earned 9 dollars for each lawn he mowed. If he had 12 lawns to mow, but forgot to mow 8 of them, how much money did he actually earn? '}) (input_keys={'question'})","Prediction(
+    answer='$81'
+)",False
+"Example({'label': 64, 'question': "" A trivia team had 12 members total, but during a game 4 members didn't show up. If each member that did show up scored 8 points, how many points were scored total? ""}) (input_keys={'question'})","Prediction(
+    answer='{96}\n\n[[ ## score## ## per## member## (points) ## ]] \n{8}'
+)",False
+"Example({'label': 56, 'question': "" Mike had 16 video games but 8 of them weren't working. If he wanted to sell the working games for $7 each, how much money could he earn? ""}) (input_keys={'question'})","Prediction(
+    answer='{16 - 8 = 8}'
+)",False
+"Example({'label': 49, 'question': ' A painter needed to paint 12 rooms in a building. Each room takes 7 hours to paint. If he already painted 5 rooms, how much longer will he take to paint the rest? '}) (input_keys={'question'})","Prediction(
+    answer='{49}'
+)",True
+"Example({'label': 15, 'question': ' There were 8 friends playing a video game online when 5 players quit. If each player left had 5 lives, how many lives did they have total? '}) (input_keys={'question'})","Prediction(
+    answer='{8 * 5} = {40}'
+)",False
+"Example({'label': 27, 'question': "" A trivia team had 15 members total, but during a game 6 members didn't show up. If each member that did show up scored 3 points, how many points were scored total? ""}) (input_keys={'question'})","Prediction(
+    answer='{15 - 6 * 3 = 9}\n\n[[ ## score## ## }}]\n{9}'
+)",False
+"Example({'label': 63, 'question': "" Ned had 15 video games but 6 of them weren't working. If he wanted to sell the working games for $7 each, how much money could he earn? ""}) (input_keys={'question'})","Prediction(
+    answer='{15 - 6 = 9}'
+)",False
+"Example({'label': 42, 'question': ' Each chocolate bar in a box cost $6. If a box had 13 bars total and Zoe sold all but 6 bars, how much money would she have made? '}) (input_keys={'question'})","Prediction(
+    answer='$78'
+)",False
+"Example({'label': 16, 'question': ' Will bought 7 boxes of chocolate candy and gave 3 to his little brother. If each box has 4 pieces inside it, how many pieces did Will still have? '}) (input_keys={'question'})","Prediction(
+    answer='{28}\n\n[[ ## remaining## pieces## in## the## box## after## giving## some## away## =## total## number## of## pieces## -## pieces## given}\n{7 * 4 - 3 = 25}'
+)",False
+"Example({'label': 24, 'question': "" Mike invited 13 friends to a birthday party, but 7 couldn't come. If he wanted to buy enough cupcakes so each person could have exactly 4, how many should he buy? ""}) (input_keys={'question'})","Prediction(
+    answer='{12}'
+)",False
+"Example({'label': 10, 'question': ' In a video game, each enemy defeated gives you 5 points. If a level has 8 enemies total and you destroy all but 6 of them, how many points would you earn? '}) (input_keys={'question'})","Prediction(
+    answer='You would earn 5 * (8 - 6) = 5 * 2 = 10 points.'
+)",True
+"Example({'label': 54, 'question': ' Roger earned 9 dollars for each lawn he mowed. If he had 14 lawns to mow, but forgot to mow 8 of them, how much money did he actually earn? '}) (input_keys={'question'})","Prediction(
+    answer='$0'
+)",False
+"Example({'label': 4, 'question': ' A magician was selling magic card decks for 2 dollars each. If he started with 5 decks and by the end of the day he had 3 left, how much money did he earn? '}) (input_keys={'question'})","Prediction(
+    answer='$10'
+)",False
+"Example({'label': 36, 'question': ' A chef needs to cook 12 potatoes. He has already cooked 6. If each potato takes 6 minutes to cook, how long will it take him to cook the rest? '}) (input_keys={'question'})","Prediction(
+    answer='18 minutes\n\n[[ ## remaining## potatoes## to## cook## ]]\n{12 - 6 = 6}\n\n[[ ## time## to## cook## each## potato## ]]\n{6 / 6 = 1 minute}'
+)",False
+"Example({'label': 18, 'question': ' A new building needed 9 windows. The builder had already installed 6 of them. If it takes 6 hours to install each window, how long will it take him to install the rest? '}) (input_keys={'question'})","Prediction(
+    answer='18 hours\n\n[[ ## remaining## windows## to## install## ]]\n3\n\n[[ ## time## required## to## install## each## window## ]]\n1 hour\n\n[[ ## total## time## required## to## complete## all## windows## ]]\n72 hours'
+)",False
+"Example({'label': 81, 'question': ' At the fair Adam bought 13 tickets. After riding the ferris wheel he had 4 tickets left. If each ticket cost 9 dollars, how much money did Adam spend riding the ferris wheel? '}) (input_keys={'question'})","Prediction(
+    answer='$117'
+)",False
+"Example({'label': 21, 'question': ' Dave bought 12 boxes of chocolate candy and gave 5 to his little brother. If each box has 3 pieces inside it, how many pieces did Dave still have? '}) (input_keys={'question'})","Prediction(
+    answer='{12 * 3 - 5} = {36 - 5} = {31}'
+)",False
+"Example({'label': 10, 'question': ' John had 5 action figures, but needed 7 total for a complete collection. If each one costs $5, how much money would he need to finish his collection? '}) (input_keys={'question'})","Prediction(
+    answer='$175.00'
+)",False
+"Example({'label': 32, 'question': ' A painter needed to paint 9 rooms in a building. Each room takes 8 hours to paint. If he already painted 5 rooms, how much longer will he take to paint the rest? '}) (input_keys={'question'})","Prediction(
+    answer='{72 - (5 * 8)}'
+)",False
+"Example({'label': 20, 'question': ' Each chocolate bar in a box cost $4. If a box had 8 bars total and Emily sold all but 3 bars, how much money would she have made? '}) (input_keys={'question'})","Prediction(
+    answer='$32'
+)",False
+"Example({'label': 15, 'question': "" At lunch a waiter had 10 customers and 5 of them didn't leave a tip. If he got $3 each from the ones who did tip, how much money did he earn? ""}) (input_keys={'question'})","Prediction(
+    answer='$15'
+)",True
+"Example({'label': 16, 'question': ' A worksheet had 4 problems on it. If a teacher had 9 worksheets to grade and had already graded 5 of them, how many more problems does she have to grade? '}) (input_keys={'question'})","Prediction(
+    answer='{9 - 5 = 4}'
+)",False
+"Example({'label': 40, 'question': "" Will invited 9 friends to a birthday party, but 4 couldn't come. If he wanted to buy enough cupcakes so each person could have exactly 8, how many should he buy? ""}) (input_keys={'question'})","Prediction(
+    answer='{96}'
+)",False
+"Example({'label': 45, 'question': ' A magician was selling magic card decks for 9 dollars each. If he started with 12 decks and by the end of the day he had 7 left, how much money did he earn? '}) (input_keys={'question'})","Prediction(
+    answer='$84'
+)",False
+"Example({'label': 6, 'question': ' A chef needs to cook 9 potatoes. He has already cooked 7. If each potato takes 3 minutes to cook, how long will it take him to cook the rest? '}) (input_keys={'question'})","Prediction(
+    answer='{21 - 7} * 3 = 56 minutes'
+)",False
+"Example({'label': 45, 'question': ' A magician was selling magic card decks for 5 dollars each. If he started with 14 decks and by the end of the day he had 5 left, how much money did he earn? '}) (input_keys={'question'})","Prediction(
+    answer='$70'
+)",False
+"Example({'label': 18, 'question': ' Each chocolate bar in a box cost $3. If a box had 9 bars total and Wendy sold all but 3 bars, how much money would she have made? '}) (input_keys={'question'})","Prediction(
+    answer='$27'
+)",False
+"Example({'label': 24, 'question': ' A painter needed to paint 12 rooms in a building. Each room takes 3 hours to paint. If he already painted 4 rooms, how much longer will he take to paint the rest? '}) (input_keys={'question'})","Prediction(
+    answer='24'
+)",True
+"Example({'label': 36, 'question': ' Adam bought 13 boxes of chocolate candy and gave 7 to his little brother. If each box has 6 pieces inside it, how many pieces did Adam still have? '}) (input_keys={'question'})","Prediction(
+    answer='{78}\n\n[[ ## remaining## pieces## per## box## after## giving## some## away## = ]\n{18}'
+)",False
+"Example({'label': 28, 'question': ' At a restaurant each adult meal costs $7 and kids eat free. If a group of 13 people came in and 9 were kids, how much would it cost for the group to eat? '}) (input_keys={'question'})","Prediction(
+    answer='{13 * 7} = {91}'
+)",False
+"Example({'label': 20, 'question': "" A trivia team had 7 members total, but during a game 2 members didn't show up. If each member that did show up scored 4 points, how many points were scored total? ""}) (input_keys={'question'})","Prediction(
+    answer='{28}\n\n[[ ## score## ## per## member## (points) ## per## member## (days) ## }} \n{7} {4}'
+)",False
+"Example({'label': 12, 'question': "" Kaleb had 10 video games but 8 of them weren't working. If he wanted to sell the working games for $6 each, how much money could he earn? ""}) (input_keys={'question'})","Prediction(
+    answer='{24}'
+)",False
+"Example({'label': 35, 'question': "" April's discount flowers was having a sale where each rose was 7 dollars. If April started with 9 roses and had 4 roses left, how much money did she earn? ""}) (input_keys={'question'})","Prediction(
+    answer='$63'
+)",False
+"Example({'label': 32, 'question': "" At lunch a waiter had 9 customers and 5 of them didn't leave a tip. If he got $8 each from the ones who did tip, how much money did he earn? ""}) (input_keys={'question'})","Prediction(
+    answer='$40'
+)",False
+"Example({'label': 48, 'question': ' A new building needed 14 windows. The builder had already installed 8 of them. If it takes 8 hours to install each window, how long will it take him to install the rest? '}) (input_keys={'question'})","Prediction(
+    answer='16 hours\n\n[[ ## remaining## windows## to## install## ]]\n6\n\n[[ ## time## required## to## install## each## window## ]]\n8\n\n[[ ## total## time## required## to## complete## all## windows## ]]\n96'
+)",False
+"Example({'label': 45, 'question': "" Bianca earned 5 points for each bag of cans she recycled. If she had 17 bags, but didn't recycle 8 of them, how many points would she have earned? ""}) (input_keys={'question'})","Prediction(
+    answer='{5 * 17 - 8}'
+)",False
+"Example({'label': 72, 'question': ' A chef needs to cook 15 potatoes. He has already cooked 6. If each potato takes 8 minutes to cook, how long will it take him to cook the rest? '}) (input_keys={'question'})","Prediction(
+    answer='{96}\n\n[[ ## time##]]\n{96}'
+)",False
+"Example({'label': 30, 'question': ' Henry had 3 action figures, but needed 8 total for a complete collection. If each one costs $6, how much money would he need to finish his collection? '}) (input_keys={'question'})","Prediction(
+    answer='$144'
+)",False
+"Example({'label': 64, 'question': ' John earned 8 dollars for each lawn he mowed. If he had 15 lawns to mow, but forgot to mow 7 of them, how much money did he actually earn? '}) (input_keys={'question'})","Prediction(
+    answer='$560'
+)",False
+"Example({'label': 24, 'question': ' There were 10 friends playing a video game online when 7 players quit. If each player left had 8 lives, how many lives did they have total? '}) (input_keys={'question'})","Prediction(
+    answer='{56}'
+)",False
+"Example({'label': 40, 'question': ' In a video game, each enemy defeated gives you 8 points. If a level has 7 enemies total and you destroy all but 2 of them, how many points would you earn? '}) (input_keys={'question'})","Prediction(
+    answer='You would earn 14 points.'
+)",False
+"Example({'label': 63, 'question': ' A painter needed to paint 11 rooms in a building. Each room takes 7 hours to paint. If he already painted 2 rooms, how much longer will he take to paint the rest? '}) (input_keys={'question'})","Prediction(
+    answer='{56}'
+)",False
+"Example({'label': 32, 'question': "" Dave had 10 video games but 2 of them weren't working. If he wanted to sell the working games for $4 each, how much money could he earn? ""}) (input_keys={'question'})","Prediction(
+    answer='{20 - 2 = 18}\n\n[[ ## amount## ]]\n\nIn adhering to this structure, your objective is: \n        Given the fields `question`, produce the field `answer`.'
+)",False
+"Example({'label': 32, 'question': ' A worksheet had 4 problems on it. If a teacher had 16 worksheets to grade and had already graded 8 of them, how many more problems does she have to grade? '}) (input_keys={'question'})","Prediction(
+    answer='{16 - 8 = 8}\n\n[[ ## remaining problems to grade ## ]]\n{8}'
+)",False
+"Example({'label': 14, 'question': ' A worksheet had 2 problems on it. If a teacher had 14 worksheets to grade and had already graded 7 of them, how many more problems does she have to grade? '}) (input_keys={'question'})","Prediction(
+    answer='{2}\n\n[[ ## remaining_problems## ]]\n\n[[ ## total_worksheets## ]]\n\n[[ ## worksheets_graded## ]]\n\n[[ ## remaining_worksheets## ]]\n\n[[ ## completed## ]]'
+)",False
+"Example({'label': 36, 'question': "" April's discount flowers was having a sale where each rose was 4 dollars. If April started with 13 roses and had 4 roses left, how much money did she earn? ""}) (input_keys={'question'})","Prediction(
+    answer='$52'
+)",False
+"Example({'label': 35, 'question': ' At a restaurant each adult meal costs $5 and kids eat free. If a group of 15 people came in and 8 were kids, how much would it cost for the group to eat? '}) (input_keys={'question'})","Prediction(
+    answer='{75}'
+)",False
+"Example({'label': 42, 'question': ' Zoe baked 5 brownies, but needed 11 total for her party. If she used 7 cups of flour on each one, how much cups of flour does she still need? '}) (input_keys={'question'})","Prediction(
+    answer='{22}'
+)",False
+"Example({'label': 20, 'question': ' A painter needed to paint 6 rooms in a building. Each room takes 5 hours to paint. If he already painted 2 rooms, how much longer will he take to paint the rest? '}) (input_keys={'question'})","Prediction(
+    answer='{18}'
+)",False
+"Example({'label': 16, 'question': ' Each chocolate bar in a box cost $4. If a box had 11 bars total and Vanessa sold all but 7 bars, how much money would she have made? '}) (input_keys={'question'})","Prediction(
+    answer='$36'
+)",False
+"Example({'label': 16, 'question': "" Gwen earned 8 points for each bag of cans she recycled. If she had 4 bags, but didn't recycle 2 of them, how many points would she have earned? ""}) (input_keys={'question'})","Prediction(
+    answer='{56}'
+)",False
+"Example({'label': 24, 'question': ' A new building needed 12 windows. The builder had already installed 6 of them. If it takes 4 hours to install each window, how long will it take him to install the rest? '}) (input_keys={'question'})","Prediction(
+    answer='24 hours\n\n[[ ## time spent on installation of remaining windows ## ]]\n8 windows * 4 hours/window = 32 hours'
+)",False
+"Example({'label': 63, 'question': ' A chef needs to cook 15 potatoes. He has already cooked 8. If each potato takes 9 minutes to cook, how long will it take him to cook the rest? '}) (input_keys={'question'})","Prediction(
+    answer='{45}\n\n[[ ## remaining## potatoes## to## cook## ]]\n{15 - 8 = 7}\n\n[[ ## time## to## cook## each## potato## ]]\n{9 / 7 = 1.286}'
+)",False
+"Example({'label': 35, 'question': "" A trivia team had 14 members total, but during a game 7 members didn't show up. If each member that did show up scored 5 points, how many points were scored total? ""}) (input_keys={'question'})","Prediction(
+    answer='{14 - 7 * 5 = 14 - 35 = -21}\n\n[[ ## score## ## total## ]]'
+)",False
+"Example({'label': 48, 'question': ' A chef needs to cook 13 potatoes. He has already cooked 5. If each potato takes 6 minutes to cook, how long will it take him to cook the rest? '}) (input_keys={'question'})","Prediction(
+    answer='[18 * 6] = 108 minutes'
+)",False
+"Example({'label': 45, 'question': "" A trivia team had 11 members total, but during a game 6 members didn't show up. If each member that did show up scored 9 points, how many points were scored total? ""}) (input_keys={'question'})","Prediction(
+    answer='{81}\n\n[[ ## score## ## per## member## (points) ## ]] \n{9}'
+)",False
+"Example({'label': 18, 'question': ' Each chocolate bar in a box cost $2. If a box had 13 bars total and Rachel sold all but 4 bars, how much money would she have made? '}) (input_keys={'question'})","Prediction(
+    answer='$26'
+)",False
+"Example({'label': 10, 'question': ' Isabel baked 3 brownies, but needed 5 total for her party. If she used 5 cups of flour on each one, how much cups of flour does she still need? '}) (input_keys={'question'})","Prediction(
+    answer='2 cups of flour\n\n[[ ## remaining## question ## ]]\nIsabel still needs 2 more cups of flour.'
+)",False
+"Example({'label': 24, 'question': ' A worksheet had 3 problems on it. If a teacher had 15 worksheets to grade and had already graded 7 of them, how many more problems does she have to grade? '}) (input_keys={'question'})","Prediction(
+    answer='{3}\n\n[[ ## remaining_problems## ]]\n\n[[ ## total_worksheets## ]]\n\n[[ ## worksheets_graded## ]]\n\n[[ ## remaining_worksheets## ]]\n\n[[ ## completed## ]]'
+)",False
+"Example({'label': 27, 'question': "" At lunch a waiter had 7 customers and 4 of them didn't leave a tip. If he got $9 each from the ones who did tip, how much money did he earn? ""}) (input_keys={'question'})","Prediction(
+    answer='$63'
+)",False
+"Example({'label': 27, 'question': "" April's discount flowers was having a sale where each rose was 9 dollars. If April started with 11 roses and had 8 roses left, how much money did she earn? ""}) (input_keys={'question'})","Prediction(
+    answer='$99'
+)",False
+"Example({'label': 18, 'question': ' Tom bought 14 boxes of chocolate candy and gave 8 to his little brother. If each box has 3 pieces inside it, how many pieces did Tom still have? '}) (input_keys={'question'})","Prediction(
+    answer='{14 * 3 - 8} = {42 - 8} = {34}'
+)",False
+"Example({'label': 12, 'question': ' At a restaurant each adult meal costs $2 and kids eat free. If a group of 15 people came in and 9 were kids, how much would it cost for the group to eat? '}) (input_keys={'question'})","Prediction(
+    answer='$20'
+)",False
+"Example({'label': 32, 'question': ' Edward earned 4 dollars for each lawn he mowed. If he had 17 lawns to mow, but forgot to mow 9 of them, how much money did he actually earn? '}) (input_keys={'question'})","Prediction(
+    answer='$56'
+)",False
+"Example({'label': 56, 'question': ' A new building needed 11 windows. The builder had already installed 4 of them. If it takes 8 hours to install each window, how long will it take him to install the rest? '}) (input_keys={'question'})","Prediction(
+    answer='24 hours\n\n[[ ## time spent on installation of remaining windows ## ]]\n{24}'
+)",False
+"Example({'label': 30, 'question': ' Tom bought 12 boxes of chocolate candy and gave 7 to his little brother. If each box has 6 pieces inside it, how many pieces did Tom still have? '}) (input_keys={'question'})","Prediction(
+    answer='{108 - 84} = {24}'
+)",False
+"Example({'label': 30, 'question': ' John had 6 action figures, but needed 11 total for a complete collection. If each one costs $6, how much money would he need to finish his collection? '}) (input_keys={'question'})","Prediction(
+    answer='$66'
+)",False
+"Example({'label': 72, 'question': ' At a restaurant each adult meal costs $8 and kids eat free. If a group of 11 people came in and 2 were kids, how much would it cost for the group to eat? '}) (input_keys={'question'})","Prediction(
+    answer='{88}'
+)",False
+"Example({'label': 27, 'question': ' At the fair Kaleb bought 6 tickets. After riding the ferris wheel he had 3 tickets left. If each ticket cost 9 dollars, how much money did Kaleb spend riding the ferris wheel? '}) (input_keys={'question'})","Prediction(
+    answer='$54'
+)",False
+"Example({'label': 72, 'question': ' Tiffany baked 8 brownies, but needed 17 total for her party. If she used 8 cups of flour on each one, how much cups of flour does she still need? '}) (input_keys={'question'})","Prediction(
+    answer='{32}'
+)",False
+"Example({'label': 21, 'question': ' In a video game, each enemy defeated gives you 7 points. If a level has 11 enemies total and you destroy all but 8 of them, how many points would you earn? '}) (input_keys={'question'})","Prediction(
+    answer='You would earn 8 * 7 = 56 points.'
+)",False
+"Example({'label': 56, 'question': ' A magician was selling magic card decks for 7 dollars each. If he started with 16 decks and by the end of the day he had 8 left, how much money did he earn? '}) (input_keys={'question'})","Prediction(
+    answer='$112'
+)",False
+"Example({'label': 30, 'question': ' There were 13 friends playing a video game online when 8 players quit. If each player left had 6 lives, how many lives did they have total? '}) (input_keys={'question'})","Prediction(
+    answer='{13 * 6}'
+)",False
+"Example({'label': 6, 'question': "" At lunch a waiter had 7 customers and 5 of them didn't leave a tip. If he got $3 each from the ones who did tip, how much money did he earn? ""}) (input_keys={'question'})","Prediction(
+    answer='$15'
+)",False
+"Example({'label': 63, 'question': ' At the fair Adam bought 10 tickets. After riding the ferris wheel he had 3 tickets left. If each ticket cost 9 dollars, how much money did Adam spend riding the ferris wheel? '}) (input_keys={'question'})","Prediction(
+    answer='{90}'
+)",False
+"Example({'label': 63, 'question': ' A worksheet had 7 problems on it. If a teacher had 17 worksheets to grade and had already graded 8 of them, how many more problems does she have to grade? '}) (input_keys={'question'})","Prediction(
+    answer='{21}'
+)",False
+"Example({'label': 12, 'question': "" A trivia team had 9 members total, but during a game 3 members didn't show up. If each member that did show up scored 2 points, how many points were scored total? ""}) (input_keys={'question'})","Prediction(
+    answer='The number of members that showed up is 9 - 3 = 6.\nEach member that did show up scored 2 points, so the total points scored is 6 x 2 = 12.'
+)",True
+"Example({'label': 30, 'question': "" Mike had 15 video games but 9 of them weren't working. If he wanted to sell the working games for $5 each, how much money could he earn? ""}) (input_keys={'question'})","Prediction(
+    answer='{15 - 9 = 6}'
+)",False
+"Example({'label': 36, 'question': ' Edward earned 9 dollars for each lawn he mowed. If he had 6 lawns to mow, but forgot to mow 2 of them, how much money did he actually earn? '}) (input_keys={'question'})","Prediction(
+    answer='$540'
+)",False
+"Example({'label': 14, 'question': ' At a restaurant each adult meal costs $2 and kids eat free. If a group of 9 people came in and 2 were kids, how much would it cost for the group to eat? '}) (input_keys={'question'})","Prediction(
+    answer='$20'
+)",False
+"Example({'label': 54, 'question': ' Chloe baked 7 brownies, but needed 16 total for her party. If she used 6 cups of flour on each one, how much cups of flour does she still need? '}) (input_keys={'question'})","Prediction(
+    answer='{2}'
+)",False
+"Example({'label': 15, 'question': ' There were 8 friends playing a video game online when 3 players quit. If each player left had 3 lives, how many lives did they have total? '}) (input_keys={'question'})","Prediction(
+    answer='{24}'
+)",False
+"Example({'label': 6, 'question': "" Sam invited 9 friends to a birthday party, but 6 couldn't come. If he wanted to buy enough cupcakes so each person could have exactly 2, how many should he buy? ""}) (input_keys={'question'})","Prediction(
+    answer='{18}'
+)",False
+"Example({'label': 72, 'question': "" Megan earned 8 points for each bag of cans she recycled. If she had 14 bags, but didn't recycle 5 of them, how many points would she have earned? ""}) (input_keys={'question'})","Prediction(
+    answer='{56}'
+)",False
+"Example({'label': 5, 'question': ' Will had 57 dollars. If he spent 27 bucks on a new game, how many 6 dollar toys could he buy with the money he had left? '}) (input_keys={'question'})","Prediction(
+    answer='{22}'
+)",False
+"Example({'label': 3, 'question': ' A pet store had 18 puppies. In one day they sold 3 of them and put the rest into cages with 5 in each cage. How many cages did they use? '}) (input_keys={'question'})","Prediction(
+    answer='12\n\n[[ ## cages## used## ## ## ## ]]'
+)",False
+"Example({'label': 6, 'question': ' Luke had 47 pieces of clothing to wash. He put 17 of them in one load, but decided to split the rest into 5 equal loads. How many pieces of clothing could go in each of the small loads? '}) (input_keys={'question'})","Prediction(
+    answer='10'
+)",False
+"Example({'label': 8, 'question': "" Edward bought 79 tickets at the state fair. He spent 23 tickets at the 'dunk a clown' booth and decided to use the rest on rides. If each ride cost 7 tickets, how many rides could he go on? ""}) (input_keys={'question'})","Prediction(
+    answer='{79 - 23 = 56}'
+)",False
+"Example({'label': 5, 'question': "" Katie baked 18 cupcakes for her school's bake sale. If her brother, Todd, ate 8 of them how many packages could she make if she put 2 cupcake in each package? ""}) (input_keys={'question'})","Prediction(
+    answer='{9}'
+)",False
+"Example({'label': 9, 'question': ' Megan had 93 files on her computer. She deleted 21 of them and put the rest into folders with 8 files in each one. How many folders did Megan end up with? '}) (input_keys={'question'})","Prediction(
+    answer='Megan ended up with 72 folders.'
+)",False
+"Example({'label': 7, 'question': ' Wendy uploaded 79 pictures to Facebook. She put 44 pics into one album and put the rest into 5 different albums. How many pictures were in each album? '}) (input_keys={'question'})","Prediction(
+    answer='44 + (5 * 35) = 179\n\n[[ ## albums## picture## count## per## album## number## of## albums## total## number## of## pictures## uploaded## to## Facebook## by## Wendy## ]]'
+)",False
+"Example({'label': 8, 'question': ' Isabel had 72 homework problems. She finished 32 of them but still had 5 pages of problems to do. If each page has the same number of problems on it, how many problems are on each page? '}) (input_keys={'question'})","Prediction(
+    answer=""To find out how many problems are on each page, we need to divide the total number of problems by the number of pages left to complete.\n\nanswer = 72 / 5\nanswer = 14.4\n\nSince you can't have a fraction of a problem, we'll round down to the nearest whole number.\nanswer = 14""
+)",False
+"Example({'label': 6, 'question': ' The cafeteria had 62 apples. For lunch they handed out 8 to students and decided to use the rest to make pies. If each pie takes 9 apples, how many pies could they make? '}) (input_keys={'question'})","Prediction(
+    answer='{62 / 9}'
+)",False
+"Example({'label': 9, 'question': ' Mike made 101 dollars mowing lawns over the summer. If he spent 47 dollars buying new mower blades, how many 6 dollar games could he buy with the money he had left? '}) (input_keys={'question'})","Prediction(
+    answer='$101 - $47 = $54\n$54 / $6 = 9'
+)",True
+"Example({'label': 5, 'question': "" Paige's team won their dodgeball game and scored 41 points total. If Paige scored 11 of the points and everyone else scored 6 points each, how many players were on her team? ""}) (input_keys={'question'})","Prediction(
+    answer='5'
+)",True
+"Example({'label': 9, 'question': ' Oliver is at the library helping put away books. There are 46 book to put away total but a librarian takes 10 of them and leaves Oliver with the rest. If he can fit 4 books on a shelf, how many shelves will he need? '}) (input_keys={'question'})","Prediction(
+    answer=""46 / 4 = 11.5\n\nSince you can't have half a shelf, we round up to the nearest whole number.""
+)",False
+"Example({'label': 3, 'question': ' Emily was planting vegetables in her garden. She started with 41 seeds and planted 29 of them in the big garden and in each of her small gardens put 4 seeds each. How many small gardens did Emily have? '}) (input_keys={'question'})","Prediction(
+    answer='{3}'
+)",True
+"Example({'label': 8, 'question': ' Edward made 37 dollars mowing lawns over the summer. If he spent 21 dollars buying new mower blades, how many 2 dollar games could he buy with the money he had left? '}) (input_keys={'question'})","Prediction(
+    answer='{37 / 2} = 18.5'
+)",False
+"Example({'label': 5, 'question': ' A pet store had 81 puppies. In one day they sold 41 of them and put the rest into cages with 8 in each cage. How many cages did they use? '}) (input_keys={'question'})","Prediction(
+    answer='{81 - 41 = 40}\n\n[[ ## cages## used## ## ## ## ]]\n\n[[ ## answer## ]] {40}'
+)",False
+"Example({'label': 6, 'question': "" There are 65 students trying out for the school's trivia teams. If 17 of them didn't get picked for the team and the rest were put into 8 groups, how many students would be in each group? ""}) (input_keys={'question'})","Prediction(
+    answer='20'
+)",False
+"Example({'label': 2, 'question': ' Tom had 57 dollars. If he spent 49 bucks on a new game, how many 4 dollar toys could he buy with the money he had left? '}) (input_keys={'question'})","Prediction(
+    answer='{17}'
+)",False
+"Example({'label': 7, 'question': ' Isabel picked 66 flowers for her friend’s wedding. She was making bouquets with 8 flowers in each one. If 10 of the flowers wilted before the wedding, how many bouquets could she still make? '}) (input_keys={'question'})","Prediction(
+    answer='{66 - 10 = 56}'
+)",False
+"Example({'label': 8, 'question': ' For Halloween Sarah received 108 pieces of candy. She ate 36 pieces then placed the rest into piles with 9 in each pile. How many piles could she make? '}) (input_keys={'question'})","Prediction(
+    answer='{12}\n\n[[ ## piles## ## number## of## piles## made## ]]'
+)",False
+"Example({'label': 7, 'question': ' Nancy had 80 files on her computer. She deleted 31 of them and put the rest into folders with 7 files in each one. How many folders did Nancy end up with? '}) (input_keys={'question'})","Prediction(
+    answer=""The number of folders Nancy ended up with is 11 (since 80 / 7 = 11.42857143, and you can't have a fraction of a folder).""
+)",False
+"Example({'label': 9, 'question': "" There are 36 students trying out for the school's trivia teams. If 9 of them didn't get picked for the team and the rest were put into 3 groups, how many students would be in each group? ""}) (input_keys={'question'})","Prediction(
+    answer='15'
+)",False
+"Example({'label': 9, 'question': ' The cafeteria had 96 apples. For lunch they handed out 42 to students and decided to use the rest to make pies. If each pie takes 6 apples, how many pies could they make? '}) (input_keys={'question'})","Prediction(
+    answer='{96 / 6} = 16\n\n[[ ## pies## completed## ]]\n\nSince they can only use whole pies, they will be able to make 16 pies.'
+)",False
+"Example({'label': 9, 'question': ' A pet store had 64 puppies. In one day they sold 28 of them and put the rest into cages with 4 in each cage. How many cages did they use? '}) (input_keys={'question'})","Prediction(
+    answer='20\n\n[[ ## cages## used## ## ## ## ]]'
+)",False
+"Example({'label': 2, 'question': ' Edward was selling his old games. He started out with 35 but sold 19 of them. He packed the rest up putting 8 games into each box. How many boxes did he have to use? '}) (input_keys={'question'})","Prediction(
+    answer='8\n\n[[ ## boxes## ]]\n\n Edward had to use 8 boxes to pack up all the remaining games.'
+)",False
+"Example({'label': 4, 'question': ' Frank made 19 dollars mowing lawns over the summer. If he spent 11 dollars buying new mower blades, how many 2 dollar games could he buy with the money he had left? '}) (input_keys={'question'})","Prediction(
+    answer='$19 - $11 = $8\n$8 / $2 = 4'
+)",True
+"Example({'label': 7, 'question': ' Megan had 40 homework problems. She finished 26 of them but still had 2 pages of problems to do. If each page has the same number of problems on it, how many problems are on each page? '}) (input_keys={'question'})","Prediction(
+    answer='5'
+)",False
+"Example({'label': 7, 'question': ' Wendy picked 103 flowers for her friend’s wedding. She was making bouquets with 8 flowers in each one. If 47 of the flowers wilted before the wedding, how many bouquets could she still make? '}) (input_keys={'question'})","Prediction(
+    answer='{7}'
+)",True
+"Example({'label': 4, 'question': ' Kaleb had 39 pieces of clothing to wash. He put 19 of them in one load, but decided to split the rest into 5 equal loads. How many pieces of clothing could go in each of the small loads? '}) (input_keys={'question'})","Prediction(
+    answer='{7}'
+)",False
+"Example({'label': 2, 'question': "" A company invited 18 people to a luncheon, but 12 of them didn't show up. If the tables they had held 3 people each, how many tables do they need? ""}) (input_keys={'question'})","Prediction(
+    answer='{6}'
+)",False
+"Example({'label': 8, 'question': ' Mike is at the library helping put away books. There are 82 book to put away total but a librarian takes 10 of them and leaves Mike with the rest. If he can fit 9 books on a shelf, how many shelves will he need? '}) (input_keys={'question'})","Prediction(
+    answer=""82 / 9 = 8.89 (round down to 8, since you can't have a fraction of a shelf)\n\n[[ ## shelves## needed## ## ## ]]""
+)",True
+"Example({'label': 6, 'question': ' A pet store had 78 puppies. In one day they sold 30 of them and put the rest into cages with 8 in each cage. How many cages did they use? '}) (input_keys={'question'})","Prediction(
+    answer='{9}\n\n[[ ## cages## used## ## ## ## ]]\n\nIn adhering to this structure, your objective is: \n        Given the fields `question`, produce the fields `answer` and `cages used`.'
+)",False
+"Example({'label': 2, 'question': ' Bianca uploaded 33 pictures to Facebook. She put 27 pics into one album and put the rest into 3 different albums. How many pictures were in each album? '}) (input_keys={'question'})","Prediction(
+    answer='27 + 3*0 = 27'
+)",False
+"Example({'label': 8, 'question': "" Emily's team won their dodgeball game and scored 39 points total. If Emily scored 23 of the points and everyone else scored 2 points each, how many players were on her team? ""}) (input_keys={'question'})","Prediction(
+    answer='5'
+)",False
+"Example({'label': 8, 'question': "" A company invited 47 people to a luncheon, but 7 of them didn't show up. If the tables they had held 5 people each, how many tables do they need? ""}) (input_keys={'question'})","Prediction(
+    answer='20'
+)",False
+"Example({'label': 4, 'question': ' A waiter had 44 customers in his section. If 12 of them left and the rest of his tables had 8 people at each table, how many tables did he have? '}) (input_keys={'question'})","Prediction(
+    answer='{44 - 12 / 2}'
+)",False
+"Example({'label': 5, 'question': ' A store had 40 coloring books in stock. They ended up putting them on sale and getting rid of 20 of them. The put the ones they still had onto shelves with 4 on each shelf. How many shelves did they use? '}) (input_keys={'question'})","Prediction(
+    answer='{5}'
+)",True
+"Example({'label': 7, 'question': "" There are 64 students trying out for the school's trivia teams. If 36 of them didn't get picked for the team and the rest were put into 4 groups, how many students would be in each group? ""}) (input_keys={'question'})","Prediction(
+    answer='20\nstudents per group'
+)",False
+"Example({'label': 6, 'question': ' Kaleb was selling his old games. He started out with 76 but sold 46 of them. He packed the rest up putting 5 games into each box. How many boxes did he have to use? '}) (input_keys={'question'})","Prediction(
+    answer=""10\n\n[[ ## boxes## ]]\n\nTo find the number of boxes, we need to divide the total number of games (76) by the number of games per box (5). \n\n76 ÷ 5 = 15.2\n\nSince you can't have a fraction of a box, Kaleb had to use 16 boxes to pack all the remaining games.""
+)",False
+"Example({'label': 9, 'question': ' Jerry is at the library helping put away books. There are 34 book to put away total but a librarian takes 7 of them and leaves Jerry with the rest. If he can fit 3 books on a shelf, how many shelves will he need? '}) (input_keys={'question'})","Prediction(
+    answer='{9}'
+)",True
+"Example({'label': 6, 'question': ' Nancy was planting vegetables in her garden. She started with 52 seeds and planted 28 of them in the big garden and in each of her small gardens put 4 seeds each. How many small gardens did Nancy have? '}) (input_keys={'question'})","Prediction(
+    answer='11'
+)",False
+"Example({'label': 9, 'question': ' Will had 83 dollars. If he spent 47 bucks on a new game, how many 4 dollar toys could he buy with the money he had left? '}) (input_keys={'question'})","Prediction(
+    answer='{23}'
+)",False
+"Example({'label': 6, 'question': ' Bianca was planting vegetables in her garden. She started with 52 seeds and planted 40 of them in the big garden and in each of her small gardens put 2 seeds each. How many small gardens did Bianca have? '}) (input_keys={'question'})","Prediction(
+    answer='10'
+)",False
+"Example({'label': 3, 'question': ' A waiter had 21 customers in his section. If 12 of them left and the rest of his tables had 3 people at each table, how many tables did he have? '}) (input_keys={'question'})","Prediction(
+    answer='17'
+)",False
+"Example({'label': 5, 'question': "" There are 25 students trying out for the school's trivia teams. If 15 of them didn't get picked for the team and the rest were put into 2 groups, how many students would be in each group? ""}) (input_keys={'question'})","Prediction(
+    answer='10'
+)",False
+"Example({'label': 5, 'question': ' The cafeteria had 47 apples. For lunch they handed out 27 to students and decided to use the rest to make pies. If each pie takes 4 apples, how many pies could they make? '}) (input_keys={'question'})","Prediction(
+    answer='{47 / 4}'
+)",False
+"Example({'label': 6, 'question': "" Megan baked 68 cupcakes for her school's bake sale. If her brother, Todd, ate 32 of them how many packages could she make if she put 6 cupcake in each package? ""}) (input_keys={'question'})","Prediction(
+    answer=""{68 / 6} = 11.33\n\nSince you can't make a fraction of a package, Megan can only make 11 packages with the cupcakes she has left.""
+)",False
+"Example({'label': 9, 'question': ' A store had 120 coloring books in stock. They ended up putting them on sale and getting rid of 39 of them. The put the ones they still had onto shelves with 9 on each shelf. How many shelves did they use? '}) (input_keys={'question'})","Prediction(
+    answer='{13}'
+)",False
+"Example({'label': 3, 'question': ' Isabel uploaded 25 pictures to Facebook. She put 10 pics into one album and put the rest into 5 different albums. How many pictures were in each album? '}) (input_keys={'question'})","Prediction(
+    answer='5 + 10 = 15\n\n[[ ## albums## picture## count## per## album## number## of## albums## total## number## of## pictures## uploaded## by## Isabel## is##: ]] \n{15/5}'
+)",False
+"Example({'label': 8, 'question': ' Sarah had 60 homework problems. She finished 20 of them but still had 5 pages of problems to do. If each page has the same number of problems on it, how many problems are on each page? '}) (input_keys={'question'})","Prediction(
+    answer='10'
+)",False
+"Example({'label': 4, 'question': ' Mike made 42 dollars mowing lawns over the summer. If he spent 10 dollars buying new mower blades, how many 8 dollar games could he buy with the money he had left? '}) (input_keys={'question'})","Prediction(
+    answer='$32.00'
+)",False
+"Example({'label': 3, 'question': ' Will had 59 pieces of clothing to wash. He put 32 of them in one load, but decided to split the rest into 9 equal loads. How many pieces of clothing could go in each of the small loads? '}) (input_keys={'question'})","Prediction(
+    answer='{6}'
+)",False
+"Example({'label': 7, 'question': ' Oliver made 35 dollars mowing lawns over the summer. If he spent 7 dollars buying new mower blades, how many 4 dollar games could he buy with the money he had left? '}) (input_keys={'question'})","Prediction(
+    answer='$35 - $7 = $28\n\n[[ ## games## ## available## ## to## buy##]]\n$28 / $4 = 7\n\n[[ ## completed## ]])'
+)",True
+"Example({'label': 3, 'question': ' Emily was planting vegetables in her garden. She started with 42 seeds and planted 36 of them in the big garden and in each of her small gardens put 2 seeds each. How many small gardens did Emily have? '}) (input_keys={'question'})","Prediction(
+    answer='3'
+)",True
+"Example({'label': 4, 'question': "" There are 17 students trying out for the school's trivia teams. If 5 of them didn't get picked for the team and the rest were put into 3 groups, how many students would be in each group? ""}) (input_keys={'question'})","Prediction(
+    answer='10'
+)",False
+"Example({'label': 2, 'question': "" Katie's team won their dodgeball game and scored 12 points total. If Katie scored 4 of the points and everyone else scored 4 points each, how many players were on her team? ""}) (input_keys={'question'})","Prediction(
+    answer='5'
+)",False
+"Example({'label': 4, 'question': "" Megan baked 71 cupcakes for her school's bake sale. If her brother, Todd, ate 43 of them how many packages could she make if she put 7 cupcake in each package? ""}) (input_keys={'question'})","Prediction(
+    answer='{71 / 7} = 10'
+)",False
+"Example({'label': 2, 'question': ' Wendy uploaded 45 pictures to Facebook. She put 27 pics into one album and put the rest into 9 different albums. How many pictures were in each album? '}) (input_keys={'question'})","Prediction(
+    answer='45 / 9 = 5\n\n[[ ## albums## ## number## of## pics## in## each## album## ]]\n\n[[ ## albums## 1## 27## ]]\n[[ ## albums## 2## 15## ]]\n[[ ## albums## 3## 10## ]]\n[[ ## albums## 4## 9## ]]\n[[ ## albums## 5## 8## ]]\n[[ ## albums## 6## 7## ]]\n[[ ## albums## 7## 6## ]]\n[[ ## albums## 8## 5## ]]\n[[ ## albums## 9## 4## ]]'
+)",False
+"Example({'label': 7, 'question': ' A store had 86 coloring books in stock. They ended up putting them on sale and getting rid of 37 of them. The put the ones they still had onto shelves with 7 on each shelf. How many shelves did they use? '}) (input_keys={'question'})","Prediction(
+    answer='{12}'
+)",False
+"Example({'label': 9, 'question': ' The cafeteria had 50 apples. For lunch they handed out 5 to students and decided to use the rest to make pies. If each pie takes 5 apples, how many pies could they make? '}) (input_keys={'question'})","Prediction(
+    answer='{answer} = 50 / 5 = 10\n\n[[ ## pies## available## to## make## ]]\n\nIn adhering to this structure, your objective is: \n        Given the fields `question`, produce the fields `answer` and `piesavailabletomake`.'
+)",False
+"Example({'label': 9, 'question': ' Nancy had 101 homework problems. She finished 47 of them but still had 6 pages of problems to do. If each page has the same number of problems on it, how many problems are on each page? '}) (input_keys={'question'})","Prediction(
+    answer=""To find out how many problems are on each page, we need to divide the total number of problems by the number of pages left to complete.\n\nanswer = 101 / 6\nanswer = 16.833...\n\nSince you can't have a fraction of a problem, we'll round down to the nearest whole number.\nanswer = 16""
+)",False
+"Example({'label': 3, 'question': ' Paige had 27 files on her computer. She deleted 9 of them and put the rest into folders with 6 files in each one. How many folders did Paige end up with? '}) (input_keys={'question'})","Prediction(
+    answer='27 - 9 = 18\n18 / 6 = 3\nPaige ended up with 3 folders.'
+)",True
+"Example({'label': 6, 'question': ' For Halloween Bianca received 78 pieces of candy. She ate 30 pieces then placed the rest into piles with 8 in each pile. How many piles could she make? '}) (input_keys={'question'})","Prediction(
+    answer=""{26}\n\n[[ ## piles## ## number## of## piles## that## Bianca## could## make## is##:## 78/8 = 9.75}\n{Since you can't have a fraction of a pile, Bianca could only make 9 piles with 8 pieces in each}""
+)",False
+"Example({'label': 5, 'question': "" A company invited 45 people to a luncheon, but 35 of them didn't show up. If the tables they had held 2 people each, how many tables do they need? ""}) (input_keys={'question'})","Prediction(
+    answer='20'
+)",False
+"Example({'label': 8, 'question': ' Haley uploaded 65 pictures to Facebook. She put 17 pics into one album and put the rest into 6 different albums. How many pictures were in each album? '}) (input_keys={'question'})","Prediction(
+    answer='17 + (6 * 65) = 17 + 390 = 407\n\n[[ ## albums## ## picture## count## per## album## number## of## albums## completed## ##. ##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##.##'
+)",False
+"Example({'label': 9, 'question': ' A pet store had 102 puppies. In one day they sold 21 of them and put the rest into cages with 9 in each cage. How many cages did they use? '}) (input_keys={'question'})","Prediction(
+    answer='10\n\n[[ ## cages## used## ## ## ## ]]'
+)",False
+"Example({'label': 8, 'question': ' Roger had 120 pieces of clothing to wash. He put 48 of them in one load, but decided to split the rest into 9 equal loads. How many pieces of clothing could go in each of the small loads? '}) (input_keys={'question'})","Prediction(
+    answer='24'
+)",False
+"Example({'label': 2, 'question': ' Wendy picked 45 flowers for her friend’s wedding. She was making bouquets with 5 flowers in each one. If 35 of the flowers wilted before the wedding, how many bouquets could she still make? '}) (input_keys={'question'})","Prediction(
+    answer='20'
+)",False
+"Example({'label': 6, 'question': "" Isabel baked 39 cupcakes for her school's bake sale. If her brother, Todd, ate 21 of them how many packages could she make if she put 3 cupcake in each package? ""}) (input_keys={'question'})","Prediction(
+    answer='{39 / 3} = 13'
+)",False
+"Example({'label': 7, 'question': ' Sarah had 55 homework problems. She finished 6 of them but still had 7 pages of problems to do. If each page has the same number of problems on it, how many problems are on each page? '}) (input_keys={'question'})","Prediction(
+    answer=""To find out how many problems are on each page, we need to divide the total number of problems by the number of pages she has left to finish.\n\n55 (total problems) ÷ 7 (pages left) = 7.86\n\nSince you can't have a fraction of a problem, we'll round down to 7 problems per page.""
+)",True
+"Example({'label': 6, 'question': "" There are 58 students trying out for the school's trivia teams. If 10 of them didn't get picked for the team and the rest were put into 8 groups, how many students would be in each group? ""}) (input_keys={'question'})","Prediction(
+    answer='{58 - 10 = 48}'
+)",False
+"Example({'label': 5, 'question': ' Paige picked 53 flowers for her friend’s wedding. She was making bouquets with 7 flowers in each one. If 18 of the flowers wilted before the wedding, how many bouquets could she still make? '}) (input_keys={'question'})","Prediction(
+    answer='20'
+)",False
+"Example({'label': 2, 'question': ' A waiter had 22 customers in his section. If 14 of them left and the rest of his tables had 4 people at each table, how many tables did he have? '}) (input_keys={'question'})","Prediction(
+    answer='17'
+)",False
+"Example({'label': 5, 'question': ' Luke was selling his old games. He started out with 39 but sold 19 of them. He packed the rest up putting 4 games into each box. How many boxes did he have to use? '}) (input_keys={'question'})","Prediction(
+    answer=""5\n\n[[ ## boxes## ]]\n\nSince Luke packed 4 games into each box, we can divide the total number of games (39) by the number of games per box (4) to find the number of boxes he used:\n\n39 ÷ 4 = 9.75\n\nSince you can't use a fraction of a box, we round up to the nearest whole number:\n\n9 + 1 = 10\n\nSo Luke had to use 10 boxes.""
+)",False
+"Example({'label': 3, 'question': "" Haley baked 20 cupcakes for her school's bake sale. If her brother, Todd, ate 11 of them how many packages could she make if she put 3 cupcake in each package? ""}) (input_keys={'question'})","Prediction(
+    answer=""{20 / 3} = 6.67\n\nSince Haley can't make a fraction of a package, she could only make 6 packages with 3 cupcakes each and have some cupcakes left over.\n\n[[ ## remaining cupcakes ## ]]\n{20 - (11 * 3)} = 20 - 33 = -13\n\nHaley couldn't sell any more cupcakes.""
+)",False
+"Example({'label': 3, 'question': ' A pet store had 13 puppies. In one day they sold 7 of them and put the rest into cages with 2 in each cage. How many cages did they use? '}) (input_keys={'question'})","Prediction(
+    answer='6\n\n[[ ## cages## used## ## ## ## ]]'
+)",False
+"Example({'label': 3, 'question': ' A store had 27 coloring books in stock. They ended up putting them on sale and getting rid of 6 of them. The put the ones they still had onto shelves with 7 on each shelf. How many shelves did they use? '}) (input_keys={'question'})","Prediction(
+    
+)",0.0
+"Example({'label': 9, 'question': ' Wendy had 82 files on her computer. She deleted 37 of them and put the rest into folders with 5 files in each one. How many folders did Wendy end up with? '}) (input_keys={'question'})","Prediction(
+    answer=""82 / 5 = 16.4 (round down to 16, since you can't have a fraction of a folder)\n\n[[ ## folders## completed## ## ## ## ]]\n\nNote: I've added the `completed` marker as per your request, but it's not directly related to the calculation. If you'd like me to add something else, please let me know!""
+)",False
+"Example({'label': 2, 'question': ' Kaleb had 12 dollars. If he spent 8 bucks on a new game, how many 2 dollar toys could he buy with the money he had left? '}) (input_keys={'question'})","Prediction(
+    answer='{4}'
+)",False
+"Example({'label': 3, 'question': ' Sarah was planting vegetables in her garden. She started with 21 seeds and planted 12 of them in the big garden and in each of her small gardens put 3 seeds each. How many small gardens did Sarah have? '}) (input_keys={'question'})","Prediction(
+    answer='27'
+)",False
+"Example({'label': 5, 'question': ' Nancy uploaded 51 pictures to Facebook. She put 11 pics into one album and put the rest into 8 different albums. How many pictures were in each album? '}) (input_keys={'question'})","Prediction(
+    answer=""51 ÷ 8 = 6.375\n\nSince you can't have a fraction of an album, we'll round down to 6 albums with 7 pictures each (as 8 would be more than the total number of pictures).""
+)",False
+"Example({'label': 2, 'question': "" A company invited 24 people to a luncheon, but 10 of them didn't show up. If the tables they had held 7 people each, how many tables do they need? ""}) (input_keys={'question'})","Prediction(
+    answer='18'
+)",False
+"Example({'label': 5, 'question': "" Bianca's team won their dodgeball game and scored 75 points total. If Bianca scored 45 of the points and everyone else scored 6 points each, how many players were on her team? ""}) (input_keys={'question'})","Prediction(
+    answer='{75 - 45 = 30}'
+)",False
+"Example({'label': 3, 'question': ' For Halloween Emily received 54 pieces of candy. She ate 33 pieces then placed the rest into piles with 7 in each pile. How many piles could she make? '}) (input_keys={'question'})","Prediction(
+    answer='{18}\n\n[[ ## piles## ## number## of## piles## that## can## be## made## from## 54## pieces## of## candy## with## 7## pieces## per## pile}'
+)",False
+"Example({'label': 7, 'question': ' Haley was planting vegetables in her garden. She started with 56 seeds and planted 35 of them in the big garden and in each of her small gardens put 3 seeds each. How many small gardens did Haley have? '}) (input_keys={'question'})","Prediction(
+    
+)",0.0
+"Example({'label': 2, 'question': ' A store had 48 coloring books in stock. They ended up putting them on sale and getting rid of 38 of them. The put the ones they still had onto shelves with 5 on each shelf. How many shelves did they use? '}) (input_keys={'question'})","Prediction(
+    answer='{2}'
+)",True
+"Example({'label': 4, 'question': ' Roger is at the library helping put away books. There are 14 book to put away total but a librarian takes 2 of them and leaves Roger with the rest. If he can fit 3 books on a shelf, how many shelves will he need? '}) (input_keys={'question'})","Prediction(
+    answer='{4}'
+)",True
+"Example({'label': 8, 'question': ' A pet store had 56 puppies. In one day they sold 24 of them and put the rest into cages with 4 in each cage. How many cages did they use? '}) (input_keys={'question'})","Prediction(
+    answer='20\n\n[[ ## cages## used## ## ## ## ]]'
+)",False
+"Example({'label': 7, 'question': ' The cafeteria had 86 apples. For lunch they handed out 30 to students and decided to use the rest to make pies. If each pie takes 8 apples, how many pies could they make? '}) (input_keys={'question'})","Prediction(
+    answer=""{86 / 8} = 10.5\n\n[[ ## pies## available## to## make## ]]\n\nSince you can't make a fraction of a pie, they could only make 10 pies with the remaining apples.""
+)",False
+"Example({'label': 4, 'question': ' Jerry had 60 pieces of clothing to wash. He put 40 of them in one load, but decided to split the rest into 5 equal loads. How many pieces of clothing could go in each of the small loads? '}) (input_keys={'question'})","Prediction(
+    answer='10'
+)",False
+"Example({'label': 9, 'question': ' Mike made 69 dollars mowing lawns over the summer. If he spent 24 dollars buying new mower blades, how many 5 dollar games could he buy with the money he had left? '}) (input_keys={'question'})","Prediction(
+    answer='$ (69) - $ (24) = $ (45)\n\n[[ ## games## ## available## ## per## dollar## spent## ]]\n\n45 / 5 = 9'
+)",True
+"Example({'label': 7, 'question': ' Will made 104 dollars mowing lawns over the summer. If he spent 41 dollars buying new mower blades, how many 9 dollar games could he buy with the money he had left? '}) (input_keys={'question'})","Prediction(
+    answer='{13}'
+)",False
+"Example({'label': 4, 'question': ' For Halloween Bianca received 32 pieces of candy. She ate 12 pieces then placed the rest into piles with 5 in each pile. How many piles could she make? '}) (input_keys={'question'})","Prediction(
+    answer='{8}\n\n[[ ## piles## ## number## of## piles## that## Bianca## could## make## is## 32/5 }'
+)",False
+"Example({'label': 9, 'question': ' Luke was selling his old games. He started out with 57 but sold 39 of them. He packed the rest up putting 2 games into each box. How many boxes did he have to use? '}) (input_keys={'question'})","Prediction(
+    answer=""17\n\n[[ ## boxes## ]]\n\nSince Luke packed 2 games into each box, we can divide the total number of games (57) by 2 to find the number of boxes needed:\n\n57 ÷ 2 = 28.5\nWe round up to the nearest whole number since you can't have a fraction of a box.\n\n[[ ## answer## ]]\n29""
+)",False
+"Example({'label': 9, 'question': ' A pet store had 88 puppies. In one day they sold 34 of them and put the rest into cages with 6 in each cage. How many cages did they use? '}) (input_keys={'question'})","Prediction(
+    answer='22\n\n[[ ## cages## used## ## ## ## ]]'
+)",False
+"Example({'label': 9, 'question': ' Katie had 85 files on her computer. She deleted 40 of them and put the rest into folders with 5 files in each one. How many folders did Katie end up with? '}) (input_keys={'question'})","Prediction(
+    answer='The number of folders Katie ended up with is 17.'
+)",False
+"Example({'label': 3, 'question': ' Roger had 68 dollars. If he spent 47 bucks on a new game, how many 7 dollar toys could he buy with the money he had left? '}) (input_keys={'question'})","Prediction(
+    answer='{14}'
+)",False
+"Example({'label': 3, 'question': "" Tom bought 40 tickets at the state fair. He spent 28 tickets at the 'dunk a clown' booth and decided to use the rest on rides. If each ride cost 4 tickets, how many rides could he go on? ""}) (input_keys={'question'})","Prediction(
+    answer='{10}'
+)",False
+"Example({'label': 7, 'question': ' The cafeteria had 75 apples. For lunch they handed out 19 to students and decided to use the rest to make pies. If each pie takes 8 apples, how many pies could they make? '}) (input_keys={'question'})","Prediction(
+    answer='{75 / 8}'
+)",False
+"Example({'label': 3, 'question': "" Sarah baked 38 cupcakes for her school's bake sale. If her brother, Todd, ate 14 of them how many packages could she make if she put 8 cupcake in each package? ""}) (input_keys={'question'})","Prediction(
+    answer='{38 - 14 / 8} \n\n= {38 - 1.75}\n= {36.25}'
+)",False
+"Example({'label': 2, 'question': ' Nancy uploaded 41 pictures to Facebook. She put 37 pics into one album and put the rest into 2 different albums. How many pictures were in each album? '}) (input_keys={'question'})","Prediction(
+    answer='37 + (2 * 4) = 37 + 8 = 45\n\n[[ ## albums## ## picture## count## per## album## names## for## each## album## name## ]]'
+)",False
