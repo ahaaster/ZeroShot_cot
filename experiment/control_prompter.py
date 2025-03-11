@@ -15,7 +15,7 @@ def create_prompt(data: Example, input_keys: list[str], join_string: str = "\n")
 def prompt_control(dataset: Dataset, *, lm: LM, record_results: bool = False, **kwargs):
     batch_n = 25
     batches: list[list[example]] = [
-        unrecorded[i : i + batch_n] for i in range(0, len(unrecorded), batch_n)
+        dataset[i : i + batch_n] for i in range(0, len(dataset), batch_n)
     ]
 
     # Function part that actually prompts
