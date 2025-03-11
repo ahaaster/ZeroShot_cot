@@ -5,13 +5,12 @@ from tqdm import tqdm
 from pathlib import Path
 
 from experiment import Dataset, prompt_control, basic_dspy
-from experiment.utils import fetch_datasets, get_saved_data, get_dir_name
-from experiment.evaluation import evaluate_metrics
+from experiment.utils import fetch_datasets, get_saved_data, get_dir_name, save_score
+from experiment.evaluation import evaluate_metrics, evaluate_results
 
 EXPERIMENTS = ["prompt", "metric_eval"]
 EXPERIMENT = EXPERIMENTS[0]
 
-# Prompt 'settings'
 LOCAL_MODELS = ["llama3.2:1b", "deepseek-r1:1.5b", "phi3.5", "gemma:2b", "qwen2.5:3b"]
 PROMPT_METHODS = {
     "control": prompt_control,
@@ -26,15 +25,15 @@ METRICS = ["exact_match", "semanticF1", "semanticF1-decoded"]
 def main(experiment: str):
     if experiment == "prompt":
         kwargs = {
-            "method": "basic",
-            "chosen_model": LOCAL_MODELS[0],
+            "method": "control",
+            "chosen_model": LOCAL_MODELS[-2],
             "cache": True,
             "metric_name": METRICS[0],
-            "record_results": True,
+            "record_results": False,
             "display_table": 8,
             "decode": True,
             "greedy_first": False,
-            "chosen_datasets": Path("dataset/cot"),  # / "GSM8K",
+            "chosen_datasets": Path("dataset/cot") / "CommonsenseQA",
         }
         run_prompts(**kwargs)
 
@@ -84,6 +83,20 @@ def run_prompts(
             )
 
         # TODO: Evaluate the responses if no scores have been assigned
+        else:
+            score = evaluate_results(df_results, dataset.answer_format, **kwargs)
+            score = round(score, 2)
+
+            if kwargs["record_results"]:
+                save_score(
+                    score,
+                    model_name=chosen_model,
+                    method=method,
+                    metric_name=kwargs["metric_name"],
+                    dataset_name=dataset.name,
+                )
+            else:
+                print(score)
 
 
 def create_scores_file():

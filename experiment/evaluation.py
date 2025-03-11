@@ -1,4 +1,5 @@
 import re
+import numpy as np
 import pandas as pd
 from pathlib import Path
 from dataclasses import dataclass, field
@@ -88,6 +89,33 @@ def exact_match(resp, label):
         return float(resp) == float(label)
     elif isinstance(resp, str):
         return str(resp).lower() == str(label).lower()
+
+
+def evaluate_results(df: pd.DataFrame, answer_format: str, **kwargs) -> float:
+    metric_dict = {
+        "exact_match": exact_match,
+        "semanticF1": SemanticF1,
+    }
+    decode = kwargs["decode"]
+
+    if decode:
+        greedy_first = kwargs["greedy_first"]
+        decoder = Decoder(answer_format, greedy_first)
+
+    score_list = []
+    for _, row in df.iterrows():
+        label = row["ground_truth"]
+        resp = row["response"]
+
+        if decode:
+            resp = decoder.decode(resp)
+            resp = decoder.cleanup_string(resp)
+
+        metric = metric_dict[kwargs["metric_name"]]
+        score = metric(resp, label)
+        score_list.append(score)
+
+    return np.average(score_list)
 
 
 def evaluate_metrics() -> None:
