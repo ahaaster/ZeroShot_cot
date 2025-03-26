@@ -18,10 +18,14 @@ def basic_dspy(
     **kwargs,
 ):
     method = kwargs["method"]
+
+    sig = dataset.create_signature()
+    prompter = Predict(signature=sig)
+
     output_name = "answer"
-    # signature = f"{dataset.get_input_names()} -> {output_name}"  # Maybe this causes errors
-    signature = dspy.Signature(f"{dataset.get_input_names()} -> {output_name}")
-    prompter = Predict(signature=signature)
+    # # signature = f"{dataset.get_input_names()} -> {output_name}"  # Maybe this causes errors
+    # signature = dspy.Signature(f"{dataset.get_input_names()} -> {output_name}")
+    # prompter = Predict(signature=signature)
 
     decoder = Decoder(dataset.answer_format, kwargs["greedy_first"]) if decode else None
     metric = Metric(metric_name, dataset.label_name, output_name, decoder)

@@ -20,7 +20,7 @@ class Decoder:
         self.regex_format = self._init_regex()
 
     def __call__(self, string) -> str:
-        return self.decode(string) if len(string) > 1 else string
+        return self.decode(string)
 
     def _init_regex(self):
         regex_formats = {
@@ -32,6 +32,10 @@ class Decoder:
         return regex_formats[self.answer_format]
 
     def decode(self, string: str) -> str:
+        # don't decode Boolean and floats
+        if not isinstance(string, str):
+            return string
+
         matches = re.findall(self.regex_format, string)
 
         if not matches:
@@ -50,7 +54,7 @@ class Decoder:
         elif self.answer_format == "number" and not isinstance(string, int | float):
             # Remove comma separator for magnitudes of 1,000
             string = re.sub(r",", "", string)
-            return float(string)
+            return int(string)
 
         return string
 
@@ -89,7 +93,7 @@ def exact_match(resp, label):
         return False
 
     elif isinstance(resp, int | float):
-        return float(resp) == float(label)
+        return int(resp) == int(label)
     elif isinstance(resp, str):
         return str(resp).lower() == str(label).lower()
 
