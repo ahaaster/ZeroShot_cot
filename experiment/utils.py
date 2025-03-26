@@ -9,11 +9,11 @@ def get_saved_data(dir_path: Path, model_name: str) -> pd.DataFrame:
     model_name = convert_model_filename(model_name)
     save_paths: list = fetch_datasets(dir_path, model_name)
 
-    if save_paths:
-        return pd.read_csv(save_paths[0])
-    else:
+    if not save_paths:
         dir_path.mkdir(parents=True, exist_ok=True)
         return pd.DataFrame()
+
+    return pd.read_csv(save_paths[0])
 
 
 def save_results(df: pd.DataFrame, dir_path: Path, model_name: str) -> None:
