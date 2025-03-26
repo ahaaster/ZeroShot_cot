@@ -26,14 +26,14 @@ def main(experiment: str):
     if experiment == "prompt":
         kwargs = {
             "method": "control",
-            "chosen_model": LOCAL_MODELS[-2],
+            "chosen_model": LOCAL_MODELS[2],
             "cache": True,
             "metric_name": METRICS[0],
-            "record_results": False,
+            "record_results": True,
             "display_table": 8,
             "decode": True,
             "greedy_first": False,
-            "chosen_datasets": Path("dataset/cot") / "CommonsenseQA",
+            "chosen_datasets": Path("dataset/cot") / "GSM8K",
         }
         run_prompts(**kwargs)
 
@@ -42,11 +42,12 @@ def main(experiment: str):
 
 
 def run_prompts(
-    method: str,
-    chosen_model: str,
     chosen_datasets: Path,
     **kwargs,
 ):
+    method = kwargs["method"]
+    chosen_model = kwargs["chosen_model"]
+
     lm = dspy.LM(
         f"ollama_chat/{chosen_model}",
         api_base="http://localhost:11434",
@@ -73,6 +74,7 @@ def run_prompts(
             prompter(
                 unrecorded,
                 lm=lm,
+                results_dir=results_dir,
                 **kwargs,
             )
 
@@ -87,16 +89,17 @@ def run_prompts(
             score = evaluate_results(df_results, dataset.answer_format, **kwargs)
             score = round(score, 2)
 
-            if kwargs["record_results"]:
-                save_score(
-                    score,
-                    model_name=chosen_model,
-                    method=method,
-                    metric_name=kwargs["metric_name"],
-                    dataset_name=dataset.name,
-                )
-            else:
-                print(score)
+            if not kwargs["record_results"]:
+                print(f"{score = }")
+                return
+
+            save_score(
+                score,
+                model_name=chosen_model,
+                method=method,
+                metric_name=kwargs["metric_name"],
+                dataset_name=dataset.name,
+            )
 
 
 def create_scores_file():

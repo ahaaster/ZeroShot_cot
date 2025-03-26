@@ -47,10 +47,12 @@ class Decoder:
 
         elif self.answer_format == "mc":
             return re.sub(r"[\)|\.]", "", string)
-        elif self.answer_format == "number":
+        elif self.answer_format == "number" and not isinstance(string, int | float):
             # Remove comma separator for magnitudes of 1,000
             string = re.sub(r",", "", string)
             return float(string)
+
+        return string
 
 
 @dataclass
@@ -75,6 +77,7 @@ class Metric(Module):
         if self.decoder is not None:
             resp = self.decoder(resp)
             resp = self.decoder.cleanup_string(resp)
+            label = self.decoder.cleanup_string(label)
         return self.metric_func(resp, label)
 
 
@@ -110,6 +113,7 @@ def evaluate_results(df: pd.DataFrame, answer_format: str, **kwargs) -> float:
         if decode:
             resp = decoder.decode(resp)
             resp = decoder.cleanup_string(resp)
+            label = decoder.cleanup_string(label)
 
         metric = metric_dict[kwargs["metric_name"]]
         score = metric(resp, label)
