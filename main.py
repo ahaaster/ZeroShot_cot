@@ -4,7 +4,7 @@ import pandas as pd
 from tqdm import tqdm
 from pathlib import Path
 
-from experiment import Dataset, prompt_control, basic_dspy
+from experiment import Dataset, prompt_control, basic_dspy, dspy_prompt
 from experiment.utils import fetch_datasets, get_saved_data, get_dir_name, save_score
 from experiment.evaluation import evaluate_metrics, evaluate_results
 
@@ -15,8 +15,8 @@ LOCAL_MODELS = ["llama3.2:1b", "deepseek-r1:1.5b", "phi3.5", "gemma:2b", "qwen2.
 PROMPT_METHODS = {
     "control": prompt_control,
     "basic": basic_dspy,
-    "constraint": basic_dspy,
-    "cot": None,
+    "constraint": dspy_prompt,
+    "cot": dspy_prompt,
     "multihop": None,
 }
 METRICS = ["exact_match", "semanticF1", "semanticF1-decoded"]
@@ -25,15 +25,15 @@ METRICS = ["exact_match", "semanticF1", "semanticF1-decoded"]
 def main(experiment: str):
     if experiment == "prompt":
         kwargs = {
-            "method": "control",
-            "chosen_model": LOCAL_MODELS[2],
+            "method": "cot",
+            "chosen_model": LOCAL_MODELS[0],
             "cache": True,
             "metric_name": METRICS[0],
-            "record_results": True,
+            "record_results": False,
             "display_table": 8,
-            "decode": True,
+            "decode": False,
             "greedy_first": False,
-            "chosen_datasets": Path("dataset/cot") / "GSM8K",
+            "chosen_datasets": Path("dataset/cot") / "MultiArith",
         }
         run_prompts(**kwargs)
 
@@ -57,10 +57,11 @@ def run_prompts(
     dspy.configure(lm=lm)
     prompter = PROMPT_METHODS[method]
 
-    data_paths = fetch_datasets(chosen_datasets, file_name="data")
+    file_name = "data2" if method in ["cot", "constraint"] else "data"
+    data_paths = fetch_datasets(chosen_datasets, file_name)
 
     for data_path in data_paths:
-        dataset = Dataset(data_path, chosen_model)
+        dataset = Dataset(data_path, chosen_model, method)
 
         # Check if results are already recorded
         results_dir = Path("results") / method / dataset.name
