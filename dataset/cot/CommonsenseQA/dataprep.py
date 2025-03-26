@@ -16,7 +16,7 @@ def prepare_dataset():
     nested_questions = raw_df["question"]
 
     df = pd.DataFrame(columns=["choices"])
-    df["label"] = raw_df["answerKey"]
+    df["response"] = raw_df["answerKey"]
     for idx, query in enumerate(nested_questions):
         df.at[idx, "question"] = query["stem"]
 
@@ -30,10 +30,10 @@ def prepare_dataset():
 
         df.at[idx, "choices"] = ", ".join(choice_list)
 
-    return df[["label", "question", "choices"]]
+    return df[["response", "question", "choices"]]
 
 
 if __name__ == "__main__":
     result = prepare_dataset()
     df = pd.DataFrame(result)
-    df.to_csv(HERE / "data.csv", index=False)
+    df.to_csv(HERE / "data2.csv", index=False)
