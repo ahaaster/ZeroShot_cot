@@ -17,7 +17,7 @@ def basic_dspy(
     record_results: bool = False,
     **kwargs,
 ):
-    method = "basic"
+    method = kwargs["method"]
     output_name = "answer"
     # signature = f"{dataset.get_input_names()} -> {output_name}"  # Maybe this causes errors
     signature = dspy.Signature(f"{dataset.get_input_names()} -> {output_name}")

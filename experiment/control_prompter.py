@@ -12,11 +12,23 @@ def create_prompt(data: Example, input_keys: list[str], join_string: str = "\n")
     return join_string.join(prompt)
 
 
-def prompt_control(dataset: Dataset, *, lm: LM, record_results: bool = False, **kwargs):
+def prompt_control(
+    dataset: Dataset,
+    *,
+    lm: LM,
+    record_results: bool = False,
+    results_dir: str,
+    **kwargs
+):
+    method = kwargs["method"]
+
     batch_n = 25
     batches: list[list[example]] = [
         dataset[i : i + batch_n] for i in range(0, len(dataset), batch_n)
     ]
+
+    results_dir = Path("results") / method / dataset.name
+    df_results = get_saved_data(results_dir, kwargs["chosen_model"])
 
     # Function part that actually prompts
     for data_batch in tqdm(batches):
