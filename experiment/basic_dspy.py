@@ -31,7 +31,7 @@ def basic_dspy(
     metric = Metric(metric_name, dataset.label_name, output_name, decoder)
 
     prompt_that_shit = Evaluate(
-        devset=dataset,
+        devset=dataset.dataset,
         metric=metric,
         num_threads=16,
         display_progress=True,

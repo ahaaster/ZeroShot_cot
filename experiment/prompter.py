@@ -1,8 +1,12 @@
+import pandas as pd
+from tqdm import tqdm
+from pathlib import Path
 from dspy import Predict, ChainOfThought, Evaluate
 from dspy.evaluate import SemanticF1
 
 from .dataset import Dataset
-from .evaluation import Metric
+from .evaluation import Metric, Decoder
+from .utils import get_saved_data, save_results, save_score
 
 
 def prompt(
@@ -13,21 +17,23 @@ def prompt(
     record_results: bool = False,
     **kwargs,
 ):
-    dataset = dataset[:20]
+    method = kwargs["method"]
+    label_name = dataset.label_name
 
     sig = dataset.create_signature()
     prompter = dataset.prompter(signature=sig)
-    metric = Metric(metric_name, dataset.label_name)
+    decoder = Decoder(dataset.answer_format) if decode else None
+    metric = Metric(metric_name, label_name, decoder=decoder)
 
     prompt_that_shit = Evaluate(
-        devset=dataset,
+        devset=dataset.dataset,
         metric=metric,
-        num_threads=16,
         display_progress=True,
         display_table=kwargs["display_table"],
         return_outputs=True,
         provide_traceback=True,
         max_errors=10_000,
+        num_threads=16,
     )
 
     avg_score, results = prompt_that_shit(prompter)
@@ -35,8 +41,6 @@ def prompt(
     if not record_results:
         # print(results)
         return
-
-    method = kwargs["method"]
 
     results_df = pd.DataFrame(results)
     results_dir = Path("results") / method / dataset.name

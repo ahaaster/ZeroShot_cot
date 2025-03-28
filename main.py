@@ -26,15 +26,15 @@ def main(experiment: str):
     if experiment == "prompt":
         kwargs = {
             "method": "cot",
-            "chosen_model": LOCAL_MODELS[0],
-            "cache": True,
+            "chosen_model": LOCAL_MODELS[2],
+            "cache": False,
             "metric_name": METRICS[0],
-            "record_results": False,
-            "display_table": 8,
-            "decode": False,
+            "record_results": True,
+            "display_table": False,
             "greedy_first": False,
             "chosen_datasets": Path("dataset/cot") / "MultiArith",
         }
+        kwargs["decode"] = False if kwargs["method"] == METRICS[1] else True
         run_prompts(**kwargs)
 
     elif experiment == "metric_eval":

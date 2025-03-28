@@ -57,8 +57,8 @@ class Dataset:
         return formats[self.name]
 
     def _init_constraint(self):
-        constrained = True if self.method_name in ["constraint"] else False
-        # constrained = True if self.method_name in ["constraint", "cot"] else False
+        # constrained = True if self.method_name in ["constraint"] else False
+        constrained = True if self.method_name in ["constraint", "cot"] else False
 
         if not constrained:
             return None
@@ -66,7 +66,7 @@ class Dataset:
         constraints = {
             "mc": None,
             "text": None,
-            "number": "int",
+            "number": "float",
             "boolean": "bool",
         }
         return constraints[self.answer_format]
@@ -83,3 +83,10 @@ class Dataset:
             output += f": {constraint}"
 
         return Signature(f"{inputs} -> {output}")
+
+    def create_prompt_kwargs(self, example: Example) -> dict:
+        kwargs = {}
+        for inpt in self.input_names:
+            kwargs[inpt] = example[inpt]
+
+        return kwargs

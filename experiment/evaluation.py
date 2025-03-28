@@ -93,7 +93,7 @@ def exact_match(resp, label):
         return False
 
     elif isinstance(resp, int | float):
-        return int(resp) == int(label)
+        return float(resp) == float(label)
     elif isinstance(resp, str):
         return str(resp).lower() == str(label).lower()
 
