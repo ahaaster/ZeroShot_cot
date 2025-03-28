@@ -126,3 +126,48 @@ def create_scores_file():
 if __name__ == "__main__":
     # create_scores_file()
     main(EXPERIMENT)
+
+    # import matplotlib.pyplot as plt
+    # import numpy as np
+
+    # # llms = (
+    # #     "Deepseek-r1",
+    # #     "Llama3.2",
+    # #     "Qwen2.5",
+    # #     "Phi3.5",
+    # #     "Gemma",
+    # # )  # , "GPT3.5", "GPT4", "GPT4o")
+    # # scores = {
+    # #     "Control": (0.9617, 0.75, 0.9217, 0.8183, 0.205),
+    # #     "CoT": (0.9533, 0.3883, 0.3083, 0.61, 0.0667),
+    # # }
+
+    # llms = ("GPT-3.5", "GPT-4", "GPT-4o")
+    # scores = {"Control": (0.8633, 0.2683, 0.9517), "CoT": (0.8467, 0.3417, 0.2317)}
+
+    # colours = {"Control": "black", "CoT": "green"}
+
+    # x = np.arange(len(llms))
+    # width = 0.25
+    # multiplier = 0
+
+    # fix, ax = plt.subplots(layout="constrained")
+
+    # fix.set_figheight(2)
+    # fix.set_figwidth(6)
+
+    # for key, val in scores.items():
+    #     offset = width * multiplier
+    #     rects = ax.bar(x + offset, val, width, label=key, color=colours[key])
+    #     # ax.bar_label(rects, padding=3)
+    #     multiplier += 1
+
+    # plt.axhline(y=0.8, color="gray", linestyle="--")
+
+    # ax.set_ylabel("Accuracy")
+    # ax.set_title("Big LLM performance")
+    # ax.set_xticks(x + width, llms)
+    # ax.legend(loc="upper center", ncols=2)
+    # ax.set_ylim(0, 1.1)
+
+    # plt.show()

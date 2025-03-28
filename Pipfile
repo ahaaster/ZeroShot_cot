@@ -7,6 +7,7 @@ name = "pypi"
 dspy = "*"
 pandas = "*"
 tqdm = "*"
+matplotlib = "*"
 
 [dev-packages]
 black = "*"
